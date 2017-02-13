@@ -8,6 +8,12 @@ class User < ApplicationRecord
     :omniauthable
   )
 
+  #
+  # Associations
+  #
+  has_many :songs
+  has_many :roles_users
+
   def self.from_omniauth(auth)
     where(
       provider: auth[:provider],

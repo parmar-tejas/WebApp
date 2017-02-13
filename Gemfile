@@ -7,6 +7,7 @@ gem 'pg'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'activeadmin', github: 'activeadmin'
+gem 'active_skin'
 gem 'dotenv-rails'
 
 gem 'sass-rails', '~> 5.0'
@@ -16,6 +17,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 #gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'yt'
 
 gem 'haml'
 gem 'haml-rails'

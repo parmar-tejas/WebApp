@@ -1,0 +1,1 @@
+$CHORD_VALIDATION_REGEX = /(?<root>([A,D,G][b|#]?)|([B,E]b?)|([C,F]#?)) (?<quality>Maj|min|5|7|Maj7|m7|sus4|add9|sus2|7sus4|7#9|9)/

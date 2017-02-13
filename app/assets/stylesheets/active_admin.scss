@@ -1,2 +1,8 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
+
+#header h1.site_title {
+  background-size: auto 45px !important;
+}
+$skinLogo: asset_data_url('logo.png') no-repeat;
+@import "active_skin";
