@@ -6,7 +6,7 @@ class Api::V1::ChordsController < Api::ApiController
   end
 
   def show
-    chord = $CHORD_VALIDATION_REGEX.match(params[:chordname])
+    chord = $CHORD_VALIDATION_REGEX.match(params[:chordname]) || {}
     chords = Chord.where(
       root: Chord.root_value(chord[:root]),
       quality: chord[:quality]

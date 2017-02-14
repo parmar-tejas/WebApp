@@ -33,7 +33,10 @@ class Api::V1::SongsController < Api::ApiController
       uploaded_on: :DESC
     ).first
 
-    success_response(song.to_hash)
+    unless song.blank?
+      song = song.to_hash
+    end
+    success_response(song)
   end
 
   def mysongs

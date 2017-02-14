@@ -11,6 +11,9 @@ class Api::ApiController < ApplicationController
   end
 
   def success_response(data, status = 200)
+    if data.blank?
+      data = {}
+    end
     render(
       json: data
     )
