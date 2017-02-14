@@ -10,6 +10,8 @@ class Song < ApplicationRecord
     required: false
   )
 
+  attr_accessor :user_name # for autocomplete
+
   def to_hash
     {
       youtube_id: youtube_id,
@@ -48,5 +50,6 @@ class Song < ApplicationRecord
       end
     end
   end
+
 
 end

@@ -17,4 +17,11 @@ ActiveAdmin.register User do
 
   filter :email
   filter :name
+
+  # Autocomplete
+  collection_action :autocomplete_user_name, method: :get
+
+  controller do
+    autocomplete :user, :name, full: true
+  end
 end

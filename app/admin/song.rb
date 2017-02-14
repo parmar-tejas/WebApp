@@ -17,7 +17,9 @@ ActiveAdmin.register Song do
     column :artist
     column :song_title
     column 'Uploaded By' do |song|
-     link_to song.user.try(:name), admin_user_path(song.uploaded_by)
+      if song.uploaded_by
+        link_to song.user.try(:name), admin_user_path(song.uploaded_by)
+      end
     end
     actions
   end
@@ -26,6 +28,16 @@ ActiveAdmin.register Song do
   filter :uploaded_on
   filter :artist
   filter :song_title
+  filter(
+    :user_name,
+    as: :autocomplete,
+    url: "/admin/users/autocomplete_user_name",
+    input_html: {
+      id_element: '#q_uploaded_by_eq',
+      'data-auto-focus' => true
+    }
+  )
+  filter :uploaded_by_eq, as: :hidden
 
   form do |f|
     f.inputs "Song" do
