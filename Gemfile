@@ -9,6 +9,7 @@ gem 'omniauth-facebook'
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_skin'
 gem 'dotenv-rails'
+gem 'react-rails'
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
