@@ -1,5 +1,5 @@
 = content_for :javascripts do
-  %script{src: asset_path('player_page.jsx')}
+  = javascript_include_tag 'player_page'
 
 = content_for :stylesheets do
   = stylesheet_link_tag 'player_page'
