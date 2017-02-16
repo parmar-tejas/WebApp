@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@font-face {
+    font-family: 'the_display_st';
+    src: font-url('the_display_st-webfont.woff2') format('woff2'),
+         font-url('the_display_st-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face { 
+	font-family: "Ionicons"; 
+	src: font-url('ionicons.eot')  format("embedded-opentype"),
+	     font-url('ionicons.ttf')  format("truetype"),
+	     font-url('ionicons.woff') format("woff"),
+       font-url('ionicons.svg')  format("svg");
+	font-weight: normal; 
+	font-style: normal; 
+}
+
+@font-face {
+    font-family: 'ninepin';
+    src: font-url('ninepin-webfont.woff2') format('woff2'),
+         font-url('ninepin-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'GothamRBd';
+  src: font-url('GothamRounded-Bold.eot');                                                /* IE9 Compat Modes */
+  src: font-url('GothamRounded-Bold.eot?#iefix') format('embedded-opentype'),             /* IE6-IE8 */
+       font-url('GothamRounded-Bold.woff') format('woff'),                                /* Modern Browsers */
+       font-url('GothamRounded-Bold.ttf')  format('truetype'),                            /* Safari, Android, iOS */
+       font-url('GothamRounded-Bold.svg#cf294c6136807d0e69a971e863b3cd88') format('svg'); /* Legacy iOS */
+  font-weight:  700;
+  font-style:   normal;
+
+}
+
+@font-face {
+  font-family: 'GothamRBk';
+  src: font-url('GothamRounded-Book.eot');                                                /* IE9 Compat Modes */
+  src: font-url('GothamRounded-Book.eot?#iefix') format('embedded-opentype'),             /* IE6-IE8 */
+       font-url('GothamRounded-Book.woff') format('woff'),                                /* Modern Browsers */
+       font-url('GothamRounded-Book.ttf')  format('truetype'),                            /* Safari, Android, iOS */
+       font-url('GothamRounded-Book.svg#21661efc977bfcfec5c6c16307c05ceb') format('svg'); /* Legacy iOS */
+  font-weight:  400;
+  font-style:   normal;
+}

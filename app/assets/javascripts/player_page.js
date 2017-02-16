@@ -1,0 +1,17 @@
+//= require rivets
+//= require lib
+//= require chord
+//= require chordlib
+//= require event_channel
+//= require punch
+//= require punchlist
+//= require element
+//= require modal
+//= require userview
+//= require ytplayer
+//= require fretboard
+//= require timeline
+//= require palette
+//= require songlist
+//= require feedback_form
+//= require player

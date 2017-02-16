@@ -1,0 +1,429 @@
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none; 
+  font-family: 'Roboto', sans-serif;
+}
+
+ul#menu li:nth-child(2) {
+    color: #B00;
+    border-bottom: 3px solid #B00;
+}
+
+body {
+  box-shadow: 0 0 0.1em black inset;
+}
+
+#fretboard_container {
+  /*-webkit-transition: box-shadow: 1s;*/
+  /*transition: box-shadow: 1s;*/
+}
+
+.content_wrapper {
+  padding-top: 2em;
+  text-align: center;
+  position: relative;
+}
+
+.row {
+  white-space: nowrap;
+  position: relative;
+}
+
+.row * {
+  vertical-align: middle;
+}
+
+#fretboard_container {
+  text-align: center;
+}
+
+#timeline_container {
+  position: relative;
+}
+
+#timeline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#content {
+  text-align: center;
+}
+
+#content * {
+  vertical-align: middle;
+}
+
+#viewer, 
+#ytplayer_container,
+#fretboard_container,
+#songlist_container {
+  display: inline-block;
+}
+
+#fretboard_container {
+  border: 1px solid black;
+  height: 30vw;
+  width: 33vw;
+  background-color: rgba(0,0,0,0.1);
+  font-size: 2vw;
+}
+
+#fretboard * {
+  vertical-align: middle;
+}
+
+#fretboard_container::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+
+}
+
+#ytplayer_container {
+  width: 40vw;
+  height: 30vw;
+  border: 1px solid black;
+  position: relative;
+}
+
+#viewer { 
+  position: relative; 
+  box-sizing: border-box;
+}
+
+#timeline_container {
+  max-width: 100%;
+  height: 7vw;
+  position: relative;
+  vertical-align: bottom;
+  box-sizing: border-box;
+}
+
+#timeline {
+  border: 1px solid black;
+  height: 7vw;
+  font-size: 1.5vw;
+}
+
+#songlist_container {
+  display: none;
+  padding-left: 1vw;
+  width: 20vw;
+  height: 40vw;
+}
+
+#FeedbackForm {
+  width: 40vw;
+}
+
+#appmenu {
+  margin-top: 1em;
+  display: inline-block;
+}
+
+#appmenu .menuitem {
+  height: 100%;
+  padding: 0 1em;
+  box-shadow: 0 0 0.3em black inset;
+  display: inline-block;
+  cursor: pointer;
+  height: 3em;
+}
+
+#appmenu .menuitem span {
+  width: 100%;
+  text-align: center;
+}
+
+#appmenu .menuitem::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+} 
+
+#appmenu .menuitem:hover {
+  background-color: rgba(0,0,0,0.1);
+}
+
+#appmenu .menuitem:active {
+  box-shadow: 0 0 1em black inset;
+  background-color: rgba(200,200,255,0.5);
+}
+
+#more_songs {
+  display: none;
+}
+
+#top_btns {
+  padding-bottom: 2em;
+  display: flex;
+  font-size: 1.3em;
+}
+
+#share,
+#view_songs {
+  font-family: GothamRBk;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+  display: inline-block;
+  padding: 0.5em 1em;
+  border-radius: .5em;
+  margin: 0 4em;
+  cursor: pointer;
+  width: 12em;
+  line-height: 1.5em;
+  flex: 1;
+}
+
+#share:active,
+#view_songs:active {
+  box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+}
+
+#share img {
+  height: 1.5em;
+  margin-right: 1em;
+  vertical-align: middle;
+}
+
+#view_songs img {
+  height: 1em;
+  margin-right: 1em;
+  vertical-align: middle;
+}
+
+#viewer .row {
+  background-color: black;
+  z-index: -3;
+}
+
+.black {
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+  background: black;
+}
+
+#songlist {
+  height: 70vh !important;
+}
+
+
+#fretboard .lefty,
+#fretboard .righty {
+  font-family: 'GothamRBd' !important;
+  color: white !important;
+  text-shadow: none !important;
+}
+
+#timeline {
+  background: #3E3E3E !important;
+}
+
+.chord {
+  background-image: linear-gradient(-180deg, #43DDBF 0%, #13A285 100%) !important;
+  border: 2px solid white !important;
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.28) !important;
+}
+
+
+@media (max-width: 1000px) {
+
+  #more_songs {
+    display: block;
+    margin-top: 1em;
+    border: 1px solid black;
+    cursor: pointer;
+    padding: .5em;
+    background: #E20009;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+
+  #more_songs:hover {
+    color: '';
+  }
+
+  .content_wrapper {
+    padding-top: 1vw;
+  }
+
+  
+  #songlist_container {
+    display: none;
+  }
+
+  
+  #timeline {
+    font-size: 2vw;
+  }
+
+  #timeline_container {
+    margin-top: 4vw;
+  }
+
+  #ytplayer_container {
+    width: 50vw;
+    height: 40vw;
+    box-sizing: border-box;
+  }
+
+  #fretboard_container {
+    width: 45vw;
+    height: 40vw;
+    padding: 1vw;
+    box-sizing: border-box;
+    font-size: 2.5vw;
+  }
+
+  #songlist {
+    font-size: 1em;
+  }
+
+  #content_wrapper {
+    padding-top: 1vw;
+  }
+
+  #top_btns {
+    font-size: 2vw;
+  }
+  
+}
+
+
+@media (max-width: 750px) {
+
+  #more_songs {
+    margin-top: 0.5em;
+  }
+
+  #content, #viewer {
+    width: 100%;
+  }
+
+  .content_wrapper {
+    padding-top: 0;
+  }
+
+  #header {
+    position: relative;
+    height: 10vh;
+    margin: 0;
+  }
+
+  #header #logo {
+    height: 100%;
+    padding: 0 5vw;
+  }
+
+  #header #logo::before {
+    content: '';
+    vertical-align: middle;
+    display: inline-block;
+    height: 100%;
+  }
+
+  #header #logo img {
+    vertical-align: middle;
+    height: 45%;
+  }
+
+  #appmenu .menuitem {
+    width: 7vw;
+    vertical-align: top;
+    padding: 0 2vw;
+  }
+
+  #appmenu .menuitem span {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 2vw;
+    font-size: 1.6vw;
+  }
+
+  #content_wrapper {
+    padding-top: 1vh;
+  }
+
+  #ytplayer_container {
+    display: block;
+    width: 100%;
+    height: 35vh;
+    margin: 0;
+  }
+
+  #fretboard_container {
+    width: 95vw;
+    height: 35vh;
+    border: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+
+  #userview_container {
+    vertical-align: middle;
+  }
+
+  #fretboard {
+    font-size: 4.5vh !important;
+  }
+
+
+  #songlist_container {
+    display: none;
+  }
+
+
+  #timeline_container {
+    height: 7vh;
+    width: 100%;
+  }
+
+  #timeline {
+    font-size: 2vh;
+  }
+
+  body {
+    height: 105vh;
+  }
+
+  #FeedbackForm {
+    font-size: 2.5vw;
+    width: 80vw;
+  }
+
+  #songlist {
+    font-size: 4vw;
+    width: 80vw;
+  }
+
+  #modal .modal_content { 
+    max-width: 80vw !important;
+  }
+
+  #top_btns {
+    margin-top: 1em;
+    font-size: 3vw;
+    padding-bottom: 1em;
+  }
+
+  #share,
+  #view_songs {
+    margin: 0 1em;
+  }
+
+}
+

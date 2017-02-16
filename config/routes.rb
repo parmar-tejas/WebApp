@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     as: 'home'
   )
 
-  root 'home#index'
+  root 'fretx#player'
 
   #Api
   namespace :api do
@@ -52,4 +52,6 @@ Rails.application.routes.draw do
         )
     end
   end
+  get "/player", to: "fretx#player"
+  get "/list",   to: "fretx#list"
 end

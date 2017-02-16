@@ -1,0 +1,23 @@
+= content_for :javascripts do
+  = javascript_include_tag 'player_page'
+
+= content_for :stylesheets do
+  = stylesheet_link_tag 'player_page'
+
+#content
+  #top_btns
+    #view_songs
+      = image_tag asset_url('plus-ico.png')
+      View & Add Songs 
+    #share
+      = image_tag asset_url('share-ico.png')
+      Share This Song
+
+  .row
+    .black
+    #ytplayer_container
+    #fretboard_container
+
+  #timeline_container
+
+  #songlist_container

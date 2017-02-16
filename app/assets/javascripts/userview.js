@@ -1,0 +1,2 @@
+function UserView(parent) {
+}
