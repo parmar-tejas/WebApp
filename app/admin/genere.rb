@@ -1,4 +1,6 @@
 ActiveAdmin.register Genere do
+
+  menu priority: 4
   permit_params(
     :name
   )

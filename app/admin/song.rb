@@ -1,4 +1,6 @@
 ActiveAdmin.register Song do
+
+  menu priority: 2
   permit_params(
     :youtube_id,
     :title,
@@ -27,6 +29,8 @@ ActiveAdmin.register Song do
   filter :title
   filter :uploaded_on
   filter :artist
+  filter :genere
+  filter :difficulty
   filter :song_title
   filter(
     :user_name,
@@ -46,6 +50,8 @@ ActiveAdmin.register Song do
      f.input :punches, as: 'text'
      f.input :artist
      f.input :song_title
+     f.input :genere
+     f.input :difficulty
      f.input(
         :uploaded_by,
         label: 'Uploaded by',
@@ -69,6 +75,8 @@ ActiveAdmin.register Song do
         row :artist
         row :song_title
         row :uploaded_by
+        row :genere
+        row :difficulty
       end
     end
   end

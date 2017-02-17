@@ -1,4 +1,6 @@
 ActiveAdmin.register Difficulty do
+
+  menu priority: 5
   permit_params(
     :name
   )
