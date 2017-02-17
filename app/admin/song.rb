@@ -9,6 +9,8 @@ ActiveAdmin.register Song do
     :artist,
     :song_title,
     :uploaded_by,
+    :difficulty_id,
+    :genere_id
   )
 
   index do
@@ -23,6 +25,8 @@ ActiveAdmin.register Song do
         link_to song.user.try(:name), admin_user_path(song.uploaded_by)
       end
     end
+    column :genere
+    column :difficulty
     actions
   end
 
@@ -45,14 +49,14 @@ ActiveAdmin.register Song do
 
   form do |f|
     f.inputs "Song" do
-     f.input :youtube_id
-     f.input :title
-     f.input :punches, as: 'text'
-     f.input :artist
-     f.input :song_title
-     f.input :genere
-     f.input :difficulty
-     f.input(
+      f.input :youtube_id
+      f.input :title
+      f.input :punches, as: 'text'
+      f.input :artist
+      f.input :song_title
+      f.input :genere
+      f.input :difficulty
+      f.input(
         :uploaded_by,
         label: 'Uploaded by',
         as: :select,
