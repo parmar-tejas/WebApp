@@ -58,6 +58,10 @@ Rails.application.routes.draw do
         '/get_related_songs',
         to: 'songs#get_related_songs'
         )
+      get(
+        '/get_searched_song',
+        to: 'songs#get_searched_song'
+        )
     end
   end
   get "/player", to: "fretx#player"

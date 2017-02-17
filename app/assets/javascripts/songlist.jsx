@@ -12,6 +12,7 @@ function Songlist(parent,path) {
   this.load_styles();
   this.bind_dom();
   this.fetch();
+  this.load_search_data();
 }
 
 Songlist.prototype = {
@@ -36,6 +37,22 @@ Songlist.prototype = {
     this.state.filtered_songs = this.state.songs;
     this.input.value = "Search";
     this.input.style.color = 'grey';
+  },
+
+  load_search_data() {
+    $.get({
+      url: "/api/v1/autocompletes/get_select_data.json",
+      beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+    }).done(function( data ) {
+      if (data != null) {
+        keys = Object.keys(data)
+        keys.forEach(function(key, key_index){
+          data[key].forEach(function(obj, id){
+            $('#'+key).append($('<option>', { value: obj.id, text : obj.name }));
+          })
+        })
+      }
+    });
   }
 
 }
@@ -46,13 +63,14 @@ Object.assign(
   Songlist.prototype, {
 
     bind_handlers() {
-      this.on_click       = this.on_click.bind(this);
-      this.on_song_list   = this.on_song_list.bind(this);
-      this.on_search      = this.on_search.bind(this);
-      this.on_input_focus = this.on_input_focus.bind(this);
-      this.on_input_blur  = this.on_input_blur.bind(this);
-      this.on_load_failed = this.on_load_failed.bind(this);
-      this.mount          = this.mount.bind(this);
+      this.on_click          = this.on_click.bind(this);
+      this.on_song_list      = this.on_song_list.bind(this);
+      this.on_search         = this.on_search.bind(this);
+      this.on_input_focus    = this.on_input_focus.bind(this);
+      this.on_input_blur     = this.on_input_blur.bind(this);
+      this.on_load_failed    = this.on_load_failed.bind(this);
+      this.get_searched_song = this.get_searched_song.bind(this);
+      this.mount             = this.mount.bind(this);
     },
 
     on_click(e,m)      { this.select(m.index); },
@@ -62,6 +80,25 @@ Object.assign(
       if( e.target.value == '' || e.target.value == 'Search' ) { this.state.filtered_songs = this.state.songs; return; }
       var byNameFilter = function(song) { return song.title.toLowerCase().indexOf(e.target.value.toLowerCase())!=-1; }
       this.state.filtered_songs = this.state.songs.filter( byNameFilter );
+    },
+
+    get_searched_song() {
+      data = {
+        title:  $('#title').val(),
+        genere: $('#genere').val(),
+        difficulty: $('#difficulty').val()
+      }
+      $.get({
+        url: "/api/v1/get_searched_song.json",
+        data: data,
+        beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+      })
+      .done(function( data ) {
+        if(data.length > 0)
+          this.state.filtered_songs = data;
+        else
+          this.state.filtered_songs = [];
+      }.bind(this));
     },
 
     on_input_focus(e,m) {
@@ -111,7 +148,15 @@ Object.assign(Songlist.prototype, {
 Songlist.prototype.HTML = `
   <div id="songlist">
     <div class="searchbar">
-      <input rv-on-input='this.on_search' rv-on-focus='this.on_input_focus' rv-on-blur='this.on_input_blur' value='Search' style='color: grey;'></input>
+      <input id="title" rv-on-input='this.get_searched_song' rv-on-focus='this.on_input_focus' rv-on-blur='this.on_input_blur' value='Search' style='color: grey;'></input>\
+      <div class="searchselect col-sm-12">
+        <div class="col-sm-6">
+          <select id="genere" rv-on-change='this.get_searched_song'><option selected="selected">Select Genere</option></select>
+        </div>
+        <div class="col-sm-6">
+          <select id="difficulty" rv-on-change='this.get_searched_song'><option selected="selected">Select Difficulty</option></select>
+        </div>
+      </div>
     </div>
     <div class="searchlist">
       <div class="songitem" rv-each-song="data.filtered_songs" rv-on-click="this.on_click">
