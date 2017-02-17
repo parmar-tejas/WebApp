@@ -62,7 +62,9 @@ class Api::V1::SongsController < Api::ApiController
       uploaded_on,
       youtube_id,
       title,
-      punches'
+      punches,
+      genere_id,
+      difficulty_id',
     ).order(
       :youtube_id,
       uploaded_on: :DESC
@@ -82,5 +84,10 @@ class Api::V1::SongsController < Api::ApiController
     success_response(song)
   end
 
+  def get_related_songs
+    song = Song.find_by_youtube_id(params[:youtube_id])
+    related_songs = Song.joins(:genere).where("artist like (?) OR generes.name like (?)", song.artist, song.try(:genere).try(:name))
+    success_response(related_songs)
+  end
 
 end

@@ -50,8 +50,17 @@ Rails.application.routes.draw do
         '/chords/:chordname',
         to: 'chords#show'
         )
+      get(
+        '/autocompletes/get_select_data',
+        to: 'autocompletes#get_select_data'
+        )
+      get(
+        '/get_related_songs',
+        to: 'songs#get_related_songs'
+        )
     end
   end
   get "/player", to: "fretx#player"
   get "/list",   to: "fretx#list"
+  get "/editor", to: "fretx#editor"
 end

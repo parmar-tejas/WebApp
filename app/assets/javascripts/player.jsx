@@ -12,6 +12,7 @@ $(document).ready(function() {
   feedback  = new FeedbackForm();
   punchlist = new Punchlist();
   chordlib  = new Chordlib();
+  songlist  = new Songlist();
 
   userview  = new UserView(  id('userview_container')  );
   ytplayer  = new YTPlayer(  id('ytplayer_container')  );
@@ -25,7 +26,7 @@ $(document).ready(function() {
   modal.ev_sub('exit', function() { songlist.mount(id('songlist_container')); });
 
   //songlist.ev_sub('list_loaded', function()     { load_song( songlist.random ); } );
-  songlist.ev_sub('selected',    function(song) { load_song( song ); modal.hide(); songlist.mount(id('songlist_container')); } );
+  songlist.ev_sub('selected',    function(song) { load_song( song ); modal.hide(); songlist.mount(id('songlist_container')); $('#container').show(); $('#share').show(); $('#timeline_container').show(); load_related_songs(song); } );
 
   timeline.on_scrub  = function(time_s) { ytplayer.current_time = time_s; } 
   timeline.get_color = function(chord_label) { return palette.get_color(chord_label); } 
@@ -44,7 +45,10 @@ $(document).ready(function() {
   });
 
   add_click_listeners();
-  
+
+  $('#container').hide();
+  $('#share').hide();
+  $('#timeline_container').hide();
 });
 
 /////////////////////////////////////////////// SETUP /////////////////////////////////////////////////////////
@@ -65,6 +69,22 @@ function on_video_data() {
   punchlist.update_time(0);
 }
 
+function load_related_songs(song) {
+  var data = {
+    youtube_id: song.youtube_id
+  }
+  $.get({
+    url: "/api/v1/get_related_songs.json",
+    data: data,
+    beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+  }).done(function( data ) {
+    if (data.length > 0) {
+      data.forEach(function(obj){
+        $('#related_songs_container').append('<div class="col-sm-3"><img rv-src="http://img.youtube.com/vi/'+ obj.youtube_id +'/1.jpg"></img></div>');
+      })
+    }
+  });
+}
 
 ////////////////////////////////////////// CLICK LISTENERS ///////////////////////////////////////////////////
 
