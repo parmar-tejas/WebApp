@@ -1,11 +1,13 @@
 #
 # Admin User
 #
-AdminUser.create!(
-  email: 'admin@fretx.rocks',
-  password: 'password',
-  password_confirmation: 'password'
-)
+unless AdminUser.any?
+  AdminUser.create!(
+    email: 'admin@fretx.rocks',
+    password: 'password',
+    password_confirmation: 'password'
+  )
+end
 
 [
   "Rock",
