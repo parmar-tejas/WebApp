@@ -57,7 +57,6 @@
     f.inputs "Song" do
       f.input :youtube_id
       f.input :title
-      f.input :punches, as: 'text'
       f.input :artist
       f.input :song_title
       f.input :genre
