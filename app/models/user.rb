@@ -13,19 +13,12 @@ class User < ApplicationRecord
   #
   has_many :songs
   has_many :roles_users
+  has_one :omniaccount
 
-  def self.from_omniauth(auth)
-    where(
-      provider: auth[:provider],
-      uid: auth[:uid]
-    ).first_or_create do |user|
-       user.provider    = auth.provider
-       user.email       = auth.info.email
-       user.password    = Devise.friendly_token[0,20]
-       user.uid         = auth.uid
-       user.provider_id = auth.info.provider_id
-       user.name        = auth.info.name
-       user.photo_url   = auth.info.image
-    end
+  def update_from_oauth(auth, provider)
+    self.email = auth[:info][:email] if self.email.blank?
+    self.name =  auth[:info][:name]
+    self.password = Devise.friendly_token[0,20]
+    self.save
   end
 end
