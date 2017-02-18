@@ -47,8 +47,10 @@ Songlist.prototype = {
       if (data != null) {
         keys = Object.keys(data)
         keys.forEach(function(key, key_index){
+          $('#'+key).empty();
+          $('#'+key).append($('<option>', { text: 'Select '+key}))
           data[key].forEach(function(obj, id){
-            $('#'+key).append($('<option>', { value: obj.id, text : obj.name }));
+            $('#'+key).append($('<option>', { value: obj.id, text: obj.name }));
           })
         })
       }
@@ -151,10 +153,10 @@ Songlist.prototype.HTML = `
       <input id="title" rv-on-input='this.get_searched_song' rv-on-focus='this.on_input_focus' rv-on-blur='this.on_input_blur' value='Search' style='color: grey;'></input>\
       <div class="searchselect col-sm-12">
         <div class="col-sm-6">
-          <select id="genere" rv-on-change='this.get_searched_song'><option selected="selected">Select Genere</option></select>
+          <select id="genere" rv-on-change='this.get_searched_song'></select>
         </div>
         <div class="col-sm-6">
-          <select id="difficulty" rv-on-change='this.get_searched_song'><option selected="selected">Select Difficulty</option></select>
+          <select id="difficulty" rv-on-change='this.get_searched_song'></select>
         </div>
       </div>
     </div>
