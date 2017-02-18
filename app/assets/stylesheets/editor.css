@@ -1,0 +1,194 @@
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none; 
+  font-family: 'Roboto', sans-serif;
+}
+
+ul#menu li:nth-child(3) {
+    color: #B00;
+    border-bottom: 3px solid #B00;
+}
+
+.content_wrapper {
+  text-align: center;
+  padding-top: 2em;
+}
+
+#content {
+  display: inline-block;
+}
+
+.row {
+  display: flex;
+  white-space: nowrap;
+  justify-content: space-around;
+}
+
+.row * {
+  vertical-align: middle;
+}
+
+#fretboard_container {
+  text-align: center;
+}
+
+#timeline_container {
+  position: relative;
+}
+
+#timeline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#content {
+  text-align: center;
+  width: 57vw;
+}
+
+#content * {
+  vertical-align: middle;
+}
+
+#viewer, 
+#ytplayer_container,
+#fretboard_container,
+#songlist_container {
+  display: inline-block;
+}
+
+#fretboard_container {
+  border: 1px solid black;
+  width: 29vw;
+  background-color: rgba(0,0,0,0.1);
+}
+
+#fretboard_container::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 20vw;
+}
+
+#fretboard {
+  font-size: 2.5vw !important;
+}
+
+#ytplayer_container {
+  width: 28vw;
+  height: 20vw;
+  border: 1px solid black;
+}
+
+
+#viewer { 
+  position: relative; 
+  max-width: 65vw;
+  min-width: 640px;
+  box-sizing: border-box;
+}
+
+
+#timeline_container {
+  max-width: 100%;
+  height: 7vw;
+  position: relative;
+  vertical-align: bottom;
+}
+
+#timeline {
+  border: 1px solid black;
+  font-size: 1vw;
+}
+
+
+#timeline {
+  vertical-align: bottom;
+}
+
+#songlist_container {
+  padding-left: 1vw;
+  height: 100%;
+  width: 20vw;
+  vertical-align: top;
+  max-height: 35.2vw;
+}
+
+#palette_container {
+  border: 1px solid black;
+  margin-top: 1vw;
+  font-size: 0.8em;
+}
+
+#ctrlbar_container {
+  border: 1px solid black;
+  margin-top: 1vw;
+  font-size: 1.3vw;
+  padding-bottom: 1vw;
+}
+
+#songlist {
+  max-height: 60vh;
+}
+
+#appmenu {
+  display: inline-block;
+  height: 100%;
+}
+
+#appmenu .menuitem {
+  height: 100%;
+  padding: 0 1em;
+  border-left: 1px solid black;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#appmenu .menuitem span {
+  width: 100%;
+  text-align: center;
+}
+
+#appmenu .menuitem::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+} 
+
+#appmenu .menuitem:hover {
+  background-color: rgba(0,0,0,0.1);
+}
+
+#appmenu .menuitem:active {
+  box-shadow: 0 0 1em black inset;
+  background-color: rgba(200,200,255,0.5);
+}
+
+.resize-drag {
+  background-color: #29e;
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 30px 20px;
+
+  width: 120px;
+
+  /* This makes things *much* easier */
+  box-sizing: border-box;
+}
+
+#timeline_container {
+  width: 100%;
+  padding: 10px;
+  display: inline-flex;
+}

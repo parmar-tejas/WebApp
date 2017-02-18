@@ -6,4 +6,6 @@ class FretxController < ApplicationController
   def list
   end
 
+  def editor
+  end
 end
