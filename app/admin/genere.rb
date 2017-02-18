@@ -1,4 +1,4 @@
-ActiveAdmin.register Genere do
+ActiveAdmin.register Genre do
 
   menu priority: 4
   permit_params(
@@ -15,15 +15,15 @@ ActiveAdmin.register Genere do
   filter :name
 
   form do |f|
-    f.inputs "Genere" do
+    f.inputs "Genre" do
      f.input :name
     end
     f.actions
   end
 
-  show do |genere|
-    panel "Genere" do
-      attributes_table_for genere do
+  show do |genre|
+    panel "Genre" do
+      attributes_table_for genre do
         row :name
       end
     end

@@ -63,7 +63,7 @@ class Api::V1::SongsController < Api::ApiController
       youtube_id,
       title,
       punches,
-      genere_id,
+      genre_id,
       difficulty_id',
     ).order(
       :youtube_id,
@@ -88,15 +88,15 @@ class Api::V1::SongsController < Api::ApiController
 
   def get_related_songs
     song = Song.find_by_youtube_id(params[:youtube_id])
-    related_songs = Song.joins(:genere).where("artist like (?)", "%#{song.artist}%")
+    related_songs = Song.joins(:genre).where("artist like (?)", "%#{song.artist}%")
     success_response(related_songs)
   end
 
   def get_searched_song
     conditions = []
     controller_params_options( params[:title], "title", conditions, "like" ) unless params[:title] == "Search"
-    controller_params_options( params[:genere], "genere_id", conditions, "=" ) unless params[:genere] == "Select Genere"
-    controller_params_options( params[:difficulty], "difficulty_id", conditions, "=" ) unless params[:difficulty] == "Select Difficulty"
+    controller_params_options( params[:genre], "genre_id", conditions, "=" ) unless params[:genre] == "Select genre"
+    controller_params_options( params[:difficulty], "difficulty_id", conditions, "=" ) unless params[:difficulty] == "Select difficulty"
     songs = Song.select(
       'DISTINCT ON(youtube_id) id,
       uploaded_on,

@@ -10,7 +10,7 @@
     :song_title,
     :uploaded_by,
     :difficulty_id,
-    :genere_id,
+    :genre_id,
     :published,
     :promotion
   )
@@ -27,7 +27,7 @@
         link_to song.user.try(:name), admin_user_path(song.uploaded_by)
       end
     end
-    column :genere
+    column :genre
     column :difficulty
     column :published
     column :promotion
@@ -37,7 +37,7 @@
   filter :title
   filter :uploaded_on
   filter :artist
-  filter :genere
+  filter :genre
   filter :difficulty
   filter :published
   filter :promotion
@@ -60,7 +60,7 @@
       f.input :punches, as: 'text'
       f.input :artist
       f.input :song_title
-      f.input :genere
+      f.input :genre
       f.input :difficulty
       f.input(
         :uploaded_by,
@@ -87,7 +87,7 @@
         row :artist
         row :song_title
         row :uploaded_by
-        row :genere
+        row :genre
         row :difficulty
         row :published
         row :promotion

@@ -9,14 +9,14 @@ unless AdminUser.any?
   )
 end
 
-unless Genere.any?
+unless Genre.any?
   [
     "Rock",
     "Pop",
     "Jazz",
     "Blues"
   ].each do |data|
-    Genere.create(name: data)
+    Genre.create(name: data)
   end
 end
 

@@ -15,11 +15,12 @@ class Song < ApplicationRecord
     required: false
   )
 
-  belongs_to :genere
+  belongs_to :genre
 
   belongs_to :difficulty
 
   attr_accessor :user_name # for autocomplete
+
 
   def to_hash
     {

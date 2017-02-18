@@ -87,7 +87,7 @@ Object.assign(
     get_searched_song() {
       data = {
         title:  $('#title').val(),
-        genere: $('#genere').val(),
+        genre: $('#genre').val(),
         difficulty: $('#difficulty').val()
       }
       $.get({
@@ -153,7 +153,7 @@ Songlist.prototype.HTML = `
       <input id="title" rv-on-input='this.get_searched_song' rv-on-focus='this.on_input_focus' rv-on-blur='this.on_input_blur' value='Search' style='color: grey;'></input>\
       <div class="searchselect col-sm-12">
         <div class="col-sm-6">
-          <select id="genere" rv-on-change='this.get_searched_song'></select>
+          <select id="genre" rv-on-change='this.get_searched_song'></select>
         </div>
         <div class="col-sm-6">
           <select id="difficulty" rv-on-change='this.get_searched_song'></select>

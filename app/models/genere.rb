@@ -1,4 +1,4 @@
-class Genere < ApplicationRecord
+class Genre < ApplicationRecord
 
   #
   # Association
