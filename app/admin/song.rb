@@ -1,4 +1,4 @@
-ActiveAdmin.register Song do
+  ActiveAdmin.register Song do
 
   menu priority: 2
   permit_params(
@@ -10,7 +10,9 @@ ActiveAdmin.register Song do
     :song_title,
     :uploaded_by,
     :difficulty_id,
-    :genere_id
+    :genere_id,
+    :published,
+    :promotion
   )
 
   index do
@@ -27,6 +29,8 @@ ActiveAdmin.register Song do
     end
     column :genere
     column :difficulty
+    column :published
+    column :promotion
     actions
   end
 
@@ -35,6 +39,8 @@ ActiveAdmin.register Song do
   filter :artist
   filter :genere
   filter :difficulty
+  filter :published
+  filter :promotion
   filter :song_title
   filter(
     :user_name,
@@ -65,6 +71,8 @@ ActiveAdmin.register Song do
                       :id
                     )
       )
+      f.input :published
+      f.input :promotion
     end
     f.actions
   end
@@ -81,6 +89,8 @@ ActiveAdmin.register Song do
         row :uploaded_by
         row :genere
         row :difficulty
+        row :published
+        row :promotion
       end
     end
   end
