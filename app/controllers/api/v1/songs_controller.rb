@@ -86,7 +86,7 @@ class Api::V1::SongsController < Api::ApiController
 
   def get_related_songs
     song = Song.find_by_youtube_id(params[:youtube_id])
-    related_songs = Song.joins(:genere).where("artist like (?) OR generes.name like (?)", song.artist, song.try(:genere).try(:name))
+    related_songs = Song.joins(:genere).where("artist like (?)", "%#{song.artist}%")
     success_response(related_songs)
   end
 
@@ -109,6 +109,13 @@ class Api::V1::SongsController < Api::ApiController
     ).first(10)
 
     success_response(songs)
+  end
+
+  def get_promotion_video
+    data = {}
+    song = Song.where(promotion: true).order(updated_at: :desc).first
+    data[:video_id] = song ? song.youtube_id : Song.first.try(:youtube_id)
+    success_response(data)
   end
 
 end

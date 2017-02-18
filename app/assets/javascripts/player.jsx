@@ -14,6 +14,8 @@ $(document).ready(function() {
   chordlib  = new Chordlib();
   songlist  = new Songlist();
 
+  load_promotion_video()
+
   userview  = new UserView(  id('userview_container')  );
   ytplayer  = new YTPlayer(  id('ytplayer_container')  );
   fretboard = new Fretboard( id('fretboard_container') );
@@ -76,9 +78,19 @@ function load_related_songs(song) {
   }).done(function( data ) {
     if (data.length > 0) {
       data.forEach(function(obj){
-        $('#related_songs_container').append('<div class="col-sm-3"><img rv-src="http://img.youtube.com/vi/'+ obj.youtube_id +'/1.jpg"></img></div>');
+        $('#related_songs_container').append('<div class="col-sm-3"><img src="http://img.youtube.com/vi/'+ obj.youtube_id +'/1.jpg"></img></div>');
       })
     }
+  });
+}
+
+function load_promotion_video() {
+  $.get({
+    url: "/api/v1/get_promotion_video.json",
+    beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+  }).done(function( data ) {
+      ytplayer.load(data['video_id'])
+      video_id = data['video_id'];
   });
 }
 

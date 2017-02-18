@@ -121,6 +121,10 @@ body {
   height: 40vw;
 }
 
+#related_songs_container {
+  margin-top: 15px;
+}
+
 #FeedbackForm {
   width: 40vw;
 }
