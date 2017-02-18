@@ -13,8 +13,12 @@
           %li
             = link_to 'Login', user_facebook_omniauth_authorize_path, class: "login"
       - else
-        %ul#menu
-          = current_user.name
-          %img{:src => "#{current_user.photo_url}"}/
-          %li
-            = link_to 'Logout', destroy_user_session_path, method: "delete", class: "login"
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown.txt
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              = current_user.name
+              %img{:src => "#{current_user.omniaccount.photo_url}"}/
+            %ul.dropdown-menu
+              %li.txt
+                = link_to 'Editor', editor_path
+                = link_to 'Logout', destroy_user_session_path, method: "delete", class: "login"
