@@ -7,5 +7,6 @@ class FretxController < ApplicationController
   end
 
   def editor
+    redirect_to root_path unless current_user
   end
 end

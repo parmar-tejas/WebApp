@@ -1,6 +1,11 @@
 class Song < ApplicationRecord
 
   #
+  # Serialization
+  #
+  serialize :punches, Array
+
+  #
   # Associations
   #
   belongs_to(
@@ -11,6 +16,7 @@ class Song < ApplicationRecord
   )
 
   belongs_to :genere
+
   belongs_to :difficulty
 
   attr_accessor :user_name # for autocomplete

@@ -95,10 +95,9 @@ function add_chord_now(chord) {
 //////////////////////////////////////// CLICK LISTENERS ///////////////////////////////////////////////////////
 
 function add_click_listeners() {
-  var menuitems = id('appmenu').children;
-  menuitems[0].addEventListener('click', edit_menu );
-  menuitems[1].addEventListener('click', open_new  );
-  menuitems[2].addEventListener('click', save_work );
+  id('create-btn').addEventListener('click', create_new_song );
+  id('edit').addEventListener('click', edit_menu );
+  id('save_work').addEventListener('click', save_work );
 }
 
 function to_player() {
@@ -116,14 +115,18 @@ function open_new() {
 
 function save_work() {
   var songdata = {
-    id: ytplayer.videodata.id,
+    youtube_id: ytplayer.videodata.id,
     title: ytplayer.videodata.title,
     chords: punchlist.to_models()
   }
   modal.show_loading();
-  $.post('/songs/add', JSON.stringify(songdata) )
+  $.post('/api/v1/add.json', JSON.stringify(songdata) )
     .done( function()     { modal.show_toast('Upload Successful!', 'green', 1000); songlist.fetch(); } )
     .fail( function(resp) { modal.show_toast("Upload Failed! \n" + resp.responseText, 'red'); } );
 }
 
+function create_new_song() {
+  addvid.reset();
+  modal.show(addvid.dom)
+}
 //////////////////////////////////////// CLICK LISTENERS ///////////////////////////////////////////////////////

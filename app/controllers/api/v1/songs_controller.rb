@@ -74,12 +74,14 @@ class Api::V1::SongsController < Api::ApiController
   end
 
   def add
-    song = Song.create(
-        uploaded_by: current_user.id,
-        youtube_id: params[:youtube],
-        title: params[:title],
-        punches: params[:chords]
-      )
+    data = JSON.parse(request.body.read)
+    song = Song.find_or_initialize_by(
+      uploaded_by: current_user.id,
+      youtube_id: data['youtube_id']
+    )
+    song.title    = data['title']
+    song.punches  = data['chords']
+    song.save
 
     success_response(song)
   end

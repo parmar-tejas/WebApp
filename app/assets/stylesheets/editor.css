@@ -192,3 +192,43 @@ ul#menu li:nth-child(3) {
   padding: 10px;
   display: inline-flex;
 }
+
+#top_btns {
+  padding-bottom: 2em;
+  display: flex;
+  margin-top: 1em;
+  font-size: 1.3em;
+}
+
+#create-btn {
+  font-family: GothamRBk;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  padding: 0.5em 1em;
+  border-radius: .5em;
+  cursor: pointer;
+  width: 12em;
+  line-height: 1.5em;
+  flex: 1;
+}
+
+#edit {
+  font-family: GothamRBk;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  padding: 0.5em 1em;
+  border-radius: .5em;
+  cursor: pointer;
+  width: 12em;
+  line-height: 1.5em;
+  flex: 1;
+}
+
+#save_work {
+  font-family: GothamRBk;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  padding: 0.5em 1em;
+  border-radius: .5em;
+  cursor: pointer;
+  width: 12em;
+  line-height: 1.5em;
+  flex: 1;
+}

@@ -66,6 +66,10 @@ Rails.application.routes.draw do
         '/get_promotion_video',
         to: 'songs#get_promotion_video'
         )
+      post(
+        '/add',
+        to: 'songs#add'
+        )
     end
   end
   get "/player", to: "fretx#player"
