@@ -12,9 +12,16 @@
     .col-sm-4
       #edit
         Edit Existing Song
-    .col-sm-4
+    .col-sm-2
       #save_work
         Save Work
+    .col-sm-2.dropdown
+      #unpublish
+        Unpublish
+      #publish.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        Publish
+        %span.caret
+      %ul#meta-data.dropdown-menu
 
   #viewer
     .row
@@ -24,3 +31,10 @@
     #ctrlbar_container
     #timeline_container
     #palette_container
+
+:javascript
+  $(document).ready( function() {
+    $('.dropdown-menu').on('click', function(event) {
+      event.stopPropagation();
+    });
+  } );

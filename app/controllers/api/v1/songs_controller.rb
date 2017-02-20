@@ -1,6 +1,6 @@
 class Api::V1::SongsController < Api::ApiController
 
-  before_action :authenticate_user!, only: [:mysongs, :add]
+  before_action :authenticate_user!, only: [:mysongs, :add, :update_songs_metadata]
 
   def index
     songs = Song.select(
@@ -25,7 +25,8 @@ class Api::V1::SongsController < Api::ApiController
       title,
       artist,
       song_title,
-      punches'
+      punches,
+      published'
     ).where(
       youtube_id: params[:youtube_id]
     ).order(
@@ -45,7 +46,8 @@ class Api::V1::SongsController < Api::ApiController
       uploaded_on,
       youtube_id,
       title,
-      punches'
+      punches,
+      published'
       ).where(
         uploaded_by: current_user.id
       ).order(
@@ -64,7 +66,8 @@ class Api::V1::SongsController < Api::ApiController
       title,
       punches,
       genre_id,
-      difficulty_id',
+      difficulty_id,
+      published',
     ).order(
       :youtube_id,
       uploaded_on: :DESC
@@ -88,7 +91,7 @@ class Api::V1::SongsController < Api::ApiController
 
   def get_related_songs
     song = Song.find_by_youtube_id(params[:youtube_id])
-    related_songs = Song.joins(:genre).where("artist like (?)", "%#{song.artist}%")
+    related_songs = Song.joins(:genre).where("artist like (?)", "%#{song.artist}%") rescue []
     success_response(related_songs)
   end
 
@@ -120,4 +123,25 @@ class Api::V1::SongsController < Api::ApiController
     success_response(data)
   end
 
+  def update_songs_metadata
+    response = {}
+    data = JSON.parse(request.body.read)
+    song = Song.find_or_initialize_by(
+      uploaded_by: current_user.id,
+      youtube_id: data['youtube_id']
+    )
+    unless song.published
+      song.title         = data['title']
+      song.artist        = data['artist']
+      song.genre_id      = data['genre'] unless data['genre'] == "Select genre"
+      song.difficulty_id = data['difficulty'] unless data['difficulty'] == "Select difficulty"
+      song.published     = true
+      response[:message] = "Song Published Successful!"
+    else
+      song.published = false
+      response[:message] = "Song Unpublished!"
+    end
+    song.save
+    success_response(response)
+  end
 end

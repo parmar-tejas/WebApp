@@ -228,7 +228,37 @@ ul#menu li:nth-child(3) {
   padding: 0.5em 1em;
   border-radius: .5em;
   cursor: pointer;
-  width: 12em;
+  width: 6em;
   line-height: 1.5em;
   flex: 1;
+}
+
+#publish {
+  font-family: GothamRBk;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  padding: 0.5em 1em;
+  border-radius: .5em;
+  cursor: pointer;
+  width: 7em;
+  line-height: 1.5em;
+  flex: 1;
+  display: none;
+}
+
+#unpublish {
+  font-family: GothamRBk;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  padding: 0.5em 1em;
+  border-radius: .5em;
+  cursor: pointer;
+  width: 7em;
+  line-height: 1.5em;
+  flex: 1;
+  display: none;
+}
+
+#meta-data {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  padding: 0.5em;
+  border-radius: .5em;
 }

@@ -14,6 +14,7 @@ class Api::V1::YoutubeController < Api::ApiController
 
   def youtube_video_data(video_id)
     video = Yt::Video.new id:  video_id
-    { :id => video.id, :title => video.title, :description => video.description }
+    published = Song.find_by_youtube_id(video_id).try(:published)
+    { :id => video.id, :title => video.title, :description => video.description, :published => published }
   end
 end

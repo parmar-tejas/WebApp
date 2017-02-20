@@ -70,6 +70,10 @@ Rails.application.routes.draw do
         '/add',
         to: 'songs#add'
         )
+      post(
+        '/update_songs_metadata',
+        to: 'songs#update_songs_metadata'
+        )
     end
   end
   get "/player", to: "fretx#player"

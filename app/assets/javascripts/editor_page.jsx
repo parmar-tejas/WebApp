@@ -19,3 +19,4 @@
 //= require addvid
 //= require input_with_default
 //= require editor
+//= require sweetalert.min
