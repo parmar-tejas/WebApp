@@ -28,12 +28,12 @@ body {
   position: relative;
 }
 
-.row {
+.row-fretx {
   white-space: nowrap;
   position: relative;
 }
 
-.row * {
+.row-fretx * {
   vertical-align: middle;
 }
 
@@ -205,7 +205,7 @@ body {
   vertical-align: middle;
 }
 
-#viewer .row {
+#viewer .row-fretx {
   background-color: black;
   z-index: -3;
 }

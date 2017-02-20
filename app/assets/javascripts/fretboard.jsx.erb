@@ -100,13 +100,13 @@ Fretboard.prototype.HTML = `
   <div class='fret_display'>
 
     <div class='strings'>
-      <div class='row' rv-each-string='data.strings'> 
+      <div class='row-fretx' rv-each-string='data.strings'> 
         <div class='string'> </div>
       </div>
     </div>
 
     <div class='lights' >
-      <div class='row' rv-each-string='data.strings'>
+      <div class='row-fretx' rv-each-string='data.strings'>
         <div class='fret' rv-each-fret='string.frets' >
           <div class='light' rv-data-state='fret.val'></div>
         </div>
@@ -139,7 +139,7 @@ Fretboard.prototype.HTML = `
 Fretboard.prototype.CSS = `
 
 #fretboard .fret_display                  { width: 8em; }
-#fretboard .row                           { width: 8em;}
+#fretboard .row-fretx                           { width: 8em;}
 #fretboard .fret                          { width: 2em; }
 
 #fretboard .frets .wire                   { width: 0.1em; }
@@ -150,7 +150,7 @@ Fretboard.prototype.CSS = `
 
 
 #fretboard .fret_display                  { height: 5.5em;   }
-#fretboard .row                           { height: 16.66%; }
+#fretboard .row-fretx                           { height: 16.66%; }
 #fretboard .fret                          { height: 100%;   }
 #fretboard .strings .string               { height: 4px;   }
 #fretboard .lights .light                 { height: 0.4em;  }
@@ -194,7 +194,7 @@ Fretboard.prototype.CSS = `
 #fretboard .strings { z-index: 2; }
 #fretboard .lights  { z-index: 3; }
 
-#fretboard .row {
+#fretboard .row-fretx {
   position: relative;
 }
 

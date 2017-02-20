@@ -205,7 +205,7 @@ Object.assign( Timeline.prototype, {
 
 Timeline.prototype.HTML = `
   <div id='timeline'>
-    <div class='chords'></div>
+    <div class='chords' ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     <div class='scale'></div>
     <div class='indicator'></div>
   </div>
@@ -247,7 +247,8 @@ Timeline.prototype.CSS = `
   white-space: nowrap;
   position: relative;
   z-index: 1;
-  height: 3em;
+  height: 100%;
+  width: 100%;
   vertical-align: middle;
 }
 

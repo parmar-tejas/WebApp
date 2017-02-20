@@ -14,6 +14,8 @@
 //= require timeline
 //= require punch_editor
 //= require modal
+//= require interact.min
+//= require drag
 //= require palette
 //= require songlist
 //= require addvid

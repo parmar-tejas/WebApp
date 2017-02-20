@@ -97,10 +97,10 @@ Object.assign( Palette.prototype, ev_channel );
 Palette.prototype.HTML = `
 
 <div id='palette'>
-   
+
   <div class='chords'>
 
-    <div class='chord' rv-each-chord='data.chords' rv-on-click='obj.sel_chord'>
+    <div class='chord' rv-id="chord.color" draggable="true" ondragstart="drag(event, this)" rv-each-chord='data.chords' rv-on-click='obj.sel_chord'>
       <div class='color' rv-style-background-color='chord.color'></div>
       <div class='gloss'></div>
       <div class='delete' rv-on-click='obj.del_chord'>X</div>

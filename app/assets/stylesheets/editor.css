@@ -22,13 +22,13 @@ ul#menu li:nth-child(3) {
   display: inline-block;
 }
 
-.row {
+.row-fretx {
   display: flex;
   white-space: nowrap;
   justify-content: space-around;
 }
 
-.row * {
+.row-fretx * {
   vertical-align: middle;
 }
 
