@@ -137,6 +137,11 @@ rootlist.prototype = {
       this.value = this.elements[i].getAttribute('data-note');
       this.label = this.elements[i].innerHTML;
       this.elements[i].className = 'sel';
+      if(this.value == 0){
+        this.elements[i].setAttribute("draggable", true);
+        this.elements[i].setAttribute("id", this.elements[i].innerHTML);
+        this.elements[i].addEventListener('dragstart', function() {drag(event, this)}, false);
+      }
     }
   },
 
@@ -199,6 +204,9 @@ qualitylist.prototype = {
 
   set_quality: function(label) {
     for(var i=0; i<this.elements.length; i++) {
+      this.elements[i].setAttribute("draggable", true);
+      this.elements[i].setAttribute("id", this.elements[i].innerHTML);
+      this.elements[i].addEventListener('dragstart', function() {drag(event, this)}, false);
       if( this.elements[i].innerHTML != label ) { this.elements[i].className = ''; continue; }
       this.label = this.elements[i].innerHTML;
       this.elements[i].className = 'sel';

@@ -80,6 +80,10 @@ Timeline.prototype = {
 
   _update_time(time_s) {
     let width_px = this.s_to_px(time_s);
+    this.indicator.style.maxWidth = width_px + 'px';
+    if($('#timeline .chords .chord').width() == null){
+      this.indicator.style.maxWidth = ($('#timeline').width()/2) + 'px';
+    }
     this.indicator.style.width = width_px + 'px';
     this.dom.scrollLeft = width_px - (this.dom.clientWidth/2);
   },
@@ -135,9 +139,10 @@ Object.assign( Timeline.prototype, {
     var width = `width: ${ this.s_to_px(punch.duration_s) + 'px'}; `;
     var color = isFunction(this.get_color) ? `background: ${this.get_color(punch.chord)}; ` : '';
     return render(`
-      <div class='chord' style='${width}${color}' >
+      <div id='${punch.time}' class='chord' style='${width}${color}'>
         <div class='gloss'></div>
         <div class='chordname'>${punch.chord}</div>
+        <div class='delete' onClick="Punchlist.prototype.del_punch_from_rv('${punch._rv}')" >X</div>
       </div>
     `.untab(6));
   }
@@ -333,6 +338,18 @@ Timeline.prototype.CSS = `
   background: -webkit-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.chord .delete {
+  height: 1.5em;
+  width: 1.5em;
+  border: 0.1em solid black;
+  border-radius: 1em;
+  box-shadow: 0 0 .1em black;
+  float: right;
+  text-align: center;
+  background-color: rgb(255,50,50);
+  position: initial;
 }
 
 `;

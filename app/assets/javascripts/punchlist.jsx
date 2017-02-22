@@ -36,6 +36,24 @@ Punchlist.prototype = {
     this._on_punch_change();
 	},
 
+  del_punch_from_rv(_rv) {
+    punch = null;
+    index = null;
+    for(i = 0; i < punchlist.punches.length; i++){
+      if(punchlist.punches[i]._rv == _rv) {
+        punch = punchlist.punches[i];
+        index = i
+      }
+    }
+    if(punch!= null){
+      punchlist.punches.splice(index,1);
+      punchlist.link_list();
+      punchlist.set_current_punch()
+      punchlist._on_list_change();
+      punchlist._on_punch_change();
+    }
+  },
+
 	clear() { 
     this.punches = []; 
     this._on_list_change(); 

@@ -8,6 +8,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.delete{
+  display: none
+}
+
 ul#menu li:nth-child(2) {
     color: #B00;
     border-bottom: 3px solid #B00;

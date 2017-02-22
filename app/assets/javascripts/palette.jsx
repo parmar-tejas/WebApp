@@ -98,7 +98,7 @@ Palette.prototype.HTML = `
 
 <div id='palette'>
 
-  <div class='chords'>
+  <div class='chords' ondrop="drop(event)" ondragover="allowDrop(event)">
 
     <div class='chord' rv-id="chord.color" draggable="true" ondragstart="drag(event, this)" rv-each-chord='data.chords' rv-on-click='obj.sel_chord'>
       <div class='color' rv-style-background-color='chord.color'></div>
