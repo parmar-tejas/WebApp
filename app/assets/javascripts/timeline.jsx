@@ -80,10 +80,7 @@ Timeline.prototype = {
 
   _update_time(time_s) {
     let width_px = this.s_to_px(time_s);
-    this.indicator.style.maxWidth = width_px + 'px';
-    if($('#timeline .chords .chord').width() == null){
-      this.indicator.style.maxWidth = ($('#timeline').width()/2) + 'px';
-    }
+    $('#timeline .chords').width(width_px + $('#timeline').width()/2);
     this.indicator.style.width = width_px + 'px';
     this.dom.scrollLeft = width_px - (this.dom.clientWidth/2);
   },
@@ -223,7 +220,7 @@ Timeline.prototype.CSS = `
   position: absolute;
   background-color: rgb(0,0,0,0.1);
   padding: 0.5em;
-  height: 4em;
+  height: 5em;
   scroll-behavior: smooth;
 }
 
@@ -289,17 +286,17 @@ Timeline.prototype.CSS = `
 }
 
 #timeline .scale {
-  display: none;
-  background-color: rgba(100,100,100,0.8);
   height: 1.2em;
   white-space: nowrap;
   position: relative;
-  box-shadow: 0 0 0.1em black;
   z-index: 1;
-  border: 1px solid black;
+  margin-top: -9px;
 }
 
 #timeline .scale .tick {
+  background-color: rgba(100,100,100,0.8);
+  box-shadow: 0 0 0.1em black;
+  border: 1px solid black;
   vertical-align: top;
   display: inline-block;
   width: 1px;

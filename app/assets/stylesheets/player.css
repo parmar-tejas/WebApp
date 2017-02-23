@@ -12,6 +12,14 @@
   display: none
 }
 
+#timeline .scale .tick {
+  display: none !important;
+}
+
+#timeline {
+  height: 4em !important;
+}
+
 ul#menu li:nth-child(2) {
     color: #B00;
     border-bottom: 3px solid #B00;
