@@ -91,7 +91,7 @@ class Api::V1::SongsController < Api::ApiController
 
   def get_related_songs
     song = Song.find_by_youtube_id(params[:youtube_id])
-    related_songs = Song.joins(:genre).where("artist like (?)", "%#{song.artist}%") rescue []
+    related_songs = Song.where.not(id: song.id).where('genre_id = ? OR difficulty_id = ?', song.genre_id, song.difficulty_id) rescue []
     success_response(related_songs)
   end
 
