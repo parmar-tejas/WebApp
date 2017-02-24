@@ -76,6 +76,7 @@ function load_related_songs(song) {
     data: data,
     beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
   }).done(function( data ) {
+    $('#related_songs_container').empty();
     if (data.length > 0) {
       data.forEach(function(obj){
         $('#related_songs_container').append('<div class="col-sm-3"><img src="http://img.youtube.com/vi/'+ obj.youtube_id +'/1.jpg"></img></div>');

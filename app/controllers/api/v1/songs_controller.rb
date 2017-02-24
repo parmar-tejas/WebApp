@@ -82,8 +82,11 @@ class Api::V1::SongsController < Api::ApiController
       uploaded_by: current_user.id,
       youtube_id: data['youtube_id']
     )
-    song.title    = data['title']
-    song.punches  = data['chords']
+    song.title         = data['title']
+    song.punches       = data['chords']
+    song.artist        = data['artist']
+    song.genre_id      = data['genre']
+    song.difficulty_id = data['difficulty']
     song.save
 
     success_response(song)
@@ -121,27 +124,5 @@ class Api::V1::SongsController < Api::ApiController
     song = Song.where(promotion: true).order(updated_at: :desc).first
     data[:video_id] = song ? song.youtube_id : Song.first.try(:youtube_id)
     success_response(data)
-  end
-
-  def update_songs_metadata
-    response = {}
-    data = JSON.parse(request.body.read)
-    song = Song.find_or_initialize_by(
-      uploaded_by: current_user.id,
-      youtube_id: data['youtube_id']
-    )
-    unless song.published
-      song.title         = data['title']
-      song.artist        = data['artist']
-      song.genre_id      = data['genre'] unless data['genre'] == "Select genre"
-      song.difficulty_id = data['difficulty'] unless data['difficulty'] == "Select difficulty"
-      song.published     = true
-      response[:message] = "Song Published Successful!"
-    else
-      song.published = false
-      response[:message] = "Song Unpublished!"
-    end
-    song.save
-    success_response(response)
   end
 end

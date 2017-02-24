@@ -98,7 +98,6 @@ function add_chord_now(chord) {
 function add_click_listeners() {
   id('create-btn').addEventListener('click', create_new_song );
   id('edit').addEventListener('click', edit_menu );
-  id('save_work').addEventListener('click', save_work );
   id('publish').addEventListener('click', show_drop_down );
   id('unpublish').addEventListener('click', publish_song );
 }
@@ -116,17 +115,6 @@ function open_new() {
   modal.show(addvid.dom)
 }
 
-function save_work() {
-  var songdata = {
-    youtube_id: ytplayer.videodata.id,
-    title: ytplayer.videodata.title,
-    chords: punchlist.to_models()
-  }
-  $.post('/api/v1/add.json', JSON.stringify(songdata) )
-    .done( function()     { swal("Success!", "Upload Successful!", "success"); songlist.fetch(); } )
-    .fail( function(resp) { swal("Upload Failed!", resp.responseText, "error"); } );
-}
-
 function create_new_song() {
   addvid.reset();
   modal.show(addvid.dom)
@@ -134,8 +122,10 @@ function create_new_song() {
 
 function show_drop_down() {
   $('#meta-data').empty();
-  $('#meta-data').append('<li><input type="text" id="artist" placeholder="Artist" class="form-control form-group" required></input></li>' +
-                         '<li><input type="text" id="title" placeholder="Title" class="form-control form-group" required></input></li>' +
+  $('#meta-data').append('<li><input type="text" id="artist" placeholder="Artist" class="form-control form-group" value="' +
+                         (ytplayer.videodata.song.artist == null ? '' : ytplayer.videodata.song.artist) + '" required></input></li>' +
+                         '<li><input type="text" id="title" placeholder="Title" class="form-control form-group" value="' +
+                         (ytplayer.videodata.song.title == null ? '' : ytplayer.videodata.song.title) + '" required></input></li>' +
                          '<li><select id="genre" class="form-control form-group selectpicker"></select></li>' +
                          '<li><select id="difficulty" class="form-control form-group selectpicker"></select></li>' +
                          '<li><a id="btn-publish" class="btn btn-white" onclick="publish_song()">Publish</a></li>');
@@ -152,25 +142,28 @@ function show_drop_down() {
           $('#'+key).append($('<option>', { value: obj.id, text: obj.name }));
         })
       })
+      $('#genre option[value='+ ytplayer.videodata.song.genre_id +']').prop('selected', true);
+      $('#difficulty option[value='+ ytplayer.videodata.song.difficulty_id +']').prop('selected', true);
     }
   });
 }
 
 function publish_song() {
-  var metaData = {
+  var songdata = {
     youtube_id: ytplayer.videodata.id,
     title:      $('#title').val(),
     artist:     $('#artist').val(),
     genre:      $('#genre').val(),
-    difficulty: $('#difficulty').val()
+    difficulty: $('#difficulty').val(),
+    chords:     punchlist.to_models()
   }
-  $.post('/api/v1/update_songs_metadata.json', JSON.stringify(metaData) )
-    .done( function(resp)     { swal("Success!", resp['message'], "success"); $('#publish').toggle(); $('#unpublish').toggle(); } )
-    .fail( function(resp) { swal("Published Failed!", resp.responseText, "error"); } );
+  $.post('/api/v1/add.json', JSON.stringify(songdata) )
+  .done( function()     { swal("Success!", "Upload Successful!", "success"); songlist.fetch(); } )
+  .fail( function(resp) { swal("Upload Failed!", resp.responseText, "error"); } );
 }
 
 function show_published_or_unpublished() {
-  if(ytplayer.videodata.published) {
+  if(ytplayer.videodata.song.publish) {
     $('#publish').hide();
     $('#unpublish').show();
   } else {

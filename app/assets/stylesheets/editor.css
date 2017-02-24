@@ -224,7 +224,6 @@ ul#menu li:nth-child(3) {
   padding: 0.5em 1em;
   border-radius: .5em;
   cursor: pointer;
-  width: 7em;
   line-height: 1.5em;
   flex: 1;
   display: none;
