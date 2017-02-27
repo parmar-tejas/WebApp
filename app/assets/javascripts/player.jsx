@@ -1,4 +1,4 @@
-data = {
+var searchedSong = {
   songs: []
 }
 
@@ -46,7 +46,7 @@ $(document).ready(function() {
     set_ambient_color(palette.get_color(punch.chord));
   });
 
-  add_click_listeners();
+  add_event_listeners();
 });
 
 /////////////////////////////////////////////// SETUP /////////////////////////////////////////////////////////
@@ -97,10 +97,11 @@ function load_promotion_video() {
 
 ////////////////////////////////////////// CLICK LISTENERS ///////////////////////////////////////////////////
 
-function add_click_listeners() {
+function add_event_listeners() {
   //id('get_fretx').addEventListener('click', goto_indiegogo );
   id('share').addEventListener('click', share_on_fb );
-  id('view_songs').addEventListener('click', open_new_song );
+  id('search-song').addEventListener('input', get_searched_song);
+  // id('view_songs').addEventListener('click', open_new_song );
 
   //var menuitems = id('appmenu').children;
   //menuitems[0].addEventListener('click', open_new_song  );
@@ -132,6 +133,48 @@ function get_feedback(e) {
   cancelEvent(e);
 }
 
+function get_searched_song(e) {
+  data = {
+    title:  $('#search-song').val()
+  }
+  $.get({
+    url: "/api/v1/get_searched_song.json",
+    data: data,
+    beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+  })
+  .done(function( data ) {
+    if(data.length > 0) {
+      searchedSong['songs'] = data
+      $('.song-list-holder').empty();
+      $('.song-list-holder').append('<div class="song-list"></div>');
+      for(i=0; i<data.length;i++) {
+        $('.song-list').append('<a class="song" data-index="'+i+'" onclick="get_song_from_index(this)">' +
+                               '<div class="song-info">' +
+                               '<img src="http://img.youtube.com/vi/'+data[i].youtube_id+'/1.jpg" alt="">' +
+                               '<h4>'+data[i].artist+'</h4>' +
+                               '<h5>'+data[i].title+'</h5>' +
+                               '</div>' +
+                               '</a>'
+                              );
+      }
+      $('.player-top-btns .view-songs').addClass('results-visible');
+    } else {
+      $('.song-list-holder').empty();
+    }
+  });
+}
+
+function get_song_from_index(elem) {
+  index = $(elem).data('index');
+  var btnContainer = $(".player-top-btns .view-songs, .song-list");
+
+  if (!btnContainer.is(elem.parent) && btnContainer.has(elem.parent).length === 0){
+    btnContainer.removeClass('input-visible');
+    btnContainer.removeClass('results-visible');
+    btnContainer.children('.custom-input').val('');
+  }
+  load_song(searchedSong.songs[index]);
+}
 ////////////////////////////////////////// CLICK LISTENERS ///////////////////////////////////////////////////
 
 

@@ -82,6 +82,7 @@ Timeline.prototype = {
     let width_px = this.s_to_px(time_s);
     $('#timeline .chords').width(width_px + $('#timeline').width()/2);
     this.indicator.style.width = width_px + 'px';
+    this.indicator.style.minWidth = $('#timeline').width()/2 + 'px';
     this.dom.scrollLeft = width_px - (this.dom.clientWidth/2);
   },
 
@@ -221,7 +222,10 @@ Timeline.prototype.CSS = `
   background-color: rgb(0,0,0,0.1);
   padding: 0.5em;
   height: 5em;
+  max-width: 100%;
+  border-radius: 100px;
   scroll-behavior: smooth;
+  box-shadow: 0 0 4px 1px rgba(0,0,0,0.50);
 }
 
 #timeline {
@@ -260,7 +264,7 @@ Timeline.prototype.CSS = `
   display: inline-block;
   padding: 0.5em 1em;
   text-align: left;
-  border-radius: 1em;
+  border-radius: 100px;
   border: 0.1em solid black;
   box-shadow: 0 0 0.1em black;
   box-sizing: border-box;
@@ -312,13 +316,13 @@ Timeline.prototype.CSS = `
 
 #timeline .indicator {
   background: rgba(0,0,0,0.3);
-  z-index: 0;
+  z-index: 1;
   position: absolute;
   display: inline-block;
   left: 0;
   top: 0;
   bottom: 0;
-  border-right: 1px solid white;
+  border-right: 5px solid white;
 }
 
 #timeline .chord .gloss {

@@ -122,6 +122,11 @@
   height: 1.8em;
   vertical-align: middle;
   margin-right: 1em;
+  display: inline;
+}
+
+#logout img {
+  display: inline;
 }
 
 .btn {

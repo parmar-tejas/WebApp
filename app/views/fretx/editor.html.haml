@@ -20,14 +20,17 @@
         %span.caret
       %ul#meta-data.dropdown-menu
 
-  #viewer
-    .row-fretx
+%section.fret-with-video.smaller
+  .container
+    .col-md-6.video-area
       #ytplayer_container
+    .col-md-6.fret-area
       #fretboard_container
 
-    #ctrlbar_container
-    #timeline_container
-    #palette_container
+#content
+  #timeline_container
+  #palette_container
+
 
 :javascript
   $(document).ready( function() {

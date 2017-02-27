@@ -4,22 +4,33 @@
 = content_for :stylesheets do
   = stylesheet_link_tag 'player_page'
 
-#content
-  #top_btns
-    #view_songs
-      = image_tag asset_url('plus-ico.png')
-      View More Songs 
-    #share
-      = image_tag asset_url('share-ico.png')
-      Share This Song
+.player-top-btns
+  .container
+    .col-md-6
+      %a.btn.view-songs
+        = image_tag asset_url('plus-ico.png')
+        View More Songs
+        %input.form-control.custom-input#search-song{:placeholder => "Search for Songs  Artists", :type => "text"}
+      .song-list-holder
+    .col-md-6
+      .share-song-holder
+        %a.btn.share-song.col-md-12
+          = image_tag asset_url('share-ico.png')
+          Share This Song
 
-  .row-fretx
-    .black
-    #ytplayer_container
-    #fretboard_container
+        .share-options
+          %a.fb.col-md-12#share
+            = image_tag asset_url('fb-ico.svg')
 
-  #timeline_container
+%section.fret-with-video
+  .container
+    .col-md-6.video-area
+      #ytplayer_container
+    .col-md-6.fret-area
+      #fretboard_container
 
-  #songlist_container
+#timeline_container
 
-  #related_songs_container.col-sm-12
+#songlist_container
+
+#related_songs_container.col-sm-12

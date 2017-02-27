@@ -17,7 +17,7 @@
       - else
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown.txt
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %a#logout.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               = current_user.name
               %img{:src => "#{current_user.omniaccount.photo_url}"}/
             %ul.dropdown-menu

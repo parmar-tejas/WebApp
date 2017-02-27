@@ -32,9 +32,9 @@ ul#menu li:nth-child(3) {
   vertical-align: middle;
 }
 
-#fretboard_container {
+/*#fretboard_container {
   text-align: center;
-}
+}*/
 
 #timeline_container {
   position: relative;
@@ -59,12 +59,12 @@ ul#menu li:nth-child(3) {
 
 #viewer, 
 #ytplayer_container,
-#fretboard_container,
+/*#fretboard_container,*/
 #songlist_container {
   display: inline-block;
 }
 
-#fretboard_container {
+/*#fretboard_container {
   border: 1px solid black;
   width: 29vw;
   background-color: rgba(0,0,0,0.1);
@@ -76,14 +76,12 @@ ul#menu li:nth-child(3) {
   vertical-align: middle;
   height: 20vw;
 }
-
+*/
 #fretboard {
   font-size: 2.5vw !important;
 }
 
 #ytplayer_container {
-  width: 28vw;
-  height: 20vw;
   border: 1px solid black;
 }
 

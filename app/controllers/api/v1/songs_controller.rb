@@ -87,6 +87,7 @@ class Api::V1::SongsController < Api::ApiController
     song.artist        = data['artist']
     song.genre_id      = data['genre']
     song.difficulty_id = data['difficulty']
+    song.published     = true
     song.save
 
     success_response(song)
@@ -111,10 +112,12 @@ class Api::V1::SongsController < Api::ApiController
       punches'
       ).where(
         conditions
+      ).where(
+        published: true
       ).order(
         :youtube_id,
         uploaded_on: :DESC
-    ).first(10)
+      ).first(10)
 
     success_response(songs)
   end

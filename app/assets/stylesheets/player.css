@@ -50,7 +50,7 @@ body {
 }
 
 #fretboard_container {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 #timeline_container {
@@ -75,17 +75,17 @@ body {
 
 #viewer, 
 #ytplayer_container,
-#fretboard_container,
+/*#fretboard_container,*/
 #songlist_container {
   display: inline-block;
 }
 
 #fretboard_container {
-  border: 1px solid black;
+/*  border: 1px solid black;
   height: 30vw;
   width: 33vw;
   background-color: rgba(0,0,0,0.1);
-  font-size: 2vw;
+  font-size: 2vw;*/
 }
 
 #fretboard * {
@@ -93,11 +93,11 @@ body {
 }
 
 #fretboard_container::before {
-  content: '';
+/*  content: '';
   display: inline-block;
   vertical-align: middle;
   height: 100%;
-
+*/
 }
 
 #ytplayer_container {
@@ -126,12 +126,12 @@ body {
   font-size: 1.5vw;
 }
 
-#songlist_container {
+/*#songlist_container {
   display: none;
   padding-left: 1vw;
   width: 20vw;
   height: 40vw;
-}
+}*/
 
 #related_songs_container {
   margin-top: 15px;
@@ -180,13 +180,13 @@ body {
   display: none;
 }
 
-#top_btns {
+/*#top_btns {
   padding-bottom: 2em;
   display: flex;
   font-size: 1.3em;
-}
+}*/
 
-#share,
+/*#share,
 #view_songs {
   font-family: GothamRBk;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
@@ -198,24 +198,24 @@ body {
   width: 12em;
   line-height: 1.5em;
   flex: 1;
-}
+}*/
 
-#share:active,
+/*#share:active,
 #view_songs:active {
   box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
-}
+}*/
 
-#share img {
+/*#share img {
   height: 1.5em;
   margin-right: 1em;
   vertical-align: middle;
-}
+}*/
 
-#view_songs img {
+/*#view_songs img {
   height: 1em;
   margin-right: 1em;
   vertical-align: middle;
-}
+}*/
 
 #viewer .row-fretx {
   background-color: black;
@@ -230,7 +230,7 @@ body {
 }
 
 #songlist {
-  height: 70vh !important;
+  /*height: 70vh !important;*/
 }
 
 
@@ -296,11 +296,11 @@ body {
   }
 
   #fretboard_container {
-    width: 45vw;
+/*    width: 45vw;
     height: 40vw;
     padding: 1vw;
     box-sizing: border-box;
-    font-size: 2.5vw;
+    font-size: 2.5vw;*/
   }
 
   #songlist {
@@ -311,9 +311,9 @@ body {
     padding-top: 1vw;
   }
 
-  #top_btns {
+/*  #top_btns {
     font-size: 2vw;
-  }
+  }*/
   
 }
 
@@ -381,11 +381,11 @@ body {
   }
 
   #fretboard_container {
-    width: 95vw;
+/*    width: 95vw;
     height: 35vh;
     border: 0;
     background: none;
-    box-shadow: none;
+    box-shadow: none;*/
   }
 
 
@@ -430,16 +430,23 @@ body {
     max-width: 80vw !important;
   }
 
-  #top_btns {
+/*  #top_btns {
     margin-top: 1em;
     font-size: 3vw;
     padding-bottom: 1em;
-  }
+  }*/
 
-  #share,
+/*  #share,
   #view_songs {
     margin: 0 1em;
-  }
+  }*/
 
 }
 
+#songlist_container {
+  display: none;
+}
+
+#timeline {
+  width: 80%;
+}
