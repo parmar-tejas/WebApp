@@ -158,7 +158,7 @@ YTPlayer.prototype = {
   },
 
   get_video_data() {
-    //$.get('/api/v1/youtube/videodata/' + this.video_id, this.onVideoData.bind(this));
+    $.get('/api/v1/youtube/videodata/' + this.video_id, this.onVideoData.bind(this));
   }
 
 }
