@@ -120,8 +120,8 @@ player-top-btns .view-songs~.song-list-holder .song-list{width: 500px;float: non
 .player-top-btns .view-songs~.song-list-holder .song-list .song .song-info{margin: 0 38px 0 20px;position: relative;height: 100%;}
 .player-top-btns .view-songs~.song-list-holder .song-list .song .song-info:after{position: absolute;content:'';background: #CFCFCF;width:100%;height:2px;bottom: 0;border-radius: 50px;}
 .player-top-btns .view-songs~.song-list-holder .song-list .song img{display: inline-block;position: absolute;left: 0;top: 11px;border-radius: 4px;height:58px;}
-.player-top-btns .view-songs~.song-list-holder .song-list .song h4{margin: 0;padding: 17px 0 0px 113px;font-family: 'GothamRM';font-size: 16px;}
-.player-top-btns .view-songs~.song-list-holder .song-list .song h5{margin: 0;padding: 12px 0 0 113px;font-family: 'GothamRM';font-size: 19px;}
+.player-top-btns .view-songs~.song-list-holder .song-list .song h4{margin: 0;padding: 17px 0 0px 113px;font-family: 'GothamRM';font-size: 16px;width:100%;height:30px;overflow:hidden;text-overflow:ellipsis;}
+.player-top-btns .view-songs~.song-list-holder .song-list .song h5{margin: 0;padding: 12px 0 0 113px;font-family: 'GothamRM';font-size: 19px;width:100%;height:30px;overflow:hidden;text-overflow:ellipsis;}
 .player-top-btns .view-songs~.song-list-holder .song-list .song .duration{position: absolute;top: 33px;right: 0;font-family: 'GothamRBk';font-size: 13px;}
 .player-top-btns .btn:hover{box-shadow: 0 2px 6px 0 rgba(0,0,0,0.25);}
 .player-top-btns .view-songs.input-visible.results-visible~.song-list-holder .song-list{opacity: 1;z-index: 1;}
@@ -255,7 +255,7 @@ player-top-btns .view-songs~.song-list-holder .song-list{width: 500px;float: non
 .add-chords .chord{background-image: linear-gradient(-180deg, #393939 3%, #191919 100%);border: 2px solid #FCFCFC;box-shadow: 0 1px 3px 0 rgba(255,255,255,0.47);border-radius: 30px;width: 100px;height: 100px;display: inline-block;margin-right: 25px;vertical-align: middle;text-decoration: none !important;position: relative;cursor: pointer;}
 .add-chords .chord.chord-added{background-image: linear-gradient(-180deg, #AF00FF 0%, #5100AA 100%);border: 2px solid #FCFCFC;box-shadow: 0 1px 3px 0 rgba(255,255,255,0.47);border-radius: 30px;}
 .add-chords .chord.chord-added .delete-chord{position: absolute;font-family: 'GothamRM';font-size: 16px;color: #FFFFFF;bottom: -7px;left: -7px;background-image: linear-gradient(-180deg, #F13C00 3%, #D02D00 98%);border: 2px solid #FFFFFF;box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);border-radius: 50%;width: 27px;height: 27px;text-align: center;text-decoration: none !important;}
-.add-chords .chord.chord-added .chord-name{font-family: 'GothamRM';font-size: 20px;color: #FFFFFF;display: block;position: absolute;top: 50%;transform: translateY(-50%);text-align: center;width: 100%;line-height: 1em;}
+.add-chords .chord.chord-added .chord-name{font-family: 'GothamRM';font-size: 17px;color: #FFFFFF;display: block;position: absolute;top: 50%;transform: translateY(-50%);text-align: center;width: 100%;line-height: 1em;}
 .add-chords .chord.chord-added .shortcut{position: absolute;width: 100%;bottom: 2px;left: 0;font-family: 'GothamRM';font-size: 13px;color: #FFFFFF;}
 .add-chords .chord.add-chord-btn{background-image: linear-gradient(-180deg, #E8E8E8 0%, #C9C9C9 97%);border: 3px solid #FCFCFC;box-shadow: 0 1px 4px 0 rgba(255,255,255,0.75);border-radius: 30px;}
 .add-chords .chord.add-chord-btn span{font-family: 'GothamRBd';font-size: 66px;color: #252525;}
