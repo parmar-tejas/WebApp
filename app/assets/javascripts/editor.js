@@ -24,6 +24,14 @@ $(document).ready(function() {
 
   songlist  = new Songlist(null, 'api/v1/mysongs');
 
+  id('add_new_song').addEventListener('keypress', function (e){
+    var key = e.which || e.keyCode;
+    if (key === 13) {
+      add_new_song()
+    }
+  })
+
+
   //PunchEditorr = new PunchEditor( id('puncheditor_container') );
 
   //songlist.ev_sub('list_loaded', function()     { load_song( songlist.random ); } );
@@ -63,6 +71,11 @@ function load_new_song(url_or_id) {
   punchlist.clear();
   ytplayer.load(url_or_id);
 
+}
+
+function add_new_song(){
+  youtube_url = $('#add_new_song').val()
+  ytplayer.load(youtube_url);
 }
 
 function load_song(song) {
