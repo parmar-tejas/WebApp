@@ -74,8 +74,16 @@ Fretboard.prototype = {
     this.update_display();
   },
 
-  set_left()  { this.lefty = true;  },
-  set_right() { this.lefty = false; },
+  set_left() {
+    this.lefty = true;
+    $('.fret-area').addClass('mirror');
+    $('.dominant-hand-select').addClass('mirror');
+  },
+  set_right() {
+    this.lefty = false;
+    $('.fret-area').removeClass('mirror');
+    $('.dominant-hand-select').removeClass('mirror');
+  },
 
   on_resize(e) {
     console.log(e);
