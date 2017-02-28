@@ -55,5 +55,6 @@
 :javascript
   $(document).ready( function() {
     song = #{@song.to_json}
-    load_song(song);
+    if(song != null)
+      load_song(song);
   } );
