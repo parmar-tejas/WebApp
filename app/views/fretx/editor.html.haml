@@ -10,7 +10,9 @@
       %a.btn.view-songs
         = image_tag asset_url('plus-ico.png')
         Create new song
-        %input.form-control.custom-input#add_new_song{ placeholder: "Youtube url", type: "text"}
+        %form#create_new
+          %input.form-control.custom-input#add_new_song{ placeholder: "Youtube url", type: "text", name: "youtube_url"}
+          %input{name: "authenticity_token", type: "hidden", value: "#{form_authenticity_token}"}
     .col-md-6
       .share-song-holder
         %a.btn.share-song.publish
@@ -72,3 +74,8 @@
           btnContainer.removeClass('options-visible');
       }
   });
+
+  $(document).ready( function() {
+    song = #{@song.to_json}
+    load_song(song);
+  } );

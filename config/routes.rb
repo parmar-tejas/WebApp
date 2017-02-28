@@ -76,4 +76,6 @@ Rails.application.routes.draw do
   get "/list",   to: "fretx#list"
   get "/editor", to: "fretx#editor"
   get "/player/:youtube_id-:id", to: "fretx#player"
+  post "/create_new_song", to: "fretx#create_new_song"
+  get "/editor/:youtube_id-:id", to: "fretx#editor"
 end

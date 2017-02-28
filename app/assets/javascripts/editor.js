@@ -27,7 +27,17 @@ $(document).ready(function() {
   id('add_new_song').addEventListener('keypress', function (e){
     var key = e.which || e.keyCode;
     if (key === 13) {
-      add_new_song()
+      var yt_url = $('#add_new_song').val();
+      var match = ytplayer.url_regex.exec(yt_url);
+      if(!match && yt_url.length != 11) {
+        swal("Syntax Not Match!", "Url is not valid!", "error");
+      } else {
+          var video_id = yt_url.length == 11 ? yt_url : match[1];
+          $('#add_new_song').val(video_id);
+          $('#create_new').attr('action', '/create_new_song');
+          $('#create_new').attr('method', 'post');
+          $('#create_new').submit();
+      }
     }
   })
 
@@ -73,10 +83,10 @@ function load_new_song(url_or_id) {
 
 }
 
-function add_new_song(){
-  youtube_url = $('#add_new_song').val()
-  ytplayer.load(youtube_url);
-}
+// function add_new_song(){
+//   youtube_url = $('#add_new_song').val()
+//   ytplayer.load(youtube_url);
+// }
 
 function load_song(song) {
   fretboard.reset();
