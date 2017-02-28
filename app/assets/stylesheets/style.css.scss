@@ -249,7 +249,7 @@ header .header-links a:hover.submenu{background:none;}
 .song-recommendations .recommendation-box .song-info{position: absolute;bottom: 11px;left: 15px;font-size: 20px;color: #FFFFFF;line-height: 24px;}
 
 .add-chords{}
-.add-chords .chord-adder{width: 970px;margin: 5px auto;height: 120px;box-sizing: content-box;white-space: nowrap;/* overflow: hidden; */user-select: none;position: relative;background-image: linear-gradient(-180deg, #323232 0%, #191919 100%);border: 2px solid #323232;box-shadow: 0 1px 6px 0 rgba(0,0,0,0.40);border-radius: 5px;}
+.add-chords .chord-adder{width: 970px;margin: 5px auto;box-sizing: content-box;white-space: nowrap;/* overflow: hidden; */user-select: none;position: relative;background-image: linear-gradient(-180deg, #323232 0%, #191919 100%);border: 2px solid #323232;box-shadow: 0 1px 6px 0 rgba(0,0,0,0.40);border-radius: 5px;}
 .add-chords .chord-adder .adder-holder{top: 0px;bottom: 0px;left: 0px;overflow: auto;user-select: none;text-align: center;padding: 11px 0;}
 .add-chords .chord{background-image: linear-gradient(-180deg, #393939 3%, #191919 100%);border: 2px solid #FCFCFC;box-shadow: 0 1px 3px 0 rgba(255,255,255,0.47);border-radius: 30px;width: 100px;height: 100px;display: inline-block;margin-right: 25px;vertical-align: middle;text-decoration: none !important;position: relative;cursor: pointer;}
 .add-chords .chord.chord-added{background-image: linear-gradient(-180deg, #AF00FF 0%, #5100AA 100%);border: 2px solid #FCFCFC;box-shadow: 0 1px 3px 0 rgba(255,255,255,0.47);border-radius: 30px;}

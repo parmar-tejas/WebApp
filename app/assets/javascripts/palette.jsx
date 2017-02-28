@@ -96,20 +96,20 @@ Object.assign( Palette.prototype, ev_channel );
 
 Palette.prototype.HTML = `
 
-<div id='palette'>
+<div id='palette' class='chord-adder'>
 
-  <div class='chords' ondrop="drop(event)" ondragover="allowDrop(event)">
+  <div class='chords adder-holder adder-visible' ondrop="drop(event)" ondragover="allowDrop(event)">
 
-    <div class='chord' rv-id="chord.color" draggable="true" ondragstart="drag(event, this)" rv-each-chord='data.chords' rv-on-click='obj.sel_chord'>
+    <div class='chord chord-added' rv-id="chord.color" draggable="true" ondragstart="drag(event, this)" rv-each-chord='data.chords' rv-on-click='obj.sel_chord'>
       <div class='color' rv-style-background-color='chord.color'></div>
       <div class='gloss'></div>
-      <div class='delete' rv-on-click='obj.del_chord'>X</div>
-      <div class='label' rv-text='chord.label'></div>
+      <div class='delete delete-chord' rv-on-click='obj.del_chord'>X</div>
+      <span class='label chord-name' rv-text='chord.label'></span>
     </div>
 
-    <div class='addbtn' rv-on-click='obj.get_chord'>
+    <div class='chord addbtn add-chord-btn' rv-on-click='obj.get_chord'>
       <div class='gloss'></div>
-      <div class='label'>+</div>
+      <span>+</span>
     </div>
 
   </div>
@@ -121,19 +121,19 @@ Palette.prototype.HTML = `
 Palette.prototype.CSS = `
 
   #palette {
+    width: 80%;
     padding: 1em;
     overflow-x: scroll;
     white-space: nowrap;
-    box-shadow: 0 0 0.1em black;
+    margin: auto;
   }
 
   #palette .addbtn .label{
     font-size: 3em;
   }
 
-  #palette .addbtn,
   #palette .chord {
-    display: inline-block;
+    /*display: inline-block;
     width: 5em;
     height: 6em;
     line-height: 6em;
@@ -146,11 +146,11 @@ Palette.prototype.CSS = `
     font-weight: bold;
     border-radius: 0.5em;
     box-shadow: 0 0 .1em black;
-    position: relative; 
+    position: relative; */
   }
 
   #palette .delete {
-    content: 'X';
+    /*content: 'X';
     text-shadow: none;
     position: absolute;
     top: -.75em; left: -.75em;
@@ -160,7 +160,7 @@ Palette.prototype.CSS = `
     border-radius: 0.75em;
     display: inline-block;
     font-family: sans-serif;
-    box-shadow: 0 0 .1em black;
+    box-shadow: 0 0 .1em black; */
   }
 
   #palette .color,
@@ -169,7 +169,7 @@ Palette.prototype.CSS = `
     position: absolute;
     top: 0; bottom: 0;
     left: 0; right: 0;
-    border-radius: 0.5em;
+    border-radius: 28px;
   }
 
   #palette .gloss {
@@ -189,10 +189,10 @@ Palette.prototype.CSS = `
 
   #palette .gloss {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0.6+0,0+100;White+to+Transparent */
-    background: -moz-linear-gradient(top,  rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+    /* background: -moz-linear-gradient(top,  rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    /* background: -webkit-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    /* background: linear-gradient(to bottom,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
   }
 
   #palette .delete {

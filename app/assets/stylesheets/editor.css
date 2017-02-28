@@ -36,18 +36,6 @@ ul#menu li:nth-child(3) {
   text-align: center;
 }*/
 
-#timeline_container {
-  position: relative;
-}
-
-#timeline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
 #content {
   text-align: center;
   width: 57vw;
@@ -96,19 +84,28 @@ ul#menu li:nth-child(3) {
 
 #timeline_container {
   max-width: 100%;
-  height: 7vw;
+  height: 70px;
   position: relative;
   vertical-align: bottom;
+  position: relative;
+  border-radius: 100px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 #timeline {
   border: 1px solid black;
   font-size: 1vw;
-}
-
-
-#timeline {
+  background: #3E3E3E !important;
   vertical-align: bottom;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 60px;
+  border: 5px solid #3E3E3E;
+  width: 80%;
 }
 
 #songlist_container {
@@ -120,7 +117,6 @@ ul#menu li:nth-child(3) {
 }
 
 #palette_container {
-  border: 1px solid black;
   margin-top: 1vw;
   font-size: 0.8em;
 }
@@ -168,12 +164,6 @@ ul#menu li:nth-child(3) {
 #appmenu .menuitem:active {
   box-shadow: 0 0 1em black inset;
   background-color: rgba(200,200,255,0.5);
-}
-
-#timeline_container {
-  width: 100%;
-  padding: 10px;
-  display: inline-flex;
 }
 
 #top_btns {

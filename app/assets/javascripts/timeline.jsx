@@ -218,12 +218,10 @@ Timeline.prototype.CSS = `
 
 #timeline {
   overflow: hidden;
-
   cursor: move;
   cursor: grab;
   cursor: -moz-grab;
   cursor: -webkit-grab;
-
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -253,8 +251,8 @@ Timeline.prototype.CSS = `
   padding: 0.5em 1em;
   text-align: left;
   border-radius: 100px;
-  border: 0.1em solid black;
-  box-shadow: 0 0 0.1em black;
+  /* border: 0.1em solid black;
+  box-shadow: 0 0 0.1em black; */
   box-sizing: border-box;
   overflow: hidden;
   font-family: sans-serif;
@@ -330,13 +328,15 @@ Timeline.prototype.CSS = `
 .chord .delete {
   height: 1.5em;
   width: 1.5em;
-  border: 0.1em solid black;
+  border: 0.1em solid white;
   border-radius: 1em;
   box-shadow: 0 0 .1em black;
   float: right;
   text-align: center;
   background-color: rgb(255,50,50);
   position: initial;
+  margin-top: 10px;
+  color: white;
 }
 
 `;
