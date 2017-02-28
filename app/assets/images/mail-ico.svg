@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="22px" viewBox="0 0 28 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Page 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Sign-up" transform="translate(-548.000000, -431.000000)" fill="#FFFFFF">
+            <g id="Login---Signup" transform="translate(495.000000, 120.000000)">
+                <g id="tw-copy" transform="translate(30.000000, 285.000000)">
+                    <path d="M48.2,26 L25.8,26 C24.26,26 23.014,27.2375 23.014,28.75 L23,45.25 C23,46.7625007 24.26,48 25.8,48 L48.2,48 C49.74,48 51,46.7625007 51,45.25 L51,28.75 C51,27.2375 49.74,26 48.2,26 Z M48,46 L26,46 L26,32 L37,39 L48,32 L48,46 Z M37,36 L26,29 L48,29 L37,36 Z" id="Page-1"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

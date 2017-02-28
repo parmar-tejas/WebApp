@@ -207,7 +207,7 @@ Object.assign( Timeline.prototype, {
 
 
 Timeline.prototype.HTML = `
-  <div id='timeline'>
+  <div id='timeline' class="chord-holder">
     <div class='chords' ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     <div class='scale'></div>
     <div class='indicator'></div>
@@ -218,21 +218,15 @@ Timeline.prototype.CSS = `
 
 #timeline {
   overflow: hidden;
-  position: absolute;
-  background-color: rgb(0,0,0,0.1);
-  padding: 0.5em;
-  height: 5em;
-  max-width: 100%;
-  border-radius: 100px;
-  scroll-behavior: smooth;
-  box-shadow: 0 0 4px 1px rgba(0,0,0,0.50);
-}
 
-#timeline {
   cursor: move;
   cursor: grab;
   cursor: -moz-grab;
   cursor: -webkit-grab;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }
 
 #timeline:active {
@@ -241,14 +235,8 @@ Timeline.prototype.CSS = `
   cursor: -webkit-grabbing;
 }
 
-#timeline {
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-}
-
 #timeline .chords {
-  display: inline-block;
+  display: table;
   padding-bottom: 0.5em;
   white-space: nowrap;
   position: relative;
@@ -271,7 +259,6 @@ Timeline.prototype.CSS = `
   overflow: hidden;
   font-family: sans-serif;
   font-weight: bold;
-  height: 3em;
 }
 
 #timeline .chord::before {
@@ -315,14 +302,13 @@ Timeline.prototype.CSS = `
 }
 
 #timeline .indicator {
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0);
   z-index: 1;
   position: absolute;
   display: inline-block;
   left: 0;
   top: 0;
   bottom: 0;
-  border-right: 5px solid white;
 }
 
 #timeline .chord .gloss {

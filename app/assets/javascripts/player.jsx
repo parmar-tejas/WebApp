@@ -83,7 +83,14 @@ function load_related_songs() {
     if (data.length > 0) {
       searchedSong['relatedSongs'] = data
       for(i=0; i<data.length;i++) {
-        $('#related_songs_container').append('<div class="col-sm-3"><img src="http://img.youtube.com/vi/'+ data[i].youtube_id +'/1.jpg" data-index="'+i+'" onclick="get_song_from_related_array(this)"></img></div>');
+        $('#related_songs_container').append(
+          '<a href="javascript:void(0);" class="recommendation-box" style="background-image:url(\'//img.youtube.com/vi/' + data[i].youtube_id + '/1.jpg" data-index="' + i + '\')" onclick="get_song_from_related_array(this)">' +
+            '<div class="song-info">' +
+              '<h4>' + data[i].title + '</h4>' +
+              '<h5>' + data[i].artist + '</h5>' +
+            '</div>' +
+          '</a>'
+        );
       }
     }
   });
@@ -158,7 +165,7 @@ function get_searched_song(e) {
       for(i=0; i<data.length;i++) {
         $('.song-list').append('<a class="song" data-index="'+i+'" onclick="get_song_from_index(this)">' +
                                '<div class="song-info">' +
-                               '<img src="http://img.youtube.com/vi/'+data[i].youtube_id+'/1.jpg" alt="">' +
+                               '<img src="//img.youtube.com/vi/'+data[i].youtube_id+'/1.jpg" alt="">' +
                                '<h4>'+data[i].artist+'</h4>' +
                                '<h5>'+data[i].title+'</h5>' +
                                '</div>' +

@@ -21,7 +21,7 @@ Songlist.prototype = {
   build_dom:   function(parent) { this.dom = render(this.HTML); this.mount(parent); },
   load_styles: function()       { load_css('timeline_styles', this.CSS); },
   bind_dom:    function()       {
-    rivets.formatters.img_url = function(val) { return `http://img.youtube.com/vi/${val}/1.jpg`; }
+    rivets.formatters.img_url = function(val) { return `//img.youtube.com/vi/${val}/1.jpg`; }
   	rivets.bind(this.dom, { data: this.state, this: this }); 
   },
 

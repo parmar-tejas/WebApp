@@ -16,17 +16,9 @@
   display: none !important;
 }
 
-#timeline {
-  height: 4em !important;
-}
-
 ul#menu li:nth-child(2) {
     color: #B00;
     border-bottom: 3px solid #B00;
-}
-
-body {
-  box-shadow: 0 0 0.1em black inset;
 }
 
 #fretboard_container {
@@ -101,8 +93,6 @@ body {
 }
 
 #ytplayer_container {
-  width: 40vw;
-  height: 30vw;
   border: 1px solid black;
   position: relative;
 }
@@ -114,15 +104,17 @@ body {
 
 #timeline_container {
   max-width: 100%;
-  height: 7vw;
+  height: 70px;
   position: relative;
+  border-radius: 100px;
   vertical-align: bottom;
   box-sizing: border-box;
+  overflow:hidden;
 }
 
 #timeline {
-  border: 1px solid black;
-  height: 7vw;
+  border: 5px solid #3F3F3F;
+  height: 60px;
   font-size: 1.5vw;
 }
 

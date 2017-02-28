@@ -4,13 +4,13 @@
 = content_for :stylesheets do
   = stylesheet_link_tag 'player_page'
 
-.player-top-btns
+%section.player-top-btns
   .container
     .col-md-6
       %a.btn.view-songs
         = image_tag asset_url('plus-ico.png')
-        View More Songs
-        %input.form-control.custom-input#search-song{:placeholder => "Search for Songs  Artists", :type => "text"}
+        View & Add Songs
+        %input.form-control.custom-input#search-song{ placeholder: "Search for Songs & Artists", type: "text"}
       .song-list-holder
     .col-md-6
       .share-song-holder
@@ -29,8 +29,11 @@
     .col-md-6.fret-area
       #fretboard_container
 
-#timeline_container
+%section.chord-bar
+  #timeline_container.container
 
-#songlist_container
-
-#related_songs_container.col-sm-12
+%section.song-recommendations
+  .container
+    %h3
+      Related Songs
+    #related_songs_container.row
