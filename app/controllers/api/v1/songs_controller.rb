@@ -104,7 +104,7 @@ class Api::V1::SongsController < Api::ApiController
     if params[:title]
       conditions[0] = "published = ?"
       conditions << true
-      conditions[0] = conditions[0] + ' and (title like ? or artist like ?)'
+      conditions[0] = conditions[0] + ' and (lower(title) like ? or lower(artist) like ?)'
       conditions << "%#{params[:title].downcase}%"
       conditions << "%#{params[:title].downcase}%"
       if params[:genre].to_i > 0
