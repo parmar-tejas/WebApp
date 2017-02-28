@@ -103,11 +103,13 @@ rootlist.prototype = {
 
   build_list: function() {
     this.elements = [];
+    var div_list = make('div', 'roots_div', null);
     var list = make('ul', 'roots', null);
     for(var i=0; i<this.roots.length; i++) {
       list.appendChild(this.build_root(this.roots[i]));
     }
-    return list;
+    div_list.appendChild(list);
+    return div_list;
   },
 
   build_root: function(obj) {
@@ -180,11 +182,13 @@ qualitylist.prototype = {
 
   build_list: function() {
   	this.elements = [];
+    var div_list = make('div', 'qualities_div', null);
   	var list = make('ul', 'qualities', null);
     for(var i=0; i<this.qualities.length; i++) {
       list.appendChild( this.list_item( this.qualities[i] ) );
     }
-    return list;
+    div_list.appendChild(list);
+    return div_list;
   },
 
   list_item: function(obj) {
@@ -239,6 +243,10 @@ chordpicker.prototype.CSS = `
     background: none;
     box-shadow: none;
     border: none;
+  }
+  .chordpicker div {
+    max-width: 960px !important;
+    overflow: scroll;
   }
   .chordpicker ul {
     display: inline-flex;
@@ -306,7 +314,7 @@ chordpicker.prototype.CSS = `
     cursor: pointer;
   }
 
-  .chordpicker .qualities {
+  .chordpicker .qualities_div {
     display: none;
   }
 
