@@ -95,37 +95,56 @@ class Api::V1::SongsController < Api::ApiController
 
   def get_related_songs
     song = Song.find_by_youtube_id(params[:youtube_id])
-    related_songs = Song.where.not(id: song.id).where('genre_id = ? OR difficulty_id = ?', song.genre_id, song.difficulty_id).limit(3) rescue []
+    related_songs = Song.where.not(id: song.id).where('genre_id = ? OR difficulty_id = ?', song.genre_id, song.difficulty_id) rescue []
     success_response(related_songs)
   end
 
   def get_searched_song
     conditions = []
-    controller_params_options( params[:title], "title", conditions, "like" ) if params[:title]
-    controller_params_options( params[:title], "artist", conditions, "like" ) if params[:title]
-    controller_params_options( params[:genre], "genre_id", conditions, "=" ) unless params[:genre] == "Select genre"
-    controller_params_options( params[:difficulty], "difficulty_id", conditions, "=" ) unless params[:difficulty] == "Select difficulty"
-    controller_params_options( true, "published", conditions, "=" )
+    if params[:title]
+      conditions[0] = "published = ?"
+      conditions << true
+      conditions[0] = conditions[0] + ' and (title like ? or artist like ?)'
+      conditions << "%#{params[:title].downcase}%"
+      conditions << "%#{params[:title].downcase}%"
+      if params[:genre].to_i > 0
+        conditions[0] = conditions[0] + ' and genre_id = ?'
+        conditions << params[:genre]
+      end
+      if params[:difficulty].to_i > 0
+        conditions[0] = conditions[0] + ' and difficulty_id = ?'
+        conditions << params[:difficulty]
+      end
+    end
     songs = Song.select(
+              :id,
+              :youtube_id,
+              :uploaded_on,
+              :youtube_id,
+              :title,
+              :artist,
+              :punches
+            ).where(
+              conditions
+            ).order(
+              uploaded_on: :DESC
+            ).first(10)
+
+    puts songs
+    puts '-----'
+    success_response(songs)
+  end
+
+  def get_promotion_video
+    data = {}
+    song = Song.select(
       'DISTINCT ON(youtube_id) id,
       uploaded_on,
       youtube_id,
       title,
       artist,
       punches'
-      ).where(
-        conditions
-      ).order(
-        :youtube_id,
-        uploaded_on: :DESC
-      ).first(10)
-
-    success_response(songs)
-  end
-
-  def get_promotion_video
-    data = {}
-    song = Song.where(promotion: true).order(updated_at: :desc).first
+    ).where(promotion: true).order(:youtube_id, updated_at: :desc).first
     data[:video_id] = song ? song.youtube_id : Song.first.try(:youtube_id)
     success_response(data)
   end

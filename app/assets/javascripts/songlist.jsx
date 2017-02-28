@@ -12,7 +12,7 @@ function Songlist(parent,path) {
   this.load_styles();
   this.bind_dom();
   this.fetch();
-  this.load_search_data();
+  // this.load_search_data();
 }
 
 Songlist.prototype = {
@@ -27,7 +27,7 @@ Songlist.prototype = {
 
   mount(parent) { if(!empty(parent)) { parent.innerHTML = ''; parent.appendChild(this.dom); } },
 
-  fetch()        { $.get(this.state.path, this.on_song_list ).fail(this.on_load_failed); },
+  fetch()        { /*$.get(this.state.path, this.on_song_list ).fail(this.on_load_failed);*/ },
   get_dom_refs() { this.input = this.dom.getElementsByTagName('input')[0]; },
 
   get length()  { return this.state.songs.length; },
@@ -37,25 +37,25 @@ Songlist.prototype = {
     this.state.filtered_songs = this.state.songs;
     this.input.value = "Search";
     this.input.style.color = 'grey';
-  },
-
-  load_search_data() {
-    $.get({
-      url: "/api/v1/autocompletes/get_select_data.json",
-      beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
-    }).done(function( data ) {
-      if (data != null) {
-        keys = Object.keys(data)
-        keys.forEach(function(key, key_index){
-          $('#'+key).empty();
-          $('#'+key).append($('<option>', { text: 'Select '+key}))
-          data[key].forEach(function(obj, id){
-            $('#'+key).append($('<option>', { value: obj.id, text: obj.name }));
-          })
-        })
-      }
-    });
   }
+
+  // load_search_data() {
+  //   $.get({
+  //     url: "/api/v1/autocompletes/get_select_data.json",
+  //     beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+  //   }).done(function( data ) {
+  //     if (data != null) {
+  //       keys = Object.keys(data)
+  //       keys.forEach(function(key, key_index){
+  //         $('#'+key).empty();
+  //         $('#'+key).append($('<option>', { text: 'Select '+key}))
+  //         data[key].forEach(function(obj, id){
+  //           $('#'+key).append($('<option>', { value: obj.id, text: obj.name }));
+  //         })
+  //       })
+  //     }
+  //   });
+  // }
 
 }
 

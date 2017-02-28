@@ -104,8 +104,9 @@ header .header-links a:hover.submenu{background:none;}
 .song-list-holder .song-filter .star-select .stars-holder .star.filled{background:asset_url('star-filled.svg') no-repeat center center;}
 .song-list-holder .song-filter .star-select .stars-holder .star.empty{background:asset_url('star-empty.svg') no-repeat center center;}
 .song-list-holder .song-filter .star-select .stars-holder .star:last-child{margin-right: 0;}
+.filter-list{ background: #FFFFFF; display: block; padding: 10px;}
 
-.player-top-btns .publish~.publish-options{width: 275px;float: none;position: absolute;z-index: 0;margin: 10px 0px 0 0px;opacity: 0;transition: opacity .25s ease;overflow: hidden;box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);border-radius: 5px;background: #F4F4F4;}
+player-top-btns .view-songs~.song-list-holder .song-list{width: 500px;float: none;position: absolute;z-index: -1;margin: 10px 0 0 35px;opacity: 0;transition: opacity .25s ease;max-height:400px;overflow: auto;box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);border-radius: 5px;}
 .player-top-btns .publish.options-visible~.publish-options{opacity: 1;z-index: 1;}
 .player-top-btns .publish~.publish-options .form-control{margin-bottom: 15px;}
 .player-top-btns .publish~.publish-options .submit-holder{margin: 15px 20px;}

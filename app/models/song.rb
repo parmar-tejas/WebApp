@@ -21,7 +21,6 @@ class Song < ApplicationRecord
 
   attr_accessor :user_name # for autocomplete
 
-
   def to_hash
     {
       youtube_id: youtube_id,
@@ -61,5 +60,12 @@ class Song < ApplicationRecord
     end
   end
 
+  def self.promotional_song
+    Song.where(promotion: true).order(:youtube_id, updated_at: :desc).first
+  end
 
+  def self.related_songs(song)
+    return nil if song.blank?
+    Song.where('id != ? and (genre_id = ? OR difficulty_id = ?)', song.id, song.genre_id, song.difficulty_id).limit(3)
+  end
 end

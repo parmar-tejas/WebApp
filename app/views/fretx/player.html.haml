@@ -12,6 +12,14 @@
         View & Add Songs
         %input.form-control.custom-input#search-song{ placeholder: "Search for Songs & Artists", type: "text"}
       .song-list-holder
+        .song-list
+          .results-songs
+          .filter-list.col-xs-12
+            .col-xs-6
+              = select_tag :genre, options_for_select(select_genre_data), class: 'form-control', prompt: "Select Genre", id: 'search_genre'
+            .col-xs-6
+              = select_tag :difficulty, options_for_select(select_difficulty_data), class: 'form-control', prompt: "Select Difficulty", id: 'search_difficulty'
+          
     .col-md-6
       .share-song-holder
         %a.btn.share-song.col-md-12
@@ -37,3 +45,14 @@
     %h3
       Related Songs
     #related_songs_container.row
+      - @related_songs.each do |song|
+        %a{ href: "/player/#{song.youtube_id}-#{song.id}", class: "recommendation-box", style: "background-image:url('//img.youtube.com/vi/#{song.youtube_id}/1.jpg')" }
+          .song-info
+            %h4= song.title
+            %h5= song.artist
+
+:javascript
+  $(document).ready( function() {
+    song = #{@song.to_json}
+    load_song(song);
+  } );

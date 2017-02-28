@@ -1,8 +1,3 @@
-var searchedSong = {
-  songs: [],
-  relatedSongs: []
-}
-
 /////////////////////////////////////////////// SETUP /////////////////////////////////////////////////////////
 
 $(document).ready(function() {
@@ -15,15 +10,13 @@ $(document).ready(function() {
   chordlib  = new Chordlib();
   songlist  = new Songlist();
 
-  load_promotion_video()
-
   userview  = new UserView(  id('userview_container')  );
   ytplayer  = new YTPlayer(  id('ytplayer_container')  );
   fretboard = new Fretboard( id('fretboard_container') );
   timeline  = new Timeline(  id('timeline_container')  );
   palette   = new Palette();
 
-  songlist  = new Songlist( id('songlist_container'), 'api/v1/songs/list.json');
+  songlist  = new Songlist( id('songlist_container'), '/api/v1/songs/list.json');
 
   feedback.ev_sub('done', modal.hide );
   modal.ev_sub('exit', function() { songlist.mount(id('songlist_container')); });
@@ -37,8 +30,8 @@ $(document).ready(function() {
   ytplayer.on_time_change( timeline.update_time  );
   ytplayer.on_time_change( punchlist.update_time );
 
-  ytplayer.on_video_data(on_video_data); 
-  ytplayer.on_video_data(load_related_songs);
+  //ytplayer.on_video_data(on_video_data); 
+  //ytplayer.on_video_data(load_related_songs);
 
   ytplayer.ev_sub('duration', function(duration) { timeline.set_duration(duration); })
   ytplayer.ev_sub('ended', function() { timeline.update_time(); } )
@@ -69,47 +62,37 @@ function on_video_data() {
   punchlist.update_time(0);
 }
 
-function load_related_songs() {
-  console.log(ytplayer.videodata.song.youtube_id);
-  var data = {
-    youtube_id: ytplayer.videodata.song.youtube_id
-  }
-  $.get({
-    url: "/api/v1/get_related_songs.json",
-    data: data,
-    beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
-  }).done(function( data ) {
-    $('#related_songs_container').empty();
-    if (data.length > 0) {
-      searchedSong['relatedSongs'] = data
-      for(i=0; i<data.length;i++) {
-        $('#related_songs_container').append(
-          '<a href="javascript:void(0);" class="recommendation-box" style="background-image:url(\'//img.youtube.com/vi/' + data[i].youtube_id + '/1.jpg" data-index="' + i + '\')" onclick="get_song_from_related_array(this)">' +
-            '<div class="song-info">' +
-              '<h4>' + data[i].title + '</h4>' +
-              '<h5>' + data[i].artist + '</h5>' +
-            '</div>' +
-          '</a>'
-        );
-      }
-    }
-  });
-}
+// function load_related_songs() {
+//   console.log(ytplayer.videodata.song.youtube_id);
+//   var data = {
+//     youtube_id: ytplayer.videodata.song.youtube_id
+//   }
+//   $.get({
+//     url: "/api/v1/get_related_songs.json",
+//     data: data,
+//     beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+//   }).done(function( data ) {
+//     $('#related_songs_container').empty();
+//     if (data.length > 0) {
+//       searchedSong['relatedSongs'] = data
+//       for(i=0; i<data.length;i++) {
+//         $('#related_songs_container').append(
+//           '<a href="javascript:void(0);" class="recommendation-box" style="background-image:url(\'//img.youtube.com/vi/' + data[i].youtube_id + '/1.jpg" data-index="' + i + '\')">' +
+//             '<div class="song-info">' +
+//               '<h4>' + data[i].title + '</h4>' +
+//               '<h5>' + data[i].artist + '</h5>' +
+//             '</div>' +
+//           '</a>'
+//         );
+//       }
+//     }
+//   });
+// }
 
-function load_promotion_video() {
-  $.get({
-    url: "/api/v1/get_promotion_video.json",
-    beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
-  }).done(function( data ) {
-      ytplayer.load(data['video_id'])
-      video_id = data['video_id'];
-  });
-}
-
-function get_song_from_related_array(elem) {
-  index = $(elem).data('index');
-  load_song(searchedSong.relatedSongs[index]);
-}
+// function get_song_from_related_array(elem) {
+//   index = $(elem).data('index');
+//   load_song(searchedSong.relatedSongs[index]);
+// }
 ////////////////////////////////////////// CLICK LISTENERS ///////////////////////////////////////////////////
 
 function add_event_listeners() {
@@ -150,7 +133,9 @@ function get_feedback(e) {
 
 function get_searched_song(e) {
   data = {
-    title:  $('#search-song').val()
+    title: $('#search-song').val(),
+    genre: $('#search_genre').val(),
+    difficulty: $('#search_difficulty').val()
   }
   $.get({
     url: "/api/v1/get_searched_song.json",
@@ -159,11 +144,9 @@ function get_searched_song(e) {
   })
   .done(function( data ) {
     if(data.length > 0) {
-      searchedSong['songs'] = data
-      $('.song-list-holder').empty();
-      $('.song-list-holder').append('<div class="song-list"></div>');
+      $('.song-list-holder .song-list .results-songs').empty();
       for(i=0; i<data.length;i++) {
-        $('.song-list').append('<a class="song" data-index="'+i+'" onclick="get_song_from_index(this)">' +
+        $('.song-list-holder .song-list .results-songs').append('<a href="/player/'+data[i].youtube_id+'-'+data[i].id+'" class="song" data-index="'+i+'" data-id="'+data[i].id+'" data-youtubeid="'+data[i].youtube_id+'">' +
                                '<div class="song-info">' +
                                '<img src="//img.youtube.com/vi/'+data[i].youtube_id+'/1.jpg" alt="">' +
                                '<h4>'+data[i].artist+'</h4>' +
@@ -174,22 +157,22 @@ function get_searched_song(e) {
       }
       $('.player-top-btns .view-songs').addClass('results-visible');
     } else {
-      $('.song-list-holder').empty();
+      $('.song-list-holder .song-list .results-songs').empty();
     }
   });
 }
 
-function get_song_from_index(elem) {
-  index = $(elem).data('index');
-  var btnContainer = $(".player-top-btns .view-songs, .song-list");
+// function get_song_from_index(elem) {
+//   index = $(elem).data('index');
+//   var btnContainer = $(".player-top-btns .view-songs, .song-list");
 
-  if (!btnContainer.is(elem.parent) && btnContainer.has(elem.parent).length === 0){
-    btnContainer.removeClass('input-visible');
-    btnContainer.removeClass('results-visible');
-    btnContainer.children('.custom-input').val('');
-  }
-  load_song(searchedSong.songs[index]);
-}
+//   if (!btnContainer.is(elem.parent) && btnContainer.has(elem.parent).length === 0){
+//     btnContainer.removeClass('input-visible');
+//     btnContainer.removeClass('results-visible');
+//     btnContainer.children('.custom-input').val('');
+//   }
+//   load_song(searchedSong.songs[index]);
+// }
 ////////////////////////////////////////// CLICK LISTENERS ///////////////////////////////////////////////////
 
 

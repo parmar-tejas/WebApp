@@ -1,3 +1,4 @@
+//= require custom
 //= require rivets
 //= require lib
 //= require chord

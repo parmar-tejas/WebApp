@@ -22,7 +22,7 @@ $(document).ready(function() {
   palette     = new Palette(    id('palette_container')   );
   picker      = new chordpicker();
 
-  songlist  = new Songlist(null, 'api/v1/mysongs');
+  songlist  = new Songlist(null, '/api/v1/mysongs');
 
   id('add_new_song').addEventListener('keypress', function (e){
     var key = e.which || e.keyCode;
@@ -44,7 +44,7 @@ $(document).ready(function() {
   ytplayer.on_time_change( punchlist.update_time  );
   ytplayer.on_time_change( ctrlbar.on_time_change );
   ytplayer.on_video_data( on_video_data );
-  ytplayer.on_video_data( show_published_or_unpublished );
+  // ytplayer.on_video_data( show_published_or_unpublished );
   ytplayer.ev_sub( 'duration', timeline.set_duration );
   
   palette.ev_sub( 'selected', add_chord_now );
@@ -125,33 +125,33 @@ function create_new_song() {
   modal.show(addvid.dom)
 }
 
-function show_drop_down() {
-  $('#meta-data').empty();
-  $('#meta-data').append('<li><input type="text" id="artist" placeholder="Artist" class="form-control form-group" value="' +
-                         (ytplayer.videodata.song.artist == null ? '' : ytplayer.videodata.song.artist) + '" required></input></li>' +
-                         '<li><input type="text" id="title" placeholder="Title" class="form-control form-group" value="' +
-                         (ytplayer.videodata.song.title == null ? '' : ytplayer.videodata.song.title) + '" required></input></li>' +
-                         '<li><select id="genre" class="form-control form-group selectpicker"></select></li>' +
-                         '<li><select id="difficulty" class="form-control form-group selectpicker"></select></li>' +
-                         '<li><a id="btn-publish" class="btn btn-white" onclick="publish_song()">Publish</a></li>');
-  $.get({
-    url: "/api/v1/autocompletes/get_select_data.json",
-    beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
-  }).done(function( data ) {
-    if (data != null) {
-      keys = Object.keys(data)
-      keys.forEach(function(key, key_index){
-        $('#'+key).empty();
-        $('#'+key).append($('<option>', { text: 'Select '+key}))
-        data[key].forEach(function(obj, id){
-          $('#'+key).append($('<option>', { value: obj.id, text: obj.name }));
-        })
-      })
-      $('#genre option[value='+ ytplayer.videodata.song.genre_id +']').prop('selected', true);
-      $('#difficulty option[value='+ ytplayer.videodata.song.difficulty_id +']').prop('selected', true);
-    }
-  });
-}
+// function show_drop_down() {
+//   $('#meta-data').empty();
+//   $('#meta-data').append('<li><input type="text" id="artist" placeholder="Artist" class="form-control form-group" value="' +
+//                          (ytplayer.videodata.song.artist == null ? '' : ytplayer.videodata.song.artist) + '" required></input></li>' +
+//                          '<li><input type="text" id="title" placeholder="Title" class="form-control form-group" value="' +
+//                          (ytplayer.videodata.song.title == null ? '' : ytplayer.videodata.song.title) + '" required></input></li>' +
+//                          '<li><select id="genre" class="form-control form-group selectpicker"></select></li>' +
+//                          '<li><select id="difficulty" class="form-control form-group selectpicker"></select></li>' +
+//                          '<li><a id="btn-publish" class="btn btn-white" onclick="publish_song()">Publish</a></li>');
+//   $.get({
+//     url: "/api/v1/autocompletes/get_select_data.json",
+//     beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+//   }).done(function( data ) {
+//     if (data != null) {
+//       keys = Object.keys(data)
+//       keys.forEach(function(key, key_index){
+//         $('#'+key).empty();
+//         $('#'+key).append($('<option>', { text: 'Select '+key}))
+//         data[key].forEach(function(obj, id){
+//           $('#'+key).append($('<option>', { value: obj.id, text: obj.name }));
+//         })
+//       })
+//       $('#genre option[value='+ ytplayer.videodata.song.genre_id +']').prop('selected', true);
+//       $('#difficulty option[value='+ ytplayer.videodata.song.difficulty_id +']').prop('selected', true);
+//     }
+//   });
+// }
 
 function publish_song() {
   var songdata = {
@@ -167,13 +167,13 @@ function publish_song() {
   .fail( function(resp) { swal("Upload Failed!", resp.responseText, "error"); } );
 }
 
-function show_published_or_unpublished() {
-  if(ytplayer.videodata.song.publish) {
-    $('#publish').hide();
-    $('#unpublish').show();
-  } else {
-    $('#unpublish').hide();
-    $('#publish').show();
-  }
-}
+// function show_published_or_unpublished() {
+//   if(ytplayer.videodata.song.publish) {
+//     $('#publish').hide();
+//     $('#unpublish').show();
+//   } else {
+//     $('#unpublish').hide();
+//     $('#publish').show();
+//   }
+// }
 //////////////////////////////////////// CLICK LISTENERS ///////////////////////////////////////////////////////
