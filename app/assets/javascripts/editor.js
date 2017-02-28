@@ -49,8 +49,6 @@ $(document).ready(function() {
 
   addvid.ev_sub( 'add_video', load_new_song );
 
-  add_click_listeners();
-
 });
 
 /////////////////////////////////////////////// SETUP /////////////////////////////////////////////////////////
@@ -95,12 +93,6 @@ function add_chord_now(chord) {
 
 //////////////////////////////////////// CLICK LISTENERS ///////////////////////////////////////////////////////
 
-function add_click_listeners() {
-  id('create-btn').addEventListener('click', create_new_song );
-  id('edit').addEventListener('click', edit_menu );
-  id('publish').addEventListener('click', show_drop_down );
-  id('unpublish').addEventListener('click', publish_song );
-}
 
 function to_player() {
   window.location = '/';
@@ -153,8 +145,8 @@ function publish_song() {
     youtube_id: ytplayer.videodata.id,
     title:      $('#title').val(),
     artist:     $('#artist').val(),
-    genre:      $('#genre').val(),
-    difficulty: $('#difficulty').val(),
+    genre:      $('#genreSelect').val(),
+    difficulty: $('#diffSelect').val(),
     chords:     punchlist.to_models()
   }
   $.post('/api/v1/add.json', JSON.stringify(songdata) )

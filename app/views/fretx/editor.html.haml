@@ -20,36 +20,14 @@
           %form
             .form-group
               %input{ type: "text", class: "form-control", placeholder: "Artist" }
-            
             .form-group
               %input{ type: "text", class: "form-control", placeholder: "Title" }
-            
             .form-group
-              %select{ name: "genreSelect", id: "genreSelect", class: "form-control" }
-                %option{ value: "0" }
-                  Genre
-                %option{ value: "1" }
-                  Rock
-                %option{ value: "2" }
-                  Jazz
-                %option{ value: "3" }
-                  Rock
-                %option{ value: "4" }
-                  Jazz
+              = select_tag "genreSelect", options_for_select(select_genre_data), class: "form-control", prompt: "Select Genre", id: "genreSelect"
             .form-group
-              %select{ name: "diffSelect", id: "diffSelect", class: "form-control" }
-                %option{ value: "0" }
-                  Difficulty
-                %option{ value: "1" }
-                  Easy
-                %option{ value: "2" }
-                  Beginner
-                %option{ value: "3" }
-                  Hard
-                %option{ value: "4" }
-                  Easy
+              = select_tag "diffSelect", options_for_select(select_difficulty_data), class: "form-control", prompt: "Select Difficulty", id: "diffSelect"
             .submit-holder
-              %a{ href: "#", class: "btn" }
+              %a{ href: "#", class: "btn", onclick: "publish_song()" }
                 = image_tag 'rock-ico.png', alt: "Publish"
                 Publish
 
