@@ -9,8 +9,10 @@
 
     #userview_container.header-links
       - if current_user.blank?
-        = link_to 'Sign Up', user_facebook_omniauth_authorize_path
-        = link_to 'Login', user_facebook_omniauth_authorize_path
+        %a{ href: "#", 'data-toggle': "modal", 'data-target': '#signupModal' }
+          Sign Up
+        %a{ href: "#", 'data-toggle': "modal", 'data-target': "#loginModal" }
+          Login
       - else
         %ul.list-unstyled
           %li.dropdown.txt
@@ -22,3 +24,32 @@
                 = link_to 'Editor', editor_path, class: 'submenu'
               %li
                 = link_to 'Logout', destroy_user_session_path, method: 'delete', class: 'submenu'
+
+- if current_user.blank?
+  #loginModal.modal.fade.login-signup-flow{ tabindex: "-1", role: "dialog" }
+    .modal-dialog
+      .modal-content
+        .modal-body
+          %a{ href: user_facebook_omniauth_authorize_path, class: "btn fb" }
+            = image_tag 'fb-ico.svg', alt: "Login with Facebook"
+            Login with Facebook
+          .account-separated
+            %h4
+              Don't have an account?
+            %a{ href: '#', 'data-toggle': 'modal', 'data-target': '#signupModal', 'data-dismiss': 'modal', class: 'modal-redirect' }
+              Sign Up
+
+  #signupModal.modal.fade.login-signup-flow{ tabindex: "-1", role: "dialog" }
+    .modal-dialog
+      .modal-content
+        .modal-body
+          %h3
+            Signup today
+          %a{ href: user_facebook_omniauth_authorize_path, class: "btn fb" }
+            = image_tag "fb-ico.svg", alt: "Sign up with Facebook"
+            Sign up with Facebook
+          .account-separated
+            %h4
+              Already a member?
+            %a{ href: "#", 'data-toggle': 'modal', 'data-target': "#loginModal", 'data-dismiss': "modal", class: "modal-redirect" }
+              Login
