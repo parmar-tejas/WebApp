@@ -272,6 +272,7 @@ Timeline.prototype.CSS = `
   z-index: 1;
   display: inline-block;
   vertical-align: middle;
+  color: white;
 }
 
 #timeline .scale {

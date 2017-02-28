@@ -69,7 +69,7 @@ Object.assign(
     on_root_change: function(rootitem) {
       this.rootitem = rootitem;
       if ( this.rootitem.label == 'No Chord' ) { this.close(); }
-      else { this.qualitylist.dom.style.display = 'inline-flex'; }
+      else { this.qualitylist.dom.style.display = 'flex'; }
     },
 
     on_quality_change: function(qualitem) {
@@ -233,12 +233,21 @@ qualitylist.prototype = {
 
 chordpicker.prototype.CSS = `
 
+  .chordpicker {
+    max-width: 960px !important;
+    overflow: scroll;
+    background: none;
+    box-shadow: none;
+    border: none;
+  }
   .chordpicker ul {
     display: inline-flex;
     list-style: none;
     padding: 15px;
     margin: 0;
     vertical-align: middle;
+    background: white;
+    margin-bottom: 10px;
   }
 
   .chordpicker li {
@@ -259,12 +268,21 @@ chordpicker.prototype.CSS = `
   .chordpicker .roots li[data-note],
   .chordpicker .qualities li {
     background-color: rgba(200,100,100,1);
-    padding: 8px;
-    margin: 8px;
-  }
-
-  .chordpicker .roots li[data-note]:nth-child(2) {
-    margin-left: 0;
+    padding: 20px 4px !important;
+    margin: 4px;
+    width: 65px;
+    height: 65px;
+    border-radius: 20px;
+    color: #fff;
+    font-family: 'GothamRM';
+    color: #FFFFFF;
+    top: 50%;
+    text-align: center;
+    padding: 25px 0;
+    background-image: linear-gradient(-180deg, #393939 3%, #191919 100%);
+    border: 2px solid #FCFCFC;
+    box-shadow: 0 1px 3px 0 rgba(255,255,255,0.47);
+    cursor: pointer;
   }
 
   .chordpicker .roots li[data-note]:hover,
@@ -273,9 +291,19 @@ chordpicker.prototype.CSS = `
   }
 
   .chordpicker .roots li li[data-note] {
-    flex: 1;
-    display: inline-block;
-    margin: 0 8px;
+    width: 65px;
+    height: 65px;
+    border-radius: 20px;
+    color: #fff;
+    font-family: 'GothamRM';
+    color: #FFFFFF;
+    top: 50%;
+    text-align: center;
+    padding: 20px 4px !important;
+    background-image: linear-gradient(-180deg, #393939 3%, #191919 100%);
+    border: 2px solid #FCFCFC;
+    box-shadow: 0 1px 3px 0 rgba(255,255,255,0.47);
+    cursor: pointer;
   }
 
   .chordpicker .qualities {
