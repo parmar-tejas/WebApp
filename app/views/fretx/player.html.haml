@@ -45,11 +45,12 @@
     %h3
       Related Songs
     #related_songs_container.row
-      - @related_songs.each do |song|
-        %a{ href: "/player/#{song.youtube_id}-#{song.id}", class: "recommendation-box", style: "background-image:url('//img.youtube.com/vi/#{song.youtube_id}/1.jpg')" }
-          .song-info
-            %h4= song.title
-            %h5= song.artist
+      - unless @related_songs.blank?
+        - @related_songs.each do |song|
+          %a{ href: "/player/#{song.youtube_id}-#{song.id}", class: "recommendation-box", style: "background-image:url('//img.youtube.com/vi/#{song.youtube_id}/1.jpg')" }
+            .song-info
+              %h4= song.title
+              %h5= song.artist
 
 :javascript
   $(document).ready( function() {

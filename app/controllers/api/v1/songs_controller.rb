@@ -130,8 +130,6 @@ class Api::V1::SongsController < Api::ApiController
               uploaded_on: :DESC
             ).first(10)
 
-    puts songs
-    puts '-----'
     success_response(songs)
   end
 
