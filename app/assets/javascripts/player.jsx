@@ -1,5 +1,6 @@
 var searchedSong = {
-  songs: []
+  songs: [],
+  relatedSongs: []
 }
 
 /////////////////////////////////////////////// SETUP /////////////////////////////////////////////////////////
@@ -28,7 +29,7 @@ $(document).ready(function() {
   modal.ev_sub('exit', function() { songlist.mount(id('songlist_container')); });
 
   //songlist.ev_sub('list_loaded', function()     { load_song( songlist.random ); } );
-  songlist.ev_sub('selected',    function(song) { load_song( song ); modal.hide(); songlist.mount(id('songlist_container')); load_related_songs(song); } );
+  songlist.ev_sub('selected',    function(song) { load_song( song ); modal.hide(); songlist.mount(id('songlist_container')); } );
 
   timeline.on_scrub  = function(time_s) { ytplayer.current_time = time_s; } 
   timeline.get_color = function(chord_label) { return palette.get_color(chord_label); } 
@@ -37,6 +38,7 @@ $(document).ready(function() {
   ytplayer.on_time_change( punchlist.update_time );
 
   ytplayer.on_video_data(on_video_data); 
+  ytplayer.on_video_data(load_related_songs);
 
   ytplayer.ev_sub('duration', function(duration) { timeline.set_duration(duration); })
   ytplayer.ev_sub('ended', function() { timeline.update_time(); } )
@@ -67,9 +69,10 @@ function on_video_data() {
   punchlist.update_time(0);
 }
 
-function load_related_songs(song) {
+function load_related_songs() {
+  console.log(ytplayer.videodata.song.youtube_id);
   var data = {
-    youtube_id: song.youtube_id
+    youtube_id: ytplayer.videodata.song.youtube_id
   }
   $.get({
     url: "/api/v1/get_related_songs.json",
@@ -78,9 +81,10 @@ function load_related_songs(song) {
   }).done(function( data ) {
     $('#related_songs_container').empty();
     if (data.length > 0) {
-      data.forEach(function(obj){
-        $('#related_songs_container').append('<div class="col-sm-3"><img src="http://img.youtube.com/vi/'+ obj.youtube_id +'/1.jpg"></img></div>');
-      })
+      searchedSong['relatedSongs'] = data
+      for(i=0; i<data.length;i++) {
+        $('#related_songs_container').append('<div class="col-sm-3"><img src="http://img.youtube.com/vi/'+ data[i].youtube_id +'/1.jpg" data-index="'+i+'" onclick="get_song_from_related_array(this)"></img></div>');
+      }
     }
   });
 }
@@ -95,6 +99,10 @@ function load_promotion_video() {
   });
 }
 
+function get_song_from_related_array(elem) {
+  index = $(elem).data('index');
+  load_song(searchedSong.relatedSongs[index]);
+}
 ////////////////////////////////////////// CLICK LISTENERS ///////////////////////////////////////////////////
 
 function add_event_listeners() {

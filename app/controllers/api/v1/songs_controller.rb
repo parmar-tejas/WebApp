@@ -101,19 +101,20 @@ class Api::V1::SongsController < Api::ApiController
 
   def get_searched_song
     conditions = []
-    controller_params_options( params[:title], "title", conditions, "like" ) unless params[:title] == "Search"
+    controller_params_options( params[:title], "title", conditions, "like" ) if params[:title]
+    controller_params_options( params[:title], "artist", conditions, "like" ) if params[:title]
     controller_params_options( params[:genre], "genre_id", conditions, "=" ) unless params[:genre] == "Select genre"
     controller_params_options( params[:difficulty], "difficulty_id", conditions, "=" ) unless params[:difficulty] == "Select difficulty"
+    controller_params_options( true, "published", conditions, "=" )
     songs = Song.select(
       'DISTINCT ON(youtube_id) id,
       uploaded_on,
       youtube_id,
       title,
+      artist,
       punches'
       ).where(
         conditions
-      ).where(
-        published: true
       ).order(
         :youtube_id,
         uploaded_on: :DESC
