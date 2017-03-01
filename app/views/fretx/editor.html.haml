@@ -21,17 +21,23 @@
         .publish-options
           %form
             .form-group
-              %input{ type: "text", class: "form-control", placeholder: "Artist", required: true, id: "artist", name: "artist" }
+              = text_field_tag 'artist', (@song.nil? ? '' : @song.artist), class: 'form-control', placeholder: 'Artist', required: true
             .form-group
-              %input{ type: "text", name: "title", class: "form-control", placeholder: "Title", required: true, id: "title" }
+              = text_field_tag 'title', (@song.nil? ? '' : @song.title), class: 'form-control', placeholder: 'Title', required: true
             .form-group
-              = select_tag "genreSelect", options_for_select(select_genre_data), class: "form-control", prompt: "Select Genre", id: "genreSelect",required: true
+              = select_tag "genreSelect", options_for_select(select_genre_data, (@song.nil? ? '' : @song.genre_id)), class: "form-control", prompt: "Select Genre", id: "genreSelect",required: true
             .form-group
-              = select_tag "diffSelect", options_for_select(select_difficulty_data), class: "form-control", prompt: "Select Difficulty", id: "diffSelect", required: true
+              = select_tag "diffSelect", options_for_select(select_difficulty_data, (@song.nil? ? '' :@song.difficulty_id)), class: "form-control", prompt: "Select Difficulty", id: "diffSelect", required: true
             .submit-holder
-              %a{ href: "#", class: "btn", onclick: "publish_song()" }
+              %a{ class: "btn", id: "pub_btn", onclick: "publish_song()" }
                 = image_tag 'rock-ico.png', alt: "Publish"
-                Publish
+                - unless @song.blank?
+                  - if @song.published
+                    Unpublish
+                  - else
+                    Publish
+                - else
+                  Publish
 
 %section.fret-with-video
   .container

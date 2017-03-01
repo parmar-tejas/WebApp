@@ -67,12 +67,36 @@ $(document).ready(function() {
 
   addvid.ev_sub( 'add_video', load_new_song );
 
+  add_zoom_buttons();
 });
 
 /////////////////////////////////////////////// SETUP /////////////////////////////////////////////////////////
 
 function remove_facebook_redirect_hash() {
   history.pushState("", document.title, window.location.pathname);
+}
+
+function add_zoom_buttons() {
+  if($('#zoom-btn').length == 0) {
+    $('#timeline_container').append('<div id="zoom-btn"></div>');
+    $('#zoom-btn').append('<div class="zoom"><img src="/zoom_in.png" onclick="zoom_in()"></div><div class="zoom"><img src="/zoom_out.png" onclick="zoom_out()"></div>');
+  }
+}
+
+function zoom_in(){
+  if(timeline.state.zoom < 2) {
+    timeline.state.zoom += 0.25;
+    timeline.draw_chords();
+    timeline.draw_scale();
+  }
+}
+
+function zoom_out(){
+  if(timeline.state.zoom > 0.25) {
+    timeline.state.zoom -= 0.25;
+    timeline.draw_chords();
+    timeline.draw_scale();
+  }
 }
 
 function load_new_song(url_or_id) {
@@ -173,8 +197,15 @@ function publish_song() {
     chords:     punchlist.to_models()
   }
   $.post('/api/v1/add.json', JSON.stringify(songdata) )
-  .done( function()     { swal("Success!", "Upload Successful!", "success"); songlist.fetch(); } )
-  .fail( function(resp) { swal("Upload Failed!", resp.responseText, "error"); } );
+  .done( function(resp)     { swal("Success!", resp.message, "success"); songlist.fetch(); toggle_pub_button(); } )
+  .fail( function(resp) { swal("Upload Failed!", resp.message, "error"); } );
+}
+
+function toggle_pub_button() {
+  if($('#pub_btn').contents().last()[0].textContent.trim() == 'Publish')
+    $('#pub_btn').contents().last()[0].textContent = 'Unpublish';
+  else
+    $('#pub_btn').contents().last()[0].textContent = 'Publish';
 }
 
 // function show_published_or_unpublished() {

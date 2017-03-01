@@ -3,7 +3,8 @@ function Timeline(parent,palette) {
     punches: [ ],
     duration: 10,
     scale_factor: 15,
-    elapsed_time: 0
+    elapsed_time: 0,
+    zoom: 1
   };
   this.palette = palette;
   this.link_punches();
@@ -86,7 +87,7 @@ Timeline.prototype = {
     this.dom.scrollLeft = width_px - (this.dom.clientWidth/2);
   },
 
-  s_to_ems(time_s) { return time_s * this.state.scale_factor; },
+  s_to_ems(time_s) { return time_s * this.state.scale_factor * this.state.zoom; },
   ems_to_s(ems)    { return ems    / this.state.scale_factor; },
   ems_to_px(ems)   { return ems * this.font_size_px; },
   px_to_ems(px)    { return px  / this.font_size_px; },

@@ -233,3 +233,11 @@ ul#menu li:nth-child(3) {
   padding: 0.5em;
   border-radius: .5em;
 }
+
+#zoom-btn {
+  position: absolute;
+  width: 35px;
+  display: inline-block;
+  padding-top: 15px;
+  margin-left: 90%;
+}
