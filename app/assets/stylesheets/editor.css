@@ -84,7 +84,7 @@ ul#menu li:nth-child(3) {
 
 #timeline_container {
   max-width: 100%;
-  height: 70px;
+  height: 100px;
   position: relative;
   vertical-align: bottom;
   position: relative;
@@ -94,7 +94,6 @@ ul#menu li:nth-child(3) {
 }
 
 #timeline {
-  border: 1px solid black;
   font-size: 1vw;
   background: #3E3E3E !important;
   vertical-align: bottom;
@@ -103,7 +102,7 @@ ul#menu li:nth-child(3) {
   left: 0;
   right: 0;
   margin: auto;
-  height: 60px;
+  height: 90px;
   border: 5px solid #3E3E3E;
   width: 80%;
 }

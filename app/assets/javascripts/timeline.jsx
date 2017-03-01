@@ -239,7 +239,7 @@ Timeline.prototype.CSS = `
   white-space: nowrap;
   position: relative;
   z-index: 1;
-  height: 100%;
+  height: 73px;
   width: 100%;
   vertical-align: middle;
 }
@@ -276,24 +276,18 @@ Timeline.prototype.CSS = `
 }
 
 #timeline .scale {
-  height: 1.2em;
+  height: 30px;
   white-space: nowrap;
   position: relative;
   z-index: 1;
-  margin-top: -9px;
+  margin-top: -4px;
 }
 
 #timeline .scale .tick {
-  background-color: rgba(100,100,100,0.8);
-  box-shadow: 0 0 0.1em black;
-  border: 1px solid black;
   vertical-align: top;
   display: inline-block;
   width: 1px;
   height: 1.2em;
-  line-height: 1.2em;
-  border-right: 1px solid green;
-  box-sizing: border-box;
   text-align: right;
   padding-right: 0.1em;
   color: white;
