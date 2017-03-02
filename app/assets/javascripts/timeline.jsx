@@ -101,6 +101,14 @@ Timeline.prototype = {
   set_resize_handlers() {
     window.onresize = this.render;
     window.addEventListener("orientationchange", this.render, false);
+  },
+
+  resize_chord_width(index, width) {
+    punch = this.state.punches[index];
+    old_width = this.s_to_px(punch._next_node.time) - this.s_to_px(punch.time);
+    difference = old_width - width
+    punch._next_node.time = this.px_to_s(this.s_to_px(punch._next_node.time) - difference).toString();
+    this.draw_chords();
   }
 
 }
@@ -138,7 +146,7 @@ Object.assign( Timeline.prototype, {
     var width = `width: ${ this.s_to_px(punch.duration_s) + 'px'}; `;
     var color = isFunction(this.get_color) ? `background: ${this.get_color(punch.chord)}; ` : '';
     return render(`
-      <div id='${punch.time}' class='chord' style='${width}${color}'>
+      <div id='${punch.time}' class='chord resize-drag' style='${width}${color}' >
         <div class='gloss'></div>
         <div class='chordname'>${punch.chord}</div>
         <div class='delete' onClick="Punchlist.prototype.del_punch_from_rv('${punch._rv}')" >X</div>

@@ -16,7 +16,6 @@ interact('.resize-drag')
 
   // update the element's style
   target.style.width  = event.rect.width + 'px';
-
   // translate when resizing from top or left edges
   x += event.deltaRect.left;
   // y += event.deltaRect.top;
@@ -27,6 +26,12 @@ interact('.resize-drag')
   // target.setAttribute('data-x', x);
   // target.setAttribute('data-y', y);
   // target.textContent = Math.round(event.rect.width) + '×' + Math.round(event.rect.height);
+});
+
+interact('.resize-drag').on('resizeend', function(event) {
+  var index = $('.chord').index(event.target);
+  var width = parseFloat(event.target.style.width);
+  timeline.resize_chord_width(index, width);
 });
 
 function allowDrop(ev) {

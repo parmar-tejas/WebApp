@@ -239,14 +239,14 @@ chordpicker.prototype.CSS = `
 
   .chordpicker {
     max-width: 960px !important;
-    overflow: scroll;
+    overflow: auto;
     background: none;
     box-shadow: none;
     border: none;
   }
   .chordpicker div {
     max-width: 960px !important;
-    overflow: scroll;
+    overflow: auto;
   }
   .chordpicker ul {
     display: inline-flex;
