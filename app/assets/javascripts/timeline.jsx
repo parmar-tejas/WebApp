@@ -39,7 +39,7 @@ Timeline.prototype = {
   load_styles()     { load_css('timeline_styles', this.CSS); },
 
   get_dom_refs() {
-    this.indicator = this.dom.getElementsByClassName('indicator')[0];
+    //this.indicator = this.dom.getElementsByClassName('indicator')[0];
     this.scale     = this.dom.getElementsByClassName('scale')[0];
     this.chordline = this.dom.getElementsByClassName('chords')[0];
   },
@@ -82,13 +82,13 @@ Timeline.prototype = {
   _update_time(time_s) {
     let width_px = this.s_to_px(time_s);
     $('#timeline .chords').width(width_px + $('#timeline').width()/2);
-    this.indicator.style.width = width_px + 'px';
-    this.indicator.style.minWidth = $('#timeline').width()/2 + 'px';
+    // this.indicator.style.width = width_px + 'px';
+    // this.indicator.style.minWidth = $('#timeline').width()/2 + 'px';
     this.dom.scrollLeft = width_px - (this.dom.clientWidth/2);
   },
 
   s_to_ems(time_s) { return time_s * this.state.scale_factor * this.state.zoom; },
-  ems_to_s(ems)    { return ems    / this.state.scale_factor; },
+  ems_to_s(ems)    { return ems    / (this.state.scale_factor * this.state.zoom); },
   ems_to_px(ems)   { return ems * this.font_size_px; },
   px_to_ems(px)    { return px  / this.font_size_px; },
   s_to_px(time_s)  { return this.ems_to_px(this.s_to_ems(time_s)); },
@@ -104,11 +104,14 @@ Timeline.prototype = {
   },
 
   resize_chord_width(index, width) {
+    console.log(index + '-' + width);
     punch = this.state.punches[index];
-    old_width = this.s_to_px(punch._next_node.time) - this.s_to_px(punch.time);
-    difference = old_width - width
-    punch._next_node.time = this.px_to_s(this.s_to_px(punch._next_node.time) - difference).toString();
-    this.draw_chords();
+    if(punch) {
+      old_width = this.s_to_px(punch._next_node.time) - this.s_to_px(punch.time);
+      difference = old_width - width
+      punch._next_node.time = this.px_to_s(this.s_to_px(punch._next_node.time) - difference).toString();
+      this.render();
+    }
   }
 
 }
@@ -219,7 +222,6 @@ Timeline.prototype.HTML = `
   <div id='timeline' class="chord-holder">
     <div class='chords' ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     <div class='scale'></div>
-    <div class='indicator'></div>
   </div>
 `.untab(2);
 
@@ -227,10 +229,6 @@ Timeline.prototype.CSS = `
 
 #timeline {
   overflow: hidden;
-  cursor: move;
-  cursor: grab;
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -285,6 +283,10 @@ Timeline.prototype.CSS = `
 }
 
 #timeline .scale {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
   height: 30px;
   white-space: nowrap;
   position: relative;

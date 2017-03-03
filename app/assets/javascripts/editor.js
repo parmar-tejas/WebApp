@@ -86,16 +86,14 @@ function add_zoom_buttons() {
 function zoom_in(){
   if(timeline.state.zoom < 2) {
     timeline.state.zoom += 0.25;
-    timeline.draw_chords();
-    timeline.draw_scale();
+    timeline.render();
   }
 }
 
 function zoom_out(){
   if(timeline.state.zoom > 0.25) {
     timeline.state.zoom -= 0.25;
-    timeline.draw_chords();
-    timeline.draw_scale();
+    timeline.render();
   }
 }
 
