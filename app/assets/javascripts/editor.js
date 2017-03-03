@@ -186,17 +186,22 @@ function create_new_song() {
 // }
 
 function publish_song() {
-  var songdata = {
-    youtube_id: ytplayer.videodata.id,
-    title:      $('#title').val(),
-    artist:     $('#artist').val(),
-    genre:      $('#genreSelect').val(),
-    difficulty: $('#diffSelect').val(),
-    chords:     punchlist.to_models()
+  if($('#title').val() != '' && $('#artist').val() != '' && $('#genreSelect').val() != '' && $('#diffSelect').val() != '') {
+    var songdata = {
+      youtube_id: ytplayer.videodata.id,
+      title:      $('#title').val(),
+      artist:     $('#artist').val(),
+      genre:      $('#genreSelect').val(),
+      difficulty: $('#diffSelect').val(),
+      chords:     punchlist.to_models(),
+      id:         $('#song_id').val()
+    }
+    $.post('/api/v1/add.json', JSON.stringify(songdata) )
+    .done( function(resp)     { swal("Success!", resp.message, "success"); songlist.fetch(); toggle_pub_button(); } )
+    .fail( function(resp) { swal("Upload Failed!", resp.message, "error"); } );
+  } else {
+    swal("Error", 'Please fill Title, Artist, Genre and Difficulty', "error");
   }
-  $.post('/api/v1/add.json', JSON.stringify(songdata) )
-  .done( function(resp)     { swal("Success!", resp.message, "success"); songlist.fetch(); toggle_pub_button(); } )
-  .fail( function(resp) { swal("Upload Failed!", resp.message, "error"); } );
 }
 
 function toggle_pub_button() {

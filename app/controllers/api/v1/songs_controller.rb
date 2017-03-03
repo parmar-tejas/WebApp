@@ -79,10 +79,11 @@ class Api::V1::SongsController < Api::ApiController
   def add
     response = {}
     data = JSON.parse(request.body.read)
-    song = Song.find_or_initialize_by(
+    song = Song.find_by_id(data['id'])
+    song = Song.new(
       uploaded_by: current_user.id,
       youtube_id: data['youtube_id']
-    )
+    ) if song.blank
     unless song.published
       song.title         = data['title']
       song.punches       = data['chords']

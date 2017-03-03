@@ -22,6 +22,7 @@
           %form
             .form-group
               = text_field_tag 'artist', (@song.nil? ? '' : @song.artist), class: 'form-control', placeholder: 'Artist', required: true
+              = hidden_field_tag 'song_id', (@song.nil? ? '' : @song.id)
             .form-group
               = text_field_tag 'title', (@song.nil? ? '' : @song.title), class: 'form-control', placeholder: 'Title', required: true
             .form-group
