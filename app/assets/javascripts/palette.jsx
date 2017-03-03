@@ -40,6 +40,7 @@ Palette.prototype = {
 
   load(punches) {
     this.clear();
+    this.state.chords.push(new Chord('No Chord'));
     for(var i=0; i<punches.length; i++) {                                 // For each punch
       if(this.state.chords.length==0) {                                   
         this.state.chords.push(new Chord(punches[i].chord)); continue;    // Add a new chord if the list is empty
