@@ -83,7 +83,7 @@ class Api::V1::SongsController < Api::ApiController
     song = Song.new(
       uploaded_by: current_user.id,
       youtube_id: data['youtube_id']
-    ) if song.blank
+    ) if song.blank?
     unless song.published
       song.title         = data['title']
       song.punches       = data['chords']
