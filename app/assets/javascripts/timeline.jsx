@@ -101,19 +101,7 @@ Timeline.prototype = {
   set_resize_handlers() {
     window.onresize = this.render;
     window.addEventListener("orientationchange", this.render, false);
-  },
-
-  resize_chord_width(index, width) {
-    console.log(index + '-' + width);
-    punch = this.state.punches[index];
-    if(punch) {
-      old_width = this.s_to_px(punch._next_node.time) - this.s_to_px(punch.time);
-      difference = old_width - width
-      punch._next_node.time = this.px_to_s(this.s_to_px(punch._next_node.time) - difference).toString();
-      this.render();
-    }
   }
-
 }
 
 //////////////////////////////////// RENDERING ////////////////////////////////////
