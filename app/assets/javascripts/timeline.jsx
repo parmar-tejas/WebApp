@@ -331,6 +331,7 @@ Timeline.prototype.CSS = `
   position: initial;
   margin-top: 10px;
   color: white;
+  cursor: pointer;
 }
 
 `;
