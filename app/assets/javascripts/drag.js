@@ -31,6 +31,9 @@ interact('.resize-drag').resizable({
   if(punch) {
     if(edges == 'l') {
       punch.time = timeline.px_to_s(timeline.s_to_px(punch.time) + move_diff).toString();
+      if(index == 0) {
+        target.style.marginLeft = timeline.s_to_ems(punch.time) + 'em';
+      }
     } else {
       adj_node = punch._next_node;
       if(adj_node) {

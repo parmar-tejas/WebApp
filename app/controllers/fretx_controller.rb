@@ -24,6 +24,7 @@ class FretxController < ApplicationController
                 youtube_id: params[:youtube_id]
               ).first
     end
+    redirect_to root_path, notice: 'you are not authorized to access the page' if @song.blank?
   end
 
   def create_new_song
