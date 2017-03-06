@@ -12,7 +12,7 @@ class FretxController < ApplicationController
     @my_songs = Song.where(
                   uploaded_by: current_user.id,
                   published: true
-                )
+                ) if current_user
     @related_songs = Song.related_songs(@song)
   end
 
@@ -30,9 +30,8 @@ class FretxController < ApplicationController
     end
     @my_songs = Song.where(
                   uploaded_by: current_user.id
-                )
+                ) if current_user
 
-    redirect_to root_path, notice: 'you are not authorized to access the page' if @song.blank?
   end
 
   def create_new_song

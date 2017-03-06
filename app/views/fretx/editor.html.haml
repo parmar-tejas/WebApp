@@ -17,31 +17,35 @@
       .share-song-holder
         %a.btn.share-song.publish
           = image_tag asset_url('share-ico.png')
-          - if @song.published
-            Unpublish
+          - if @song
+            - if @song.published
+              Unpublish
+            - else
+              Publish
           - else
-            Publish
+            Publish/Unpublish
         .publish-options
-          %form
-            .form-group
-              = text_field_tag 'artist', (@song.nil? ? '' : @song.artist), class: 'form-control', placeholder: 'Artist', required: true
-              = hidden_field_tag 'song_id', (@song.nil? ? '' : @song.id)
-            .form-group
-              = text_field_tag 'title', (@song.nil? ? '' : @song.title), class: 'form-control', placeholder: 'Title', required: true
-            .form-group
-              = select_tag "genreSelect", options_for_select(select_genre_data, (@song.nil? ? '' : @song.genre_id)), class: "form-control", prompt: "Select Genre", id: "genreSelect",required: true
-            .form-group
-              = select_tag "diffSelect", options_for_select(select_difficulty_data, (@song.nil? ? '' :@song.difficulty_id)), class: "form-control", prompt: "Select Difficulty", id: "diffSelect", required: true
-            .submit-holder
-              %a{ class: "btn", id: "pub_btn", onclick: "publish_song()" }
-                = image_tag 'rock-ico.png', alt: "Publish"
-                - unless @song.blank?
-                  - if @song.published
-                    Unpublish
+          - if !@song.blank?
+            %form
+              .form-group
+                = text_field_tag 'artist', (@song.nil? ? '' : @song.artist), class: 'form-control', placeholder: 'Artist', required: true
+                = hidden_field_tag 'song_id', (@song.nil? ? '' : @song.id)
+              .form-group
+                = text_field_tag 'title', (@song.nil? ? '' : @song.title), class: 'form-control', placeholder: 'Title', required: true
+              .form-group
+                = select_tag "genreSelect", options_for_select(select_genre_data, (@song.nil? ? '' : @song.genre_id)), class: "form-control", prompt: "Select Genre", id: "genreSelect",required: true
+              .form-group
+                = select_tag "diffSelect", options_for_select(select_difficulty_data, (@song.nil? ? '' :@song.difficulty_id)), class: "form-control", prompt: "Select Difficulty", id: "diffSelect", required: true
+              .submit-holder
+                %a{ class: "btn", id: "pub_btn", onclick: "publish_song()" }
+                  = image_tag 'rock-ico.png', alt: "Publish"
+                  - unless @song.blank?
+                    - if @song.published
+                      Unpublish
+                    - else
+                      Publish
                   - else
                     Publish
-                - else
-                  Publish
 
 %section.fret-with-video
   .container
@@ -86,7 +90,7 @@
   });
 
   $(document).ready( function() {
-    song = #{@song.to_json}
+    song = #{@song.blank? ? 'null;' : @song.to_json}
     if(song != null)
       load_song(song);
   });
