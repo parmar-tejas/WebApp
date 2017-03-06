@@ -20,10 +20,33 @@
               = current_user.name
               %img{ src: "#{current_user.omniaccount.photo_url}" }/
             %ul.dropdown-menu
+              - unless current_user.blank?
+                %li
+                  %a.submenu{ "data-target" => "#my-song", "data-toggle" => "modal", type: "button" } My Songs
               %li
                 = link_to 'Editor', editor_path, class: 'submenu'
               %li
                 = link_to 'Logout', destroy_user_session_path, method: 'delete', class: 'submenu'
+
+- unless current_user.blank?
+  #my-song.modal.fade{role: "dialog"}
+    .modal-dialog
+      .modal-content.player-top-btns
+        .modal-header
+          %button.close{"data-dismiss" => "modal", type: "button"} ×
+          %h4.modal-title My Songs
+        .modal-body
+          - if @my_songs
+            %table.table
+              - @my_songs.each do |song|
+                %tr
+                  %td
+                    %a.song{ href: "/player/#{song.youtube_id}-#{song.id}" }
+                      %img{ src: "//img.youtube.com/vi/#{song.youtube_id}/1.jpg" }/
+                  %td{ width: '80%' }
+                    %a.song{ href: "/#{action_name == 'editor' ? 'editor' : 'player' }/#{song.youtube_id}-#{song.id}" }
+                      %h4 #{song.artist}
+                      %h5 #{song.title}
 
 - if current_user.blank?
   #loginModal.modal.fade.login-signup-flow{ tabindex: "-1", role: "dialog" }

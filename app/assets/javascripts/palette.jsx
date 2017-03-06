@@ -124,7 +124,7 @@ Palette.prototype.CSS = `
   #palette {
     width: 80%;
     padding: 1em;
-    overflow-x: scroll;
+    overflow-x: auto;
     white-space: nowrap;
     margin: auto;
   }

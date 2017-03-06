@@ -9,9 +9,13 @@ class FretxController < ApplicationController
               ).first
     end
     @song = Song.promotional_song if @song.blank?
-
+    @my_songs = Song.where(
+                  uploaded_by: current_user.id,
+                  published: true
+                )
     @related_songs = Song.related_songs(@song)
   end
+
 
   def list
   end
@@ -24,6 +28,10 @@ class FretxController < ApplicationController
                 youtube_id: params[:youtube_id]
               ).first
     end
+    @my_songs = Song.where(
+                  uploaded_by: current_user.id
+                )
+
     redirect_to root_path, notice: 'you are not authorized to access the page' if @song.blank?
   end
 
