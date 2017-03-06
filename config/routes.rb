@@ -17,6 +17,12 @@ Rails.application.routes.draw do
     as: 'home'
   )
 
+  get(
+    'mobile_app',
+    to: 'home#mobile_app',
+    as: 'mobileapp'
+  )
+
   root 'fretx#player'
 
   #Api
