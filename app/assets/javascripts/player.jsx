@@ -146,7 +146,8 @@ function share_on_fb(e) {
     display: 'iframe',
     href: window.location.href,
     hashtag: '#fretx',
-    quote: 'Check out this song on FretX!' 
+    picture: 'http://player.fretx.rocks/assets/logo-6a50c0b40cc74c77bc29df220c0e7deb4f2c3a3ee22a649812a37a299202e8e6.png'
+    quote: 'Check out this song on FretX!',
   }, function(response){});
   cancelEvent(e);
 }
