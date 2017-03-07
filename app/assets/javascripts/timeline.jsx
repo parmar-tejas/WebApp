@@ -325,13 +325,14 @@ Timeline.prototype.CSS = `
   border: 0.1em solid white;
   border-radius: 1em;
   box-shadow: 0 0 .1em black;
-  float: right;
   text-align: center;
   background-color: rgb(255,50,50);
-  position: initial;
+  position: absolute;
   margin-top: 10px;
   color: white;
   cursor: pointer;
+  right: 10px;
+  top: 19px;
 }
 
 `;

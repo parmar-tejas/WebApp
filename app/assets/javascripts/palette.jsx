@@ -198,6 +198,9 @@ Palette.prototype.CSS = `
 
   #palette .delete {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff3019+0,cf0404+100;Red+3D */
+    position: absolute;
+    top: -8px;
+    left: -7px;
     background: rgb(255,48,25); /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover,  rgba(255,48,25,1) 0%, rgba(207,4,4,1) 100%); /* FF3.6-15 */
     background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,48,25,1) 0%,rgba(207,4,4,1) 100%); /* Chrome10-25,Safari5.1-6 */
