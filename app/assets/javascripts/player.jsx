@@ -42,6 +42,24 @@ $(document).ready(function() {
   });
 
   add_event_listeners();
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '465114530355883',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
 });
 
 /////////////////////////////////////////////// SETUP /////////////////////////////////////////////////////////
@@ -122,7 +140,12 @@ function goto_indiegogo(e) {
 }
 
 function share_on_fb(e) {
-  window.location.href = "http://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fplayer.fretx.rocks?id=" + ytplayer.video_id;
+  //window.location.href = "http://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fplayer.fretx.rocks?id=" + ytplayer.video_id;
+  FB.ui({
+    method: 'share',
+    display: 'popup',
+    href: 'https://developers.facebook.com/docs/',
+  }, function(response){});
   cancelEvent(e);
 }
 
