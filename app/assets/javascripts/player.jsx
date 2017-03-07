@@ -145,7 +145,7 @@ function share_on_fb(e) {
     method: 'share',
     display: 'iframe',
     href: window.location.href,
-    hashtag: '#fretx'
+    hashtag: '#fretx',
     quote: 'Check out this song on FretX!' 
   }, function(response){});
   cancelEvent(e);
