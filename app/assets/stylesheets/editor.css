@@ -238,6 +238,15 @@ ul#menu li:nth-child(3) {
   position: absolute;
   width: 35px;
   display: inline-block;
-  padding-top: 15px;
   margin-left: 90%;
+}
+#save-btn {
+  position: absolute;
+  display: inline-block;
+  margin: 5px 0px 0px 5px;
+  font-size: 25px;
+  cursor: pointer;
+}
+.publish-text {
+  display: inline;
 }

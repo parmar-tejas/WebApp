@@ -102,6 +102,24 @@ class Api::V1::SongsController < Api::ApiController
     success_response(response)
   end
 
+  def save_song
+    response = {}
+    data = JSON.parse(request.body.read)
+    song = Song.find_by_id(data['id'])
+    song = Song.new(
+      uploaded_by: current_user.id,
+      youtube_id: data['youtube_id']
+    ) if song.blank?
+    unless song.published
+      song.punches       = data['chords']
+      response[:message] = "Song Saved!"
+    end
+
+    response[:message] = song.save ? response[:message] : song.errors.full_messages
+
+    success_response(response)
+  end
+
   def get_related_songs
     song = Song.find_by_youtube_id(params[:youtube_id])
     related_songs = Song.where.not(id: song.id).where('genre_id = ? OR difficulty_id = ?', song.genre_id, song.difficulty_id) rescue []

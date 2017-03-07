@@ -79,7 +79,9 @@ function remove_facebook_redirect_hash() {
 function add_zoom_buttons() {
   if($('#zoom-btn').length == 0) {
     $('#timeline_container').append('<div id="zoom-btn"></div>');
-    $('#zoom-btn').append('<div class="zoom"><img src="/zoom_in.png" onclick="zoom_in()"></div><div class="zoom"><img src="/zoom_out.png" onclick="zoom_out()"></div>');
+    $('#zoom-btn').append('<div class="zoom"><img src="/zoom_in.png" onclick="zoom_in()"></div>' +
+                          '<div class="zoom"><img src="/zoom_out.png" onclick="zoom_out()"></div>' +
+                          '<div id="save-btn"><a onclick="save_song()"><i class="glyphicon glyphicon-floppy-disk"></i></a></div>');
   }
 }
 
@@ -204,11 +206,27 @@ function publish_song() {
   }
 }
 
+function save_song() {
+  var songdata = {
+    youtube_id: ytplayer.videodata.id,
+    chords:     punchlist.to_models(),
+    id:         $('#song_id').val()
+  }
+  $.post('/api/v1/save_song.json', JSON.stringify(songdata) )
+  .done( function(resp)     { swal("Success!", resp.message, "success"); songlist.fetch(); } )
+  .fail( function(resp) { swal("Upload Failed!", resp.message, "error"); } );
+}
+
 function toggle_pub_button() {
   if($('#pub_btn').contents().last()[0].textContent.trim() == 'Publish')
     $('#pub_btn').contents().last()[0].textContent = 'Unpublish';
   else
     $('#pub_btn').contents().last()[0].textContent = 'Publish';
+
+  if($('.publish-text')[0].textContent.trim() == 'Publish')
+    $('.publish-text')[0].textContent = 'Unpublish'
+  else
+    $('.publish-text')[0].textContent = 'Publish'
 }
 
 // function show_published_or_unpublished() {

@@ -76,6 +76,10 @@ Rails.application.routes.draw do
         '/add',
         to: 'songs#add'
         )
+      post(
+        '/save_song',
+        to: 'songs#save_song'
+        )
     end
   end
   get "/player", to: "fretx#player"

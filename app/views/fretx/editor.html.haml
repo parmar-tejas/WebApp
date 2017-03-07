@@ -17,13 +17,14 @@
       .share-song-holder
         %a.btn.share-song.publish
           = image_tag asset_url('share-ico.png')
-          - if @song
-            - if @song.published
-              Unpublish
+          %p.publish-text
+            - if @song
+              - if @song.published
+                Unpublish
+              - else
+                Publish
             - else
-              Publish
-          - else
-            Publish/Unpublish
+              Publish/Unpublish
         .publish-options
           - if !@song.blank?
             %form
