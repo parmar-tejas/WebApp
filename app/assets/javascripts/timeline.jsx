@@ -328,7 +328,6 @@ Timeline.prototype.CSS = `
   text-align: center;
   background-color: rgb(255,50,50);
   position: absolute;
-  margin-top: 10px;
   color: white;
   cursor: pointer;
   right: 10px;
