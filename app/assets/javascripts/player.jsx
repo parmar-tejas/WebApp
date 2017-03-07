@@ -144,7 +144,7 @@ function share_on_fb(e) {
   FB.ui({
     method: 'share',
     display: 'popup',
-    href: 'https://developers.facebook.com/docs/',
+    href: window.location.href,
   }, function(response){});
   cancelEvent(e);
 }
