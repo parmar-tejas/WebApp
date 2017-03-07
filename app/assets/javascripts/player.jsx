@@ -143,8 +143,10 @@ function share_on_fb(e) {
   //window.location.href = "http://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fplayer.fretx.rocks?id=" + ytplayer.video_id;
   FB.ui({
     method: 'share',
-    display: 'popup',
+    display: 'iframe',
     href: window.location.href,
+    hashtag: '#fretx'
+    quote: 'Check out this song on FretX!' 
   }, function(response){});
   cancelEvent(e);
 }
