@@ -9,7 +9,7 @@
     .col-md-6
       %a.btn.view-songs
         = image_tag asset_url('plus-ico.png')
-        View & Add Songs
+        Search
         %input.form-control.custom-input#search-song{ placeholder: "Search for Songs & Artists", type: "text"}
       .song-list-holder
         .song-list
@@ -40,17 +40,17 @@
 %section.chord-bar
   #timeline_container.container
 
-%section.song-recommendations
-  .container
-    %h3
-      Related Songs
-    #related_songs_container.row
-      - unless @related_songs.blank?
-        - @related_songs.each do |song|
-          %a{ href: "/player/#{song.youtube_id}-#{song.id}", class: "recommendation-box", style: "background-image:url('//img.youtube.com/vi/#{song.youtube_id}/1.jpg')" }
-            .song-info
-              %h4= song.title
-              %h5= song.artist
+/ %section.song-recommendations
+/   .container
+/     %h3
+/       Related Songs
+/     #related_songs_container.row
+/       - unless @related_songs.blank?
+/         - @related_songs.each do |song|
+/           %a{ href: "/player/#{song.youtube_id}-#{song.id}", class: "recommendation-box", style: "background-image:url('//img.youtube.com/vi/#{song.youtube_id}/1.jpg')" }
+/             .song-info
+/               %h4= song.title
+/               %h5= song.artist
 
 :javascript
   $(document).ready( function() {
