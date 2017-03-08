@@ -13,7 +13,8 @@ class Omniaccount < ApplicationRecord
       user =  User.find_by_email(
                 auth[:info][:email]
               )
-      social_provider = user.omniaccount.where(
+      social_provider = Omniaccount.where(
+                          user_id: user.id,
                           provider: provider
                         ).first if user.present?
       social_provider ||= Omniaccount.new
