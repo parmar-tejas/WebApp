@@ -43,22 +43,22 @@ $(document).ready(function() {
 
   add_event_listeners();
 
-// window.fbAsyncInit = function() {
-//   FB.init({
-//     appId      : '263883587393132',
-//     xfbml      : true,
-//     version    : 'v2.8'
-//   });
-//   FB.AppEvents.logPageView();
-// };
+ window.fbAsyncInit = function() {
+   FB.init({
+     appId      : '263883587393132',
+     xfbml      : true,
+     version    : 'v2.8'
+   });
+   FB.AppEvents.logPageView();
+ };
 
-// (function(d, s, id){
-//    var js, fjs = d.getElementsByTagName(s)[0];
-//    if (d.getElementById(id)) {return;}
-//    js = d.createElement(s); js.id = id;
-//    js.src = "//connect.facebook.net/en_US/sdk.js";
-//    fjs.parentNode.insertBefore(js, fjs);
-//  }(document, 'script', 'facebook-jssdk'));
+ (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
 
 });
 
@@ -140,15 +140,15 @@ function goto_indiegogo(e) {
 }
 
 function share_on_fb(e) {
-  window.location.href = "http://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fplayer.fretx.rocks?id=" + ytplayer.video_id;
-//  FB.ui({
-//    method: 'share',
-//    display: 'iframe',
-//    href: window.location.href,
-//    hashtag: '#fretx',
-//    picture: 'http://player.fretx.rocks/assets/logo-6a50c0b40cc74c77bc29df220c0e7deb4f2c3a3ee22a649812a37a299202e8e6.png',
-//    quote: 'Check out this song on FretX!',
-//  }, function(response){});
+  // window.location.href = "http://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fplayer.fretx.rocks?id=" + ytplayer.video_id;
+ FB.ui({
+   method: 'share',
+   display: 'iframe',
+   href: window.location.href,
+   hashtag: '#fretx',
+   picture: 'http://player.fretx.rocks/assets/logo-6a50c0b40cc74c77bc29df220c0e7deb4f2c3a3ee22a649812a37a299202e8e6.png',
+   quote: 'Check out this song on FretX!',
+ }, function(response){});
   cancelEvent(e);
 }
 
