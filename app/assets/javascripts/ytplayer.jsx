@@ -148,7 +148,7 @@ YTPlayer.prototype = {
     }
     if( isFunction(this.player.loadVideoById) ) {
       this.player.loadVideoById(this.video_id, 0, "large");
-      this.get_video_data();
+      // this.get_video_data();
     }
     else { this.on_deck = true; }
   },

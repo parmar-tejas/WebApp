@@ -3,36 +3,20 @@ class Api::V1::SongsController < Api::ApiController
   before_action :authenticate_user!, only: [:mysongs, :add, :update_songs_metadata]
 
   def index
-    songs = Song.select(
-      'DISTINCT ON (youtube_id) id,
-      youtube_id,
-      title,
-      artist,
-      song_title,
-      uploaded_on'
-    ).order(
-      :youtube_id,
-      uploaded_on: :DESC
-    )
+    songs = Song.order(
+              :youtube_id,
+              uploaded_on: :DESC
+            ).all
+    songs = songs.collect { |s| s.to_hash(false) }
 
     success_response(songs)
   end
 
   def show
-    song = Song.select(
-      'DISTINCT ON (youtube_id) youtube_id,
-      uploaded_on,
-      title,
-      artist,
-      song_title,
-      punches,
-      published'
-    ).where(
-      youtube_id: params[:youtube_id]
-    ).order(
-      :youtube_id,
-      uploaded_on: :DESC
-    ).first
+    song =  Song.where(
+              youtube_id: params[:youtube_id],
+              id: params[:id]
+            ).first
 
     unless song.blank?
       song = song.to_hash
@@ -60,9 +44,10 @@ class Api::V1::SongsController < Api::ApiController
 
   def list
     songs = Song.select(
-      'DISTINCT ON(youtube_id) id,
-      uploaded_on,
+      'id,
       youtube_id,
+      youtube_id || id as fretx_id,
+      uploaded_on,
       title,
       punches,
       genre_id,

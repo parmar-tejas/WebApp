@@ -37,7 +37,7 @@ Rails.application.routes.draw do
         to: 'songs#list'
       )
       get(
-        '/songs/:youtube_id',
+        '/songs/:youtube_id-:id',
         to: 'songs#show'
       )
       get(

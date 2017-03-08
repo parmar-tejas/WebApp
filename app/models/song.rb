@@ -19,17 +19,32 @@ class Song < ApplicationRecord
 
   belongs_to :difficulty
 
-  attr_accessor :user_name # for autocomplete
+  attr_accessor :user_name, :fretx_id # for autocomplete
 
-  def to_hash
-    {
-      youtube_id: youtube_id,
-      uploaded_on: uploaded_on,
-      title: title,
-      artist: artist,
-      song_title: song_title,
-      punches: self.convert_punches
-    }
+  def fretx_id
+    "#{youtube_id}-#{id}"
+  end
+
+  def to_hash(punches = true)
+    data =  {
+              id: id,
+              youtube_id: youtube_id,
+              fretx_id: fretx_id,
+              uploaded_on: uploaded_on,
+              title: title,
+              artist: artist,
+              uploaded_by: uploaded_by,
+              created_at: created_at,
+              updated_at: updated_at,
+              song_title: song_title,
+              published: published,
+              promotion: promotion,
+              genre: self.genre.try(:name),
+              difficulty: self.difficulty.try(:name)
+            }
+    data[:punches] = self.convert_punches if punches
+
+    return data
   end
 
   def convert_punches
