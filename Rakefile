@@ -4,9 +4,3 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
-
-desc "Generate Intercom config"
-task :intercom-config do
-	sh "rails generate intercom:config p1olv87a"
-     end
-
