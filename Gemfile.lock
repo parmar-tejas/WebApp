@@ -129,6 +129,8 @@ GEM
       has_scope (~> 0.6)
       railties (>= 3.2, < 5.1)
       responders
+    intercom-rails (0.3.4)
+      activesupport (> 3.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -295,6 +297,7 @@ DEPENDENCIES
   dotenv-rails
   haml
   haml-rails
+  intercom-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -312,5 +315,8 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   yt
 
+RUBY VERSION
+   ruby 2.3.3p222
+
 BUNDLED WITH
-   1.13.6
+   1.14.6
