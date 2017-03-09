@@ -7,6 +7,6 @@ Rails.application.load_tasks
 
 desc "Generate Intercom config"
 task :intercom-config do
-	system rails generate intercom:config p1olv87a
+	sh "rails generate intercom:config p1olv87a"
      end
 
