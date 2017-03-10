@@ -445,4 +445,5 @@ ul#menu li:nth-child(2) {
 
 #disqus_thread {
   width: 80%;
+  margin: auto;
 }
