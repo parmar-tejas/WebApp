@@ -46,6 +46,7 @@ IntercomRails.config do |config|
   # from imports and Javascript inclusion, false otherwise.
   #
   # config.user.exclude_if = Proc.new { |user| user.deleted? }
+
   # == User Custom Data
   # A hash of additional data you wish to send about your users.
   # You can provide either a method name which will be sent to the current
@@ -87,14 +88,13 @@ IntercomRails.config do |config|
   # e.g. Messaging, Free, Pro, etc.
   #
   # config.company.plan = Proc.new { |current_company| current_company.plan.name }
-  
+
   # == Company Monthly Spend
   # This is the amount the company spends each month on your app. If your company
   # has a plan, it will set the 'total value' of that plan appropriately.
   #
   # config.company.monthly_spend = Proc.new { |current_company| current_company.plan.price }
   # config.company.monthly_spend = Proc.new { |current_company| (current_company.plan.price - current_company.subscription.discount) }
-
 
   # == Custom Style
   # By default, Intercom will add a button that opens the messenger to
@@ -111,3 +111,4 @@ IntercomRails.config do |config|
   #
   # If you'd like to hide default launcher button uncomment this line
   # config.hide_default_launcher = true
+end
