@@ -4,7 +4,7 @@ class Api::V1::SongsController < Api::ApiController
 
   def index
     songs = Song.order(
-              :fretx_id,
+              :youtube_id,
               uploaded_on: :DESC
             ).all
     songs = songs.collect { |s| s.to_hash(false) }
@@ -14,7 +14,7 @@ class Api::V1::SongsController < Api::ApiController
 
   def show
     song =  Song.where(
-              fretx_id: params[:fretx_id],
+              youtube_id: params[:youtube_id],
               id: params[:id]
             ).first
 
@@ -26,7 +26,7 @@ class Api::V1::SongsController < Api::ApiController
 
   def mysongs
     song = Song.select(
-      'DISTINCT ON(fretx_id) id,
+      'DISTINCT ON(youtube_id) id,
       uploaded_on,
       youtube_id,
       title,
@@ -54,7 +54,7 @@ class Api::V1::SongsController < Api::ApiController
       difficulty_id,
       published',
     ).order(
-      :fretx_id,
+      :youtube_id,
       uploaded_on: :DESC
     ).first(10)
 
@@ -130,7 +130,7 @@ class Api::V1::SongsController < Api::ApiController
     end
     songs = Song.select(
               :id,
-              :fretx_id,
+              :youtube_id,
               :uploaded_on,
               :youtube_id,
               :title,
