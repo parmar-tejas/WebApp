@@ -271,6 +271,9 @@ Timeline.prototype.CSS = `
   display: inline-block;
   vertical-align: middle;
   color: white;
+  font-family: 'CamptonSB';
+  font-size: 21px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.28);
 }
 
 #timeline .scale {
@@ -293,7 +296,8 @@ Timeline.prototype.CSS = `
   text-align: right;
   padding-right: 0.1em;
   color: white;
-  
+  font-family: 'CamptonSB';
+  font-size: 14px;
 }
 
 #timeline .indicator {
