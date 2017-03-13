@@ -295,6 +295,7 @@ Timeline.prototype.CSS = `
   padding-right: 0.1em;
   color: white;
   font-family: 'CamptonSB';
+  font-size: 14px;
 }
 
 #timeline .indicator {
