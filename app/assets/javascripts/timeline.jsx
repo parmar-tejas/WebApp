@@ -271,6 +271,7 @@ Timeline.prototype.CSS = `
   vertical-align: middle;
   color: white;
   font-family: 'CamptonSB';
+  font-size: 21pt;
   text-shadow: 0 2px 4px rgba(0,0,0,0.28);
 }
 
