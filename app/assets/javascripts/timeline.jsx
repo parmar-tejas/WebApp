@@ -253,7 +253,6 @@ Timeline.prototype.CSS = `
   font-family: sans-serif;
   font-weight: bold;
   font-family: 'CamptonSB';
-  font-size: 21px;
   text-shadow: 0 2px 4px rgba(0,0,0,0.28);
 }
 
@@ -272,7 +271,6 @@ Timeline.prototype.CSS = `
   vertical-align: middle;
   color: white;
   font-family: 'CamptonSB';
-  font-size: 21px;
   text-shadow: 0 2px 4px rgba(0,0,0,0.28);
 }
 
