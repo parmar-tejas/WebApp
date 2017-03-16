@@ -1,7 +1,7 @@
 %header
   .container
     %a.logo{ href: root_path }
-      = image_tag 'logo.png', alt: 'Fretx'
+      = image_tag 'logo.png', alt: 'FretX'
 
     %a.btn.get-fretx{ href: "https://www.indiegogo.com/projects/fretx-the-smart-device-that-teaches-you-guitar-music#/" }
       = image_tag 'rock-ico.png'
@@ -9,10 +9,10 @@
 
     #userview_container.header-links
       - if current_user.blank?
-        %a{ href: "#", 'data-toggle': "modal", 'data-target': '#signupModal' }
-          Sign Up
+        / %a{ href: "#", 'data-toggle': "modal", 'data-target': '#signupModal' }
+        /   Sign Up
         %a{ href: "#", 'data-toggle': "modal", 'data-target': "#loginModal" }
-          Login
+          Add Your Songs
       - else
         %ul.list-unstyled
           %li.dropdown.txt
