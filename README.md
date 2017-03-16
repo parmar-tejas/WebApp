@@ -1,7 +1,7 @@
 # FreTx Readme
 
 * Project
-** Fretx
+** FretX
 
 * Dev URL
 ** http://fretxnewwebapp.herokuapp.com/

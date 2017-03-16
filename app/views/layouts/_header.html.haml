@@ -56,23 +56,23 @@
           %a{ href: user_facebook_omniauth_authorize_path, class: "btn fb" }
             = image_tag 'fb-ico.svg', alt: "Login with Facebook"
             Login with Facebook
-          .account-separated
-            %h4
-              Don't have an account?
-            %a{ href: '#', 'data-toggle': 'modal', 'data-target': '#signupModal', 'data-dismiss': 'modal', class: 'modal-redirect' }
-              Sign Up
+          / .account-separated
+          /   %h4
+          /     Don't have an account?
+          /   %a{ href: '#', 'data-toggle': 'modal', 'data-target': '#signupModal', 'data-dismiss': 'modal', class: 'modal-redirect' }
+          /     Sign Up
 
-  #signupModal.modal.fade.login-signup-flow{ tabindex: "-1", role: "dialog" }
-    .modal-dialog
-      .modal-content
-        .modal-body
-          %h3
-            Signup today
-          %a{ href: user_facebook_omniauth_authorize_path, class: "btn fb" }
-            = image_tag "fb-ico.svg", alt: "Sign up with Facebook"
-            Sign up with Facebook
-          .account-separated
-            %h4
-              Already a member?
-            %a{ href: "#", 'data-toggle': 'modal', 'data-target': "#loginModal", 'data-dismiss': "modal", class: "modal-redirect" }
-              Login
+  / #signupModal.modal.fade.login-signup-flow{ tabindex: "-1", role: "dialog" }
+  /   .modal-dialog
+  /     .modal-content
+  /       .modal-body
+  /         %h3
+  /           Signup today
+  /         %a{ href: user_facebook_omniauth_authorize_path, class: "btn fb" }
+  /           = image_tag "fb-ico.svg", alt: "Sign up with Facebook"
+  /           Sign up with Facebook
+  /         .account-separated
+  /           %h4
+  /             Already a member?
+  /           %a{ href: "#", 'data-toggle': 'modal', 'data-target': "#loginModal", 'data-dismiss': "modal", class: "modal-redirect" }
+  /             Login
