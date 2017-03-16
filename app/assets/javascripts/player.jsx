@@ -45,7 +45,7 @@ $(document).ready(function() {
 
  window.fbAsyncInit = function() {
    FB.init({
-     appId      : '263883587393132',
+     appId      : '465114530355883',
      xfbml      : true,
      version    : 'v2.8'
    });
@@ -148,7 +148,7 @@ function share_on_fb(e) {
    href: window.location.href,
    hashtag: '#fretx',
    picture: 'https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/14642496_1591739337789742_4550057457792050378_n.png?oh=104d038965bdbedc0637d86283b147ee&oe=5970F1D8',
-   quote: 'Learn how to play this song with FretX! -- https://www.facebook.com/fretxRocks/',
+   quote: 'Learn how to play this song with FretX!',
  }, function(response){});
   cancelEvent(e);
 }
