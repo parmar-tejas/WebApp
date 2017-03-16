@@ -249,4 +249,5 @@ ul#menu li:nth-child(3) {
 }
 .publish-text {
   display: inline;
+  font-family: inherit;
 }
