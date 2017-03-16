@@ -151,8 +151,9 @@ function share_on_fb(e) {
    quote: 'Learn how to play this song with FretX! -- https://www.facebook.com/fretxRocks/',
  }, function(response){});
   cancelEvent(e);
+}
 
-facebofounction get_feedback(e) {
+function get_feedback(e) {
   modal.show(feedback.dom);
   cancelEvent(e);
 }
