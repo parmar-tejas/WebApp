@@ -141,18 +141,18 @@ function goto_indiegogo(e) {
 
 function share_on_fb(e) {
   // window.location.href = "http://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fplayer.fretx.rocks?id=" + ytplayer.video_id;
+
  FB.ui({
    method: 'share',
    display: 'iframe',
    href: window.location.href,
    hashtag: '#fretx',
    picture: 'https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/14642496_1591739337789742_4550057457792050378_n.png?oh=104d038965bdbedc0637d86283b147ee&oe=5970F1D8',
-   quote: 'Check out this song on FretX!',
+   quote: 'Learn how to play this song with FretX! -- https://www.facebook.com/fretxRocks/',
  }, function(response){});
   cancelEvent(e);
-}
 
-function get_feedback(e) {
+facebofounction get_feedback(e) {
   modal.show(feedback.dom);
   cancelEvent(e);
 }
