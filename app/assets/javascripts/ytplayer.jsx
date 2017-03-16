@@ -90,7 +90,7 @@ YTPlayer.prototype = {
       console.log( `loading on deck video ${this.video_id}` );
       this.load(this.video_id); return; 
     }
-    event.target.playVideo();
+    // event.target.playVideo();
     this.get_video_data();
   },
 
