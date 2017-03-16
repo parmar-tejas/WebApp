@@ -69,6 +69,14 @@ YTPlayer.prototype = {
       height: '390', 
       width: '640',
       videoId: this.video_id,
+      playerVars: {
+        autoplay: 0,
+        cc_load_policy: 0,
+        fs: 0,
+        iv_load_policy: 3,
+        loop: 1,
+        modestbranding: 1
+      },
       events: {
         'onReady': this.onPlayerReady.bind(this),
         'onStateChange': this.onPlayerStateChange.bind(this)
