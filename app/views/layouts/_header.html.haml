@@ -18,7 +18,6 @@
           %li.dropdown.txt
             %a#logout.dropdown-toggle{"data-toggle": "dropdown", href: "#"}
               = current_user.name
-              %img{ src: "#{current_user.omniaccount.photo_url}" }/
             %ul.dropdown-menu
               - unless current_user.blank?
                 %li

@@ -6,7 +6,7 @@
 
 %section.player-top-btns
   .container
-    .col-md-6
+    .col-sm-6
       %a.btn.view-songs
         = image_tag asset_url('search-ico.png')
         Search
@@ -20,7 +20,7 @@
             .col-xs-6
               = select_tag :difficulty, options_for_select(select_difficulty_data), class: 'form-control', prompt: "Select Difficulty", id: 'search_difficulty'
 
-    .col-md-6
+    .col-sm-6
       .share-song-holder
         %a.btn.share-song.col-md-12
           = image_tag asset_url('share-ico.png')

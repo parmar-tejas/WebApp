@@ -141,7 +141,8 @@ class Api::V1::SongsController < Api::ApiController
             ).order(
               uploaded_on: :DESC
             ).first(10)
-
+    regexp = /#{params[:title].downcase}/i;
+    songs = songs.sort{ |x, y| (x.title =~ regexp) <=> (y.title =~ regexp) }
     success_response(songs)
   end
 

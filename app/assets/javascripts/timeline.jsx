@@ -265,7 +265,6 @@ Timeline.prototype.CSS = `
 
 #timeline .chord .chordname {
   position: relative;
-  padding: 0.2em;
   z-index: 1;
   display: inline-block;
   vertical-align: middle;
@@ -338,6 +337,8 @@ Timeline.prototype.CSS = `
   cursor: pointer;
   right: 10px;
   top: 19px;
+  z-index: 1;
+  font-size: 11pt;
 }
 
 `;

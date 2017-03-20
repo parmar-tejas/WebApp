@@ -251,3 +251,6 @@ ul#menu li:nth-child(3) {
   display: inline;
   font-family: inherit;
 }
+#timeline .chord .chordname {
+  padding: 0.2em;
+}

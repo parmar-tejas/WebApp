@@ -1,3 +1,4 @@
+//= require jquery.mCustomScrollbar.concat.min
 //= require custom
 //= require rivets
 //= require lib

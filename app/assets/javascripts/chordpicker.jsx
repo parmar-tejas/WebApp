@@ -1,8 +1,14 @@
+$(document).click(function(event) {
+  if(!$(event.target).is('.gloss')){
+   $('#chordpicker').hide();
+  }
+})
 
 function chordpicker() {
   this.mainContainer = document.createElement('div')
   this.container = document.createElement('div');
   this.container.className = 'chordpicker dropdown-menu';
+  this.container.id = 'chordpicker';
   this.mainContainer.className = 'dropup'
   this.rootlist = new rootlist();
   this.qualitylist = new qualitylist();

@@ -6,14 +6,14 @@
 
 %section.player-top-btns.mini
   .container
-    .col-md-6
+    .col-sm-6
       %a.btn.view-songs
         = image_tag asset_url('plus-ico.png')
         Create new song
         %form#create_new
           %input.form-control.custom-input#add_new_song{ placeholder: "Enter Youtube URL", type: "text", name: "youtube_url"}
           %input{name: "authenticity_token", type: "hidden", value: "#{form_authenticity_token}"}
-    .col-md-6
+    .col-sm-6
       .share-song-holder
         %a.btn.share-song.publish
           = image_tag asset_url('share-ico.png')
