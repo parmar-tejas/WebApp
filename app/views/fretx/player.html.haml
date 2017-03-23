@@ -81,10 +81,9 @@
     song = #{@song.to_json}
     if(song != null)
       load_song(song);
-    console.log(song);
   } );
 
-%meta{:content => "FretX Player", :property => "og:title"}/
+%meta{:content => "Learn to play #{song.song_title} by #{song.artist} on FretX Player", :property => "og:title"}/
 %meta{:content => "https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/14642496_1591739337789742_4550057457792050378_n.png?oh=104d038965bdbedc0637d86283b147ee&oe=5970F1D8", :property => "og:image"}/
 %meta{:content => "FretX", :property => "og:site_name"}/
 %meta{:content => "FRETX is the smart device that teaches you guitar. Simply follow the lights and start playing! Add your own songs with the FretX Player!", :property => "og:description"}/
