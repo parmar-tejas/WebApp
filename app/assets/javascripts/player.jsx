@@ -141,7 +141,8 @@ function goto_indiegogo(e) {
 
 function share_on_fb(e) {
   // window.location.href = "http://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fplayer.fretx.rocks?id=" + ytplayer.video_id;
-
+  console.log('Learn how to play ' window.song_title + ' by ' + window.artist + ' song with FretX!');
+  console.log(window.song);
  FB.ui({
    method: 'share',
    display: 'iframe',
