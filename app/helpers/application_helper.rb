@@ -1,13 +1,17 @@
 module ApplicationHelper
   def select_genre_data
-    Genre.pluck(
+    Genre.order(
+      :name
+    ).pluck(
       :name,
       :id
     )
   end
 
   def select_difficulty_data
-    Difficulty.pluck(
+    Difficulty.order(
+      :id
+    ).pluck(
       :name,
       :id
     )

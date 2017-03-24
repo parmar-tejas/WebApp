@@ -57,7 +57,7 @@ Palette.prototype = {
     var idx = this.find_index(chord);
     var elems = this.dom.getElementsByClassName('chord');
     for(var i=0; i<elems.length; i++) {
-      elems[i].style.boxShadow =  ( (i == idx) ? '.5em .5em .5em black, 0 0 .5em black' : '0 0 .1em black' );
+      elems[i].style.boxShadow =  ( (i == idx) ? '.5em .5em .5em white, 0 0 .5em white' : '0 0 .1em white' );
       elems[i].style.textShadow =  ( (i == idx) ? '0 0 .1em white, 0 0 .5em white' : '' );
     }
   },
@@ -74,6 +74,7 @@ Palette.prototype = {
   add_chord(chord) {
     if( this.already_exists(chord) ) return;
     this.state.chords.push( new Chord(chord) );
+    this.highlight_chord(chord)
   },
 
   del_chord(e,m) {

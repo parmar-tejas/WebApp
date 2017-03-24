@@ -11,7 +11,8 @@
         = image_tag asset_url('plus-ico.png')
         Create new song
         %form#create_new
-          %input.form-control.custom-input#add_new_song{ placeholder: "Enter Youtube URL", type: "text", name: "youtube_url"}
+          %input.form-control.custom-input#add_new_song{ placeholder: "Enter your YouTube url HERE", type: "text"}
+          %input#add_new_song_url{type: 'hidden', name: 'youtube_url'}
           %input{name: "authenticity_token", type: "hidden", value: "#{form_authenticity_token}"}
     .col-sm-6
       .share-song-holder

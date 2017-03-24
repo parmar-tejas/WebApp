@@ -33,7 +33,7 @@ $(document).ready(function() {
         swal("Syntax Not Match!", "Url is not valid!", "error");
       } else {
           var video_id = yt_url.length == 11 ? yt_url : match[1];
-          $('#add_new_song').val(video_id);
+          $('#add_new_song_url').val(video_id);
           $('#create_new').attr('action', '/create_new_song');
           $('#create_new').attr('method', 'post');
           $('#create_new').submit();

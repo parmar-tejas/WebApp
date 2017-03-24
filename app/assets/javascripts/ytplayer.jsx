@@ -88,12 +88,28 @@ YTPlayer.prototype = {
     if(this.on_deck) { 
       this.on_deck = false;
       console.log( `loading on deck video ${this.video_id}` );
-      this.load(this.video_id); return; 
+      this.load(this.video_id);
     }
-    event.target.
-    // event.target.playVideo();
-    event.target.pauseVideo();
+    event.target.playVideo();
+    // event.target.pauseVideo();
     this.get_video_data();
+
+    var lastTime = -1;
+    var interval = 1000;
+    player = this.player
+    var checkPlayerTime = function () {
+      if (lastTime != -1) {
+        if(player.getPlayerState() == YT.PlayerState.PAUSED ) {
+          var t = player.getCurrentTime();
+            if (Math.abs(t - lastTime - 1) > 0.5) {
+              timeline._update_time(t)
+            }
+          }
+        }
+      lastTime = player.getCurrentTime();
+      setTimeout(checkPlayerTime, interval); // repeat function call in 1 second
+    }
+    setTimeout(checkPlayerTime, interval); // initial call delayed
   },
 
   update_time(time_s) {

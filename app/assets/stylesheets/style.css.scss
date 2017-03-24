@@ -75,7 +75,7 @@ header .get-fretx img{width: 38px;height: 53px;display: inline-block;margin: 3px
 header .header-links{display: inline-block;float: right;margin-top:13px !important;}
 header .header-links a{font-family: 'GothamRBd';font-size: 20px;color: #353535;margin: 20px 0;display: inline-block;text-decoration: none !important;margin-left: 30px;}
 header .header-links a:first-child{margin-left: 0;}
-header .header-links a.submenu{font-size: 15px;margin: 10px;}
+header .header-links a.submenu{font-size: 15px;margin: 10px; cursor: pointer;}
 header .header-links a:hover.submenu{background:none;}
 
 .player-top-btns{margin: 30px 0 15px;}
@@ -121,7 +121,7 @@ player-top-btns .view-songs~.song-list-holder .song-list{width: 500px;float: non
 .player-top-btns .view-songs~.song-list-holder .song-list .song .song-info:after{position: absolute;content:'';background: #CFCFCF;width:100%;height:2px;bottom: 0;border-radius: 50px;}
 .player-top-btns .view-songs~.song-list-holder .song-list .song img{display: inline-block;position: absolute;left: 0;top: 11px;border-radius: 4px;height:58px;width: 95px;}
 .player-top-btns .view-songs~.song-list-holder .song-list .song h4{margin: 0;padding: 17px 0 0px 113px;font-family: 'GothamRM';font-size: 16px;width:100%;height:35px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;}
-.player-top-btns .view-songs~.song-list-holder .song-list .song h5{margin: 0;padding: 12px 0 0 113px;font-family: 'GothamRM';font-size: 19px;width:100%;height:30px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;}
+.player-top-btns .view-songs~.song-list-holder .song-list .song h5{margin: 0;padding: 12px 0 0 113px;font-family: 'GothamRM';font-size: 19px;width:100%;height:31px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;}
 .player-top-btns .view-songs~.song-list-holder .song-list .song .duration{position: absolute;top: 33px;right: 0;font-family: 'GothamRBk';font-size: 13px;}
 .player-top-btns .btn:hover{box-shadow: 0 2px 6px 0 rgba(0,0,0,0.25);}
 .player-top-btns .view-songs.input-visible.results-visible~.song-list-holder .song-list{opacity: 1;z-index: 1;}
