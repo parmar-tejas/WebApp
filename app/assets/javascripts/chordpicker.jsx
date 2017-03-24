@@ -4,6 +4,14 @@ $(document).click(function(event) {
   }
 })
 
+$(document).keyup(function(e) {
+  // escape key maps to keycode `27`
+  if (e.keyCode == 27) {
+   $('#chordpicker').hide();
+  }
+});
+
+
 function chordpicker() {
   this.mainContainer = document.createElement('div')
   this.container = document.createElement('div');
