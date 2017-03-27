@@ -113,7 +113,7 @@ player-top-btns .view-songs~.song-list-holder .song-list{width: 500px;float: non
 .player-top-btns .publish~.publish-options .submit-holder .btn{color: #FB4330;font-family: 'GothamRBd';}
 .player-top-btns .publish~.publish-options .submit-holder .btn img{width: 27px;display: inline-block;vertical-align: middle;margin: 5px 12px 6px -40px;}
 
-.player-top-btns .view-songs~.song-list-holder .song-list{width: 500px;float: none;position: absolute;z-index: -1;margin: 10px 0 0 35px;opacity: 0;transition: opacity .25s ease;height: 400px;overflow: scroll;box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);border-radius: 5px;}
+.player-top-btns .view-songs~.song-list-holder .song-list{width: 500px;float: none;position: absolute;z-index: -1;margin: 10px 0 0 35px;opacity: 0;transition: opacity .25s ease;max-height: 400px;overflow: scroll;box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);border-radius: 5px;}
 .player-top-btns .view-songs~.song-list-holder .song-list .song{height: 80px;width: 100%;display:block;text-decoration: none !important;}
 .player-top-btns .view-songs~.song-list-holder .song-list .song:nth-child(even){background: #FFFFFF;}
 .player-top-btns .view-songs~.song-list-holder .song-list .song:nth-child(odd){background: #F4F4F4;}
