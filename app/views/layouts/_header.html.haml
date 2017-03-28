@@ -11,8 +11,9 @@
       - if current_user.blank?
         / %a{ href: "#", 'data-toggle': "modal", 'data-target': '#signupModal' }
         /   Sign Up
-        %a{ href: "#", 'data-toggle': "modal", 'data-target': "#loginModal" }
-          Add Your Songs
+        - unless request.user_agent =~ /Mobile|webOS/
+          %a{ href: "#", 'data-toggle': "modal", 'data-target': "#loginModal" }
+            Add Your Songs
       - else
         %ul.list-unstyled
           %li.dropdown.txt
