@@ -607,3 +607,19 @@ input, textarea {
   user-select: text;
   font-family: 'Roboto', sans-serif;
 }
+
+.load-spinner
+{
+    display : none;
+    position : fixed;
+    z-index: 100;
+    background-image : image-url('loading.gif');
+    background-color:#666;
+    opacity : 0.4;
+    background-repeat : no-repeat;
+    background-position : center;
+    left : 0;
+    bottom : 0;
+    right : 0;
+    top : 0;
+}

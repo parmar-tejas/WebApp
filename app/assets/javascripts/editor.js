@@ -216,9 +216,10 @@ function publish_song() {
       chords:     punchlist.to_models(),
       id:         $('#song_id').val()
     }
+    $('.load-spinner').show();
     $.post('/api/v1/add.json', JSON.stringify(songdata) )
-    .done( function(resp)     { swal("Success!", resp.message, "success"); songlist.fetch(); toggle_pub_button(); } )
-    .fail( function(resp) { swal("Upload Failed!", resp.message, "error"); } );
+    .done( function(resp)     { $('.load-spinner').hide(); swal("Success!", resp.message, "success"); songlist.fetch(); toggle_pub_button(); } )
+    .fail( function(resp) { $('.load-spinner').hide(); swal("Upload Failed!", resp.message, "error"); } );
   } else {
     swal("Error", 'Please fill Title, Artist, Genre and Difficulty', "error");
   }
@@ -230,9 +231,10 @@ function save_song() {
     chords:     punchlist.to_models(),
     id:         $('#song_id').val()
   }
+  $('.load-spinner').show();
   $.post('/api/v1/save_song.json', JSON.stringify(songdata) )
-  .done( function(resp)     { swal("Success!", resp.message, "success"); songlist.fetch(); } )
-  .fail( function(resp) { swal("Upload Failed!", resp.message, "error"); } );
+  .done( function(resp)     { $('.load-spinner').hide(); swal("Success!", resp.message, "success"); songlist.fetch(); } )
+  .fail( function(resp) { $('.load-spinner').hide(); swal("Upload Failed!", resp.message, "error"); } );
 }
 
 function toggle_pub_button() {
