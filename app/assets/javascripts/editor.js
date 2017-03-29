@@ -136,8 +136,8 @@ function load_song(song) {
   for(var i=0; i<song.punches.length; i++) {
     punches.push( new Punch(song.punches[i].time, song.punches[i].chord) );
   }
-  punchlist.load(punches);
   palette.load(punches);
+  punchlist.load(punches);
   ytplayer.load(song.youtube_id);
 }
 

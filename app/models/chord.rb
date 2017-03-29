@@ -24,4 +24,30 @@ class Chord < ApplicationRecord
     else nil
     end
   end
+
+  def self.note_name(root_value)
+    case root_value
+      when 1       then 'C'
+      when 2       then 'C#'
+      when 3       then 'D'
+      when 4       then 'Eb'
+      when 5       then 'E'
+      when 6       then 'F'
+      when 7       then 'F#'
+      when 8       then 'G'
+      when 9       then 'G#'
+      when 10      then 'A'
+      when 11      then 'Ba'
+      when 12      then 'B'
+      else nil
+    end
+  end
+
+  def self.color_code_hash
+    color_codes = {}
+    Chord.all.each do |chord|
+      color_codes["#{Chord.note_name(chord.root)} #{chord.quality}"] = chord.color_code
+    end
+    return color_codes
+  end
 end

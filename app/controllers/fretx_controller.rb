@@ -31,6 +31,7 @@ class FretxController < ApplicationController
     @my_songs = Song.where(
                   uploaded_by: current_user.id
                 ) if current_user
+    @color_codes = Chord.color_code_hash.to_json
 
   end
 

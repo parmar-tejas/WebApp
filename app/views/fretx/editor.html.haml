@@ -65,7 +65,8 @@
 .load-spinner
 
 
-:javascript  
+:javascript
+  Chord.color_codes = JSON.parse('#{@color_codes}')
   $('.player-top-btns .view-songs').click(function(){
     $(this).addClass('input-visible');
     $(this).children('.custom-input').focus();
