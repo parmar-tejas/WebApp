@@ -112,7 +112,19 @@ Object.assign( Timeline.prototype, {
     this.scale.innerHTML = '';
     var i=1;
     for(; i<this.state.duration; i++) {
-      let tick = this.generateTick(i,1);
+      tick = this.generateTick(i,1);
+      if(this.state.zoom == 0.75){
+        i += 2
+        tick = this.generateTick(i,3);
+      }
+      else if(this.state.zoom == 0.5){
+        i += 3
+        tick = this.generateTick(i,4);
+      }
+      else if(this.state.zoom == 0.25){
+        i += 4
+        tick = this.generateTick(i,5);
+      }
       this.scale.appendChild(tick);
     }
     let tick = this.generateTick(null,this.state.duration-i+1);
