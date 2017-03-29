@@ -33,7 +33,7 @@
                 = text_field_tag 'artist', (@song.nil? ? '' : @song.artist), class: 'form-control', placeholder: 'Artist', required: true
                 = hidden_field_tag 'song_id', (@song.nil? ? '' : @song.id)
               .form-group
-                = text_field_tag 'title', (@song.nil? ? '' : @song.title), class: 'form-control', placeholder: 'Title', required: true
+                = text_field_tag 'title', (@song.nil? ? '' : @song.song_title), class: 'form-control', placeholder: 'Title', required: true
               .form-group
                 = select_tag "genreSelect", options_for_select(select_genre_data, (@song.nil? ? '' : @song.genre_id)), class: "form-control", prompt: "Select Genre", id: "genreSelect",required: true
               .form-group

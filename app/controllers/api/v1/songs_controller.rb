@@ -29,7 +29,7 @@ class Api::V1::SongsController < Api::ApiController
       'DISTINCT ON(youtube_id) id,
       uploaded_on,
       youtube_id,
-      title,
+      song_title,
       punches,
       published'
       ).where(
@@ -70,7 +70,7 @@ class Api::V1::SongsController < Api::ApiController
       youtube_id: data['youtube_id']
     ) if song.blank?
     unless song.published
-      song.title         = data['title']
+      song.song_title    = data['title']
       song.punches       = data['chords']
       song.artist        = data['artist']
       song.genre_id      = data['genre']
