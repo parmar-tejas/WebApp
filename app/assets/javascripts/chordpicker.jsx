@@ -162,18 +162,18 @@ rootlist.prototype = {
   },
 
   roots: [
-    { val:12, label:'B' },
-    { val:11, label:'Bb' },
-    { val:10, label:'A' },
-    { val: 9, label:'G#' },
-    { val: 8, label:'G' },
-    { val: 7, label:'F#' },
-    { val: 6, label:'F' },
-    { val: 5, label:'E' },
-    { val: 4, label:'Eb' },
-    { val: 3, label:'D' },
-    { val: 2, label:'C#' },
     { val: 1, label:'C' },
+    { val: 2, label:'C#' },
+    { val: 3, label:'D' },
+    { val: 4, label:'Eb' },
+    { val: 5, label:'E' },
+    { val: 6, label:'F' },
+    { val: 7, label:'F#' },
+    { val: 8, label:'G' },
+    { val: 9, label:'G#' },
+    { val:10, label:'A' },
+    { val:11, label:'Bb' },
+    { val:12, label:'B' },
     { val: 0, label:'No Chord' }
   ]
 }
