@@ -177,7 +177,7 @@ function get_searched_song(e) {
                                '<div class="song-info">' +
                                '<img src="//img.youtube.com/vi/'+data[i].youtube_id+'/1.jpg" alt="">' +
                                '<h4>'+data[i].artist+'</h4>' +
-                               '<h5>'+data[i].title+'</h5>' +
+                               '<h5>'+data[i].song_title+'</h5>' +
                                '</div>' +
                                '</a>'
                               );

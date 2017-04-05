@@ -48,7 +48,7 @@ class Api::V1::SongsController < Api::ApiController
       youtube_id,
       youtube_id || id as fretx_id,
       uploaded_on,
-      title,
+      song_title,
       punches,
       genre_id,
       difficulty_id,
@@ -116,7 +116,7 @@ class Api::V1::SongsController < Api::ApiController
     if params[:title]
       conditions[0] = "published = ?"
       conditions << true
-      conditions[0] = conditions[0] + ' and (lower(title) like ? or lower(artist) like ?)'
+      conditions[0] = conditions[0] + ' and (lower(song_title) like ? or lower(artist) like ?)'
       conditions << "%#{params[:title].downcase}%"
       conditions << "%#{params[:title].downcase}%"
       if params[:genre].to_i > 0
@@ -133,7 +133,7 @@ class Api::V1::SongsController < Api::ApiController
               :youtube_id,
               :uploaded_on,
               :youtube_id,
-              :title,
+              :song_title,
               :artist,
               :punches
             ).where(
@@ -142,7 +142,7 @@ class Api::V1::SongsController < Api::ApiController
               uploaded_on: :DESC
             ).first(10)
     regexp = /#{params[:title].downcase}/i;
-    songs = songs.sort{ |x, y| (x.title =~ regexp) <=> (y.title =~ regexp) }
+    songs = songs.sort{ |x, y| (x.song_title =~ regexp) <=> (y.song_title =~ regexp) }
     success_response(songs)
   end
 
