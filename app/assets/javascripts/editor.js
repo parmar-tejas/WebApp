@@ -32,6 +32,7 @@ $(document).ready(function() {
       if(!match && yt_url.length != 11) {
         swal("Syntax Not Match!", "Url is not valid!", "error");
       } else {
+          $('.load-spinner').show();
           var video_id = yt_url.length == 11 ? yt_url : match[1];
           $('#add_new_song_url').val(video_id);
           $('#create_new').attr('action', '/create_new_song');
