@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def prepare_for_mobile
     if request.user_agent =~ /Mobile|webOS/ && request.path != '/mobile_app'
-      unless request.user_agent =~ /iPhone/ && action_name != 'editor'
+      unless request.user_agent =~ /iPhone|iPad/ && action_name != 'editor'
         redirect_to mobileapp_path
       end
     end
