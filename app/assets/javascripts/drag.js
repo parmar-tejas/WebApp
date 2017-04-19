@@ -2,16 +2,18 @@ interact('.resize-drag').resizable({
   preserveAspectRatio: true,
   edges: { left: true, right: true }
 }).on('resizemove', function (event) {
-  console.log('Resize Move' + event.target.id);
   var target = event.target;
-  var next_target = null;
+  var next_target = event.target.nextElementSibling;
   var edges = 'r';
+  var punch_direction = 'r';
+  var new_next_target_width = null;
 
-  if(event.deltaRect.left > 0 || event.deltaRect.left < 0) {
+  if(event.dx <= 0) {
+    punch_direction = 'l'
+  }
+  if(event.edges.left) {
+    edges = 'l'
     next_target = event.target.previousElementSibling;
-    edges = 'l';
-  } else {
-    next_target = event.target.nextElementSibling;
   }
 
   // Update next target width
@@ -20,26 +22,49 @@ interact('.resize-drag').resizable({
   if(next_target) {
     next_target_width = parseInt(next_target.style.width);
     new_next_target_width = next_target_width + move_diff;
-    next_target.style.width  = new_next_target_width + 'px';
   }
 
-  // update the element's style
-  target.style.width  = event.rect.width + 'px';
-
-  var index = $('.chord').index(target);
+  var index = $('.chord.resize-drag').index(target);
   punch = timeline.state.punches[index];
   if(punch) {
     if(edges == 'l') {
       punch.time = timeline.px_to_s(timeline.s_to_px(punch.time) + move_diff).toString();
-      if(index == 0) {
-        target.style.marginLeft = timeline.s_to_ems(punch.time) + 'em';
+      if(index == 0 && punch.time <= 0) {
+        punch.time = 0;
+      } else {
+        if(next_target) {
+          next_target.style.width  = new_next_target_width + 'px';
+        }
+        target.style.width  = event.rect.width + 'px';
+        if(index == 0) {
+          target.style.marginLeft = timeline.s_to_ems(punch.time) + 'em';
+        }
       }
-    } else {
-      adj_node = punch._next_node;
-      if(adj_node) {
-        old_width = timeline.s_to_px(adj_node.time) - timeline.s_to_px(punch.time);
-        difference = old_width - width
-        adj_node.time = timeline.px_to_s(timeline.s_to_px(adj_node.time) - difference).toString();
+    } else if(edges == 'r') {
+      if(punch_direction == 'r' && $('.chord.resize-drag').length == index + 1 ){
+        next_time = timeline.px_to_s(timeline.s_to_px(punch.time) + event.rect.width).toString();
+        if(next_time <= ytplayer._duration) {
+          target.style.width  = event.rect.width + 'px';
+        }
+        adj_node = punch._next_node;
+        if(adj_node) {
+          adj_node.time = timeline.px_to_s(timeline.s_to_px(ytplayer._duration)).toString();
+        }
+      } else {
+        if(next_target) {
+          next_target.style.width  = new_next_target_width + 'px';
+        }
+        next_time = timeline.px_to_s(timeline.s_to_px(punch.time) + event.rect.width).toString();
+        if(next_time <= ytplayer._duration) {
+          target.style.width  = event.rect.width + 'px';
+        }
+
+        adj_node = punch._next_node;
+        if(adj_node) {
+          old_width = timeline.s_to_px(adj_node.time) - timeline.s_to_px(punch.time);
+          difference = old_width - width
+          adj_node.time = timeline.px_to_s(timeline.s_to_px(adj_node.time) - difference).toString();
+        }
       }
     }
   }
