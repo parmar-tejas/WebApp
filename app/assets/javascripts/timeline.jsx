@@ -152,7 +152,7 @@ Object.assign( Timeline.prototype, {
       <div id='${punch.time}' class='chord resize-drag' style='${width}${color}' >
         <div class='gloss'></div>
         <div class='chordname'>${punch.chord}</div>
-        <div class='delete' onClick="Punchlist.prototype.del_punch_from_rv('${punch._rv}')" >X</div>
+        <div class='delete' onClick="Punchlist.prototype.del_punch_from_time('${punch._time}')" >X</div>
       </div>
     `.untab(6));
   }

@@ -16,9 +16,19 @@ Punchlist.prototype = {
   get prev_punch()    { return( this.punches[this.current_index - 1 ] ); },
 
 	add_punch(punch) {
-    this.punches.push( new Punch(punch.time, punch.chord) );
-    this.punches.sort( SortByTime );
-    this._on_list_change();
+    if(punch.time < ytplayer._duration){
+      this.punches.push( new Punch(punch.time, punch.chord) );
+      this.punches.sort( SortByTime );
+      this.punches = this.punches.reduce(function(memo, e1){
+        var matches = memo.filter(function(e2){
+          return e1.time == e2.time
+        })
+        if (matches.length == 0)
+          memo.push(e1)
+          return memo;
+      }, [])
+      this._on_list_change();
+    }
 	},
 
 	add_punches(punches) {
@@ -36,11 +46,11 @@ Punchlist.prototype = {
     this._on_punch_change();
 	},
 
-  del_punch_from_rv(_rv) {
+  del_punch_from_time(time) {
     punch = null;
     index = null;
     for(i = 0; i < punchlist.punches.length; i++){
-      if(punchlist.punches[i]._rv == _rv) {
+      if(punchlist.punches[i]._time == time) {
         punch = punchlist.punches[i];
         index = i
       }
