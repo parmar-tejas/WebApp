@@ -3,9 +3,9 @@
   menu priority: 2
   permit_params(
     :youtube_id,
-    :title,
     :punches,
-    :uploaded_on,
+    :created_at,
+    :updated_at,
     :artist,
     :song_title,
     :uploaded_by,
@@ -18,8 +18,6 @@
   index do
     selectable_column
     id_column
-    column :title
-    column :uploaded_on
     column :artist
     column :song_title
     column 'Uploaded By' do |song|
@@ -29,14 +27,17 @@
     end
     column :genre
     column :difficulty
+    column :created_at
+    column :updated_at
     column :published
     column :promotion
     actions
   end
 
-  filter :title
-  filter :uploaded_on
+  filter :created_at
+  filter :updated_at
   filter :artist
+  filter :song_title
   filter :genre
   filter :difficulty
   filter :published
@@ -56,7 +57,6 @@
   form do |f|
     f.inputs "Song" do
       f.input :youtube_id
-      f.input :title
       f.input :artist
       f.input :song_title
       f.input :genre
@@ -80,11 +80,11 @@
     panel "Song" do
       attributes_table_for song do
         row :youtube_id
-        row :title
         row :punches
-        row :uploaded_on
         row :artist
         row :song_title
+        row :created_at
+        row :updated_at
         row :uploaded_by
         row :genre
         row :difficulty
