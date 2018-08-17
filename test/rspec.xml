@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rspec" tests="124" skipped="0" failures="8" errors="0" time="8.671295" timestamp="2018-08-16T14:26:52+05:30" hostname="Tejas">
+<properties>
+<property name="seed" value="63281"/>
+</properties>
+<testcase classname="spec.models.hour_type_spec" name="HourType validations should belong to company" file="./spec/models/hour_type_spec.rb" time="0.024247"></testcase>
+<testcase classname="spec.models.hour_type_spec" name="HourType validations should validate that :name is case-sensitively unique within the scope of :company_id" file="./spec/models/hour_type_spec.rb" time="0.365726"></testcase>
+<testcase classname="spec.models.hour_type_spec" name="HourType validations should validate that :name cannot be empty/falsy" file="./spec/models/hour_type_spec.rb" time="0.005637"></testcase>
+<testcase classname="spec.controllers.api.v1.projects_controller_spec" name="Api::V1::ProjectsController GET #index returns all projects as json" file="./spec/controllers/api/v1/projects_controller_spec.rb" time="0.279921"><failure message="
+expected: &quot;[{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Argelia Christiansen\&quot;,\&quot;description\&quot;:\&quot;5 \\tPM36앴 @\\u0007닭G l7\\u001d\u1CA3...T08:56:52.918Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:52.918Z\&quot;,\&quot;created_by\&quot;:9,\&quot;updated_by\&quot;:null}]&quot;
+     got: &quot;{\&quot;pagination\&quot;:{\&quot;count\&quot;:0,\&quot;has_more_items\&quot;:true,\&quot;total_items\&quot;:0,\&quot;offset\&quot;:0,\&quot;limit\&quot;:20},\&quot;entries\&quot;:[]}&quot;
+
+(compared using ==)
+" type="RSpec::Expectations::ExpectationNotMetError">Failure/Error: expect(response.body).to eq ActiveModel::Serializer.serializer_for(customer.projects).new(customer.projects).to_json
+
+  expected: &quot;[{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Argelia Christiansen\&quot;,\&quot;description\&quot;:\&quot;5 \\tPM36앴 @\\u0007닭G l7\\u001d\u1CA3...T08:56:52.918Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:52.918Z\&quot;,\&quot;created_by\&quot;:9,\&quot;updated_by\&quot;:null}]&quot;
+       got: &quot;{\&quot;pagination\&quot;:{\&quot;count\&quot;:0,\&quot;has_more_items\&quot;:true,\&quot;total_items\&quot;:0,\&quot;offset\&quot;:0,\&quot;limit\&quot;:20},\&quot;entries\&quot;:[]}&quot;
+
+  (compared using ==)
+./spec/controllers/api/v1/projects_controller_spec.rb:22:in `block (3 levels) in &lt;top (required)&gt;&apos;
+./spec/rails_helper.rb:71:in `block (3 levels) in &lt;top (required)&gt;&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/generic/base.rb:16:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/base.rb:100:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:86:in `block (2 levels) in cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:87:in `cleaning&apos;
+./spec/rails_helper.rb:70:in `block (2 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
+<testcase classname="spec.controllers.api.v1.projects_controller_spec" name="Api::V1::ProjectsController GET #index responds with 401 when unauthorized" file="./spec/controllers/api/v1/projects_controller_spec.rb" time="0.062403"></testcase>
+<testcase classname="spec.controllers.api.v1.projects_controller_spec" name="Api::V1::ProjectsController PUT #update returns errors" file="./spec/controllers/api/v1/projects_controller_spec.rb" time="0.091159"><failure message="
+expected: &quot;{\&quot;status\&quot;:\&quot;Error\&quot;,\&quot;message\&quot;:\&quot;Name can&apos;t be blank\&quot;}&quot;
+     got: &quot;{\&quot;status\&quot;:\&quot;Error\&quot;,\&quot;message\&quot;:\&quot;Record not found\&quot;}&quot;
+
+(compared using ==)
+" type="RSpec::Expectations::ExpectationNotMetError">Failure/Error: expect(response.body).to eq({&quot;status&quot;: &quot;Error&quot;, &quot;message&quot;: &quot;Name can&apos;t be blank&quot; }.to_json)
+
+  expected: &quot;{\&quot;status\&quot;:\&quot;Error\&quot;,\&quot;message\&quot;:\&quot;Name can&apos;t be blank\&quot;}&quot;
+       got: &quot;{\&quot;status\&quot;:\&quot;Error\&quot;,\&quot;message\&quot;:\&quot;Record not found\&quot;}&quot;
+
+  (compared using ==)
+./spec/controllers/api/v1/projects_controller_spec.rb:98:in `block (3 levels) in &lt;top (required)&gt;&apos;
+./spec/rails_helper.rb:71:in `block (3 levels) in &lt;top (required)&gt;&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/generic/base.rb:16:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/base.rb:100:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:86:in `block (2 levels) in cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:87:in `cleaning&apos;
+./spec/rails_helper.rb:70:in `block (2 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
+<testcase classname="spec.controllers.api.v1.projects_controller_spec" name="Api::V1::ProjectsController PUT #update Record Updated Successfully" file="./spec/controllers/api/v1/projects_controller_spec.rb" time="0.102558"><failure message="
+expected: &quot;{\&quot;status\&quot;:\&quot;Success\&quot;,\&quot;message\&quot;:\&quot;Record Updated Successfully\&quot;,\&quot;id\&quot;:1}&quot;
+     got: &quot;{\&quot;status\&quot;:\&quot;Error\&quot;,\&quot;message\&quot;:\&quot;Record not found\&quot;}&quot;
+
+(compared using ==)
+" type="RSpec::Expectations::ExpectationNotMetError">Failure/Error: expect(response.body).to eq({&quot;status&quot;: &quot;Success&quot;, &quot;message&quot;: &quot;Record Updated Successfully&quot;, &quot;id&quot;: project_1.id }.to_json)
+
+  expected: &quot;{\&quot;status\&quot;:\&quot;Success\&quot;,\&quot;message\&quot;:\&quot;Record Updated Successfully\&quot;,\&quot;id\&quot;:1}&quot;
+       got: &quot;{\&quot;status\&quot;:\&quot;Error\&quot;,\&quot;message\&quot;:\&quot;Record not found\&quot;}&quot;
+
+  (compared using ==)
+./spec/controllers/api/v1/projects_controller_spec.rb:84:in `block (3 levels) in &lt;top (required)&gt;&apos;
+./spec/rails_helper.rb:71:in `block (3 levels) in &lt;top (required)&gt;&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/generic/base.rb:16:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/base.rb:100:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:86:in `block (2 levels) in cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:87:in `cleaning&apos;
+./spec/rails_helper.rb:70:in `block (2 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
+<testcase classname="spec.controllers.api.v1.projects_controller_spec" name="Api::V1::ProjectsController PUT #update responds with 401 when unauthorized" file="./spec/controllers/api/v1/projects_controller_spec.rb" time="0.048661"></testcase>
+<testcase classname="spec.controllers.api.v1.projects_controller_spec" name="Api::V1::ProjectsController DELETE #destroy Record Deleted Successfully" file="./spec/controllers/api/v1/projects_controller_spec.rb" time="0.070288"><failure message="expected `Project.count` to have changed by -1, but was changed by 0" type="RSpec::Expectations::ExpectationNotMetError">Failure/Error:
+  expect do
+    post :destroy, format: :json, params: {
+      id: project_1.id
+    }
+  end. to change(Project, :count).by(-1)
+
+  expected `Project.count` to have changed by -1, but was changed by 0
+./spec/controllers/api/v1/projects_controller_spec.rb:107:in `block (3 levels) in &lt;top (required)&gt;&apos;
+./spec/rails_helper.rb:71:in `block (3 levels) in &lt;top (required)&gt;&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/generic/base.rb:16:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/base.rb:100:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:86:in `block (2 levels) in cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:87:in `cleaning&apos;
+./spec/rails_helper.rb:70:in `block (2 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
+<testcase classname="spec.controllers.api.v1.projects_controller_spec" name="Api::V1::ProjectsController DELETE #destroy responds with 401 when unauthorized" file="./spec/controllers/api/v1/projects_controller_spec.rb" time="0.042072"></testcase>
+<testcase classname="spec.controllers.api.v1.projects_controller_spec" name="Api::V1::ProjectsController POST #create returns errors" file="./spec/controllers/api/v1/projects_controller_spec.rb" time="0.065375"></testcase>
+<testcase classname="spec.controllers.api.v1.projects_controller_spec" name="Api::V1::ProjectsController POST #create Record Created Successfully" file="./spec/controllers/api/v1/projects_controller_spec.rb" time="0.067451"></testcase>
+<testcase classname="spec.controllers.api.v1.projects_controller_spec" name="Api::V1::ProjectsController POST #create responds with 401 when unauthorized" file="./spec/controllers/api/v1/projects_controller_spec.rb" time="0.056551"></testcase>
+<testcase classname="spec.controllers.api.v1.projects_controller_spec" name="Api::V1::ProjectsController GET #show returns record not found" file="./spec/controllers/api/v1/projects_controller_spec.rb" time="0.088841"></testcase>
+<testcase classname="spec.controllers.api.v1.projects_controller_spec" name="Api::V1::ProjectsController GET #show returns customer as json" file="./spec/controllers/api/v1/projects_controller_spec.rb" time="0.068071"><failure message="
+expected: &quot;{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Elisha Douglas PhD\&quot;,\&quot;description\&quot;:\&quot;0\\b\u{7B4D7}Q\u{E8E5E}翤虄 \u{85FD5}禗ⵆ@͘\...6T08:56:53.755Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:53.755Z\&quot;,\&quot;created_by\&quot;:9,\&quot;updated_by\&quot;:null}&quot;
+     got: &quot;{\&quot;status\&quot;:\&quot;Error\&quot;,\&quot;message\&quot;:\&quot;Record not found\&quot;}&quot;
+
+(compared using ==)
+" type="RSpec::Expectations::ExpectationNotMetError">Failure/Error: expect(response.body).to eq ProjectSerializer.new(project_1).to_json
+
+  expected: &quot;{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Elisha Douglas PhD\&quot;,\&quot;description\&quot;:\&quot;0\\b\u{7B4D7}Q\u{E8E5E}翤虄 \u{85FD5}禗ⵆ@͘\...6T08:56:53.755Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:53.755Z\&quot;,\&quot;created_by\&quot;:9,\&quot;updated_by\&quot;:null}&quot;
+       got: &quot;{\&quot;status\&quot;:\&quot;Error\&quot;,\&quot;message\&quot;:\&quot;Record not found\&quot;}&quot;
+
+  (compared using ==)
+./spec/controllers/api/v1/projects_controller_spec.rb:33:in `block (3 levels) in &lt;top (required)&gt;&apos;
+./spec/rails_helper.rb:71:in `block (3 levels) in &lt;top (required)&gt;&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/generic/base.rb:16:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/base.rb:100:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:86:in `block (2 levels) in cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:87:in `cleaning&apos;
+./spec/rails_helper.rb:70:in `block (2 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
+<testcase classname="spec.controllers.api.v1.projects_controller_spec" name="Api::V1::ProjectsController GET #show responds with 401 when unauthorized" file="./spec/controllers/api/v1/projects_controller_spec.rb" time="0.051484"></testcase>
+<testcase classname="spec.models.customer_spec" name="Customer validations should belong to company" file="./spec/models/customer_spec.rb" time="0.003012"></testcase>
+<testcase classname="spec.models.customer_spec" name="Customer validations should have many projects" file="./spec/models/customer_spec.rb" time="0.002770"></testcase>
+<testcase classname="spec.models.customer_spec" name="Customer validations should validate that :name is case-sensitively unique within the scope of :company_id" file="./spec/models/customer_spec.rb" time="0.070870"></testcase>
+<testcase classname="spec.models.customer_spec" name="Customer validations should validate that :name cannot be empty/falsy" file="./spec/models/customer_spec.rb" time="0.007115"></testcase>
+<testcase classname="spec.models.customer_spec" name="Customer validations should validate that the length of :color is at most 9" file="./spec/models/customer_spec.rb" time="0.012826"></testcase>
+<testcase classname="spec.serializers.company_holiday_serializer_spec" name="CompanyHolidaySerializer#serialized_json should eq &quot;{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Enrique Orn\&quot;,\&quot;date\&quot;:\&quot;2017-06-21\&quot;,\&quot;company_id\&quot;:1,\&quot;created_at\&quot;:\&quot;2018-08...6T08:56:54.003Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:54.003Z\&quot;,\&quot;created_by\&quot;:7,\&quot;updated_by\&quot;:null}&quot;" file="./spec/serializers/company_holiday_serializer_spec.rb" time="0.073712"></testcase>
+<testcase classname="spec.requests.authentication_spec" name="Authentication POST oauth/token When request is valid returns an authentication token" file="./spec/requests/authentication_spec.rb" time="0.345692"></testcase>
+<testcase classname="spec.requests.authentication_spec" name="Authentication POST oauth/token When request is invalid returns a failure message" file="./spec/requests/authentication_spec.rb" time="0.033313"></testcase>
+<testcase classname="spec.controllers.api.v1.hour_types_controller_spec" name="Api::V1::HourTypesController POST #create Record Created Successfully" file="./spec/controllers/api/v1/hour_types_controller_spec.rb" time="0.067234"></testcase>
+<testcase classname="spec.controllers.api.v1.hour_types_controller_spec" name="Api::V1::HourTypesController POST #create returns errors" file="./spec/controllers/api/v1/hour_types_controller_spec.rb" time="0.053888"></testcase>
+<testcase classname="spec.controllers.api.v1.hour_types_controller_spec" name="Api::V1::HourTypesController POST #create responds with 401 when unauthorized" file="./spec/controllers/api/v1/hour_types_controller_spec.rb" time="0.063389"></testcase>
+<testcase classname="spec.controllers.api.v1.hour_types_controller_spec" name="Api::V1::HourTypesController PUT #update Record Updated Successfully" file="./spec/controllers/api/v1/hour_types_controller_spec.rb" time="0.052933"></testcase>
+<testcase classname="spec.controllers.api.v1.hour_types_controller_spec" name="Api::V1::HourTypesController PUT #update responds with 401 when unauthorized" file="./spec/controllers/api/v1/hour_types_controller_spec.rb" time="0.048994"></testcase>
+<testcase classname="spec.controllers.api.v1.hour_types_controller_spec" name="Api::V1::HourTypesController PUT #update returns errors" file="./spec/controllers/api/v1/hour_types_controller_spec.rb" time="0.053663"></testcase>
+<testcase classname="spec.controllers.api.v1.hour_types_controller_spec" name="Api::V1::HourTypesController DELETE #destroy Record Deleted Successfully" file="./spec/controllers/api/v1/hour_types_controller_spec.rb" time="0.066800"></testcase>
+<testcase classname="spec.controllers.api.v1.hour_types_controller_spec" name="Api::V1::HourTypesController DELETE #destroy responds with 401 when unauthorized" file="./spec/controllers/api/v1/hour_types_controller_spec.rb" time="0.044530"></testcase>
+<testcase classname="spec.controllers.api.v1.hour_types_controller_spec" name="Api::V1::HourTypesController GET #index returns all hour types of company as json" file="./spec/controllers/api/v1/hour_types_controller_spec.rb" time="0.052983"><failure message="
+expected: &quot;[{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Marlen Ledner\&quot;,\&quot;amount_time_bank\&quot;:\&quot;389405.712\&quot;,\&quot;amount_salary\&quot;:\&quot;125479...T08:56:54.883Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:54.883Z\&quot;,\&quot;created_by\&quot;:3,\&quot;updated_by\&quot;:null}]&quot;
+     got: &quot;{\&quot;pagination\&quot;:{\&quot;count\&quot;:4,\&quot;has_more_items\&quot;:false,\&quot;total_items\&quot;:4,\&quot;offset\&quot;:0,\&quot;limit\&quot;:20},\...y\&quot;:null,\&quot;created_at\&quot;:\&quot;2018-08-16T08:56:54.883Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:54.883Z\&quot;}]}&quot;
+
+(compared using ==)
+" type="RSpec::Expectations::ExpectationNotMetError">Failure/Error: expect(response.body).to eq ActiveModel::Serializer.serializer_for(company.hour_types).new(company.hour_types).to_json
+
+  expected: &quot;[{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Marlen Ledner\&quot;,\&quot;amount_time_bank\&quot;:\&quot;389405.712\&quot;,\&quot;amount_salary\&quot;:\&quot;125479...T08:56:54.883Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:54.883Z\&quot;,\&quot;created_by\&quot;:3,\&quot;updated_by\&quot;:null}]&quot;
+       got: &quot;{\&quot;pagination\&quot;:{\&quot;count\&quot;:4,\&quot;has_more_items\&quot;:false,\&quot;total_items\&quot;:4,\&quot;offset\&quot;:0,\&quot;limit\&quot;:20},\...y\&quot;:null,\&quot;created_at\&quot;:\&quot;2018-08-16T08:56:54.883Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:54.883Z\&quot;}]}&quot;
+
+  (compared using ==)
+./spec/controllers/api/v1/hour_types_controller_spec.rb:21:in `block (3 levels) in &lt;top (required)&gt;&apos;
+./spec/rails_helper.rb:71:in `block (3 levels) in &lt;top (required)&gt;&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/generic/base.rb:16:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/base.rb:100:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:86:in `block (2 levels) in cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:87:in `cleaning&apos;
+./spec/rails_helper.rb:70:in `block (2 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
+<testcase classname="spec.controllers.api.v1.hour_types_controller_spec" name="Api::V1::HourTypesController GET #index responds with 401 when unauthorized" file="./spec/controllers/api/v1/hour_types_controller_spec.rb" time="0.035861"></testcase>
+<testcase classname="spec.controllers.api.v1.hour_types_controller_spec" name="Api::V1::HourTypesController GET #show responds with 401 when unauthorized" file="./spec/controllers/api/v1/hour_types_controller_spec.rb" time="0.068439"></testcase>
+<testcase classname="spec.controllers.api.v1.hour_types_controller_spec" name="Api::V1::HourTypesController GET #show returns record not found" file="./spec/controllers/api/v1/hour_types_controller_spec.rb" time="0.073218"></testcase>
+<testcase classname="spec.controllers.api.v1.hour_types_controller_spec" name="Api::V1::HourTypesController GET #show returns hour type as json" file="./spec/controllers/api/v1/hour_types_controller_spec.rb" time="0.109330"></testcase>
+<testcase classname="spec.models.task_spec" name="Task validations should validate that :name cannot be empty/falsy" file="./spec/models/task_spec.rb" time="0.014834"></testcase>
+<testcase classname="spec.models.task_spec" name="Task validations should belong to project" file="./spec/models/task_spec.rb" time="0.003005"></testcase>
+<testcase classname="spec.serializers.company_department_serializer_spec" name="CompanyDepartmentSerializer#serialized_json should eq &quot;{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Antonia Christiansen DDS\&quot;,\&quot;parent_id\&quot;:6,\&quot;company_id\&quot;:1,\&quot;created_at\&quot;:\&quot;20...6T08:56:55.246Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:55.246Z\&quot;,\&quot;created_by\&quot;:8,\&quot;updated_by\&quot;:null}&quot;" file="./spec/serializers/company_department_serializer_spec.rb" time="0.040763"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController POST #create Record Created Successfully" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.085230"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController POST #create returns errors" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.075757"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController POST #create responds with 401 when unauthorized" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.056717"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController GET #index returns all holidays of company as json" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.057315"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController GET #index responds with 401 when unauthorized" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.054321"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController DELETE #destroy Record Deleted Successfully" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.040495"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController DELETE #destroy responds with 401 when unauthorized" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.042371"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController GET #show returns record not found" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.056640"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController GET #show responds with 401 when unauthorized" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.050311"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController GET #show responds with 401 when unauthorized" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.043746"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController GET #show returns holiday as json" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.054669"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController PUT #update returns errors" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.077905"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController PUT #update Record Updated Successfully" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.196973"></testcase>
+<testcase classname="spec.controllers.api.v1.company.holidays_controller_spec" name="Api::V1::Company::HolidaysController PUT #update responds with 401 when unauthorized" file="./spec/controllers/api/v1/company/holidays_controller_spec.rb" time="0.057833"></testcase>
+<testcase classname="spec.models.company_holiday_spec" name="CompanyHoliday validations should validate that :date is case-sensitively unique within the scope of :company_id" file="./spec/models/company_holiday_spec.rb" time="0.045948"></testcase>
+<testcase classname="spec.models.company_holiday_spec" name="CompanyHoliday validations should belong to company" file="./spec/models/company_holiday_spec.rb" time="0.002329"></testcase>
+<testcase classname="spec.models.company_holiday_spec" name="CompanyHoliday validations should validate that :date cannot be empty/falsy" file="./spec/models/company_holiday_spec.rb" time="0.006842"></testcase>
+<testcase classname="spec.models.company_holiday_spec" name="CompanyHoliday validations should validate that :name cannot be empty/falsy" file="./spec/models/company_holiday_spec.rb" time="0.007505"></testcase>
+<testcase classname="spec.models.company_holiday_spec" name="CompanyHoliday validations should validate that :created_by cannot be empty/falsy" file="./spec/models/company_holiday_spec.rb" time="0.007091"></testcase>
+<testcase classname="spec.models.company_department_spec" name="CompanyDepartment validations should validate that :created_by cannot be empty/falsy" file="./spec/models/company_department_spec.rb" time="0.009484"></testcase>
+<testcase classname="spec.models.company_department_spec" name="CompanyDepartment validations should validate that :name cannot be empty/falsy" file="./spec/models/company_department_spec.rb" time="0.006742"></testcase>
+<testcase classname="spec.models.company_department_spec" name="CompanyDepartment validations should validate that :parent_id cannot be empty/falsy" file="./spec/models/company_department_spec.rb" time="0.006898"></testcase>
+<testcase classname="spec.models.company_department_spec" name="CompanyDepartment validations should belong to company" file="./spec/models/company_department_spec.rb" time="0.002284"></testcase>
+<testcase classname="spec.models.company_department_spec" name="CompanyDepartment validations should validate that :name is case-sensitively unique within the scope of :company_id" file="./spec/models/company_department_spec.rb" time="0.049115"></testcase>
+<testcase classname="spec.controllers.api.v1.tasks_controller_spec" name="Api::V1::TasksController GET #show returns customer as json" file="./spec/controllers/api/v1/tasks_controller_spec.rb" time="0.313865"></testcase>
+<testcase classname="spec.controllers.api.v1.tasks_controller_spec" name="Api::V1::TasksController GET #show returns record not found" file="./spec/controllers/api/v1/tasks_controller_spec.rb" time="0.090961"></testcase>
+<testcase classname="spec.controllers.api.v1.tasks_controller_spec" name="Api::V1::TasksController GET #show responds with 401 when unauthorized" file="./spec/controllers/api/v1/tasks_controller_spec.rb" time="0.074701"></testcase>
+<testcase classname="spec.controllers.api.v1.tasks_controller_spec" name="Api::V1::TasksController PUT #update returns errors" file="./spec/controllers/api/v1/tasks_controller_spec.rb" time="0.061410"></testcase>
+<testcase classname="spec.controllers.api.v1.tasks_controller_spec" name="Api::V1::TasksController PUT #update responds with 401 when unauthorized" file="./spec/controllers/api/v1/tasks_controller_spec.rb" time="0.091502"></testcase>
+<testcase classname="spec.controllers.api.v1.tasks_controller_spec" name="Api::V1::TasksController PUT #update Record Updated Successfully" file="./spec/controllers/api/v1/tasks_controller_spec.rb" time="0.091372"></testcase>
+<testcase classname="spec.controllers.api.v1.tasks_controller_spec" name="Api::V1::TasksController GET #index returns all tasks as json" file="./spec/controllers/api/v1/tasks_controller_spec.rb" time="0.087643"><failure message="
+expected: &quot;[{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Miss Paul Koepp\&quot;,\&quot;project_id\&quot;:1,\&quot;created_at\&quot;:\&quot;2018-08-16T08:56:57.144Z\&quot;...T08:56:57.152Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:57.152Z\&quot;,\&quot;created_by\&quot;:3,\&quot;updated_by\&quot;:null}]&quot;
+     got: &quot;{\&quot;pagination\&quot;:{\&quot;count\&quot;:4,\&quot;has_more_items\&quot;:false,\&quot;total_items\&quot;:4,\&quot;offset\&quot;:0,\&quot;limit\&quot;:20},\...y\&quot;:null,\&quot;created_at\&quot;:\&quot;2018-08-16T08:56:57.152Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:57.152Z\&quot;}]}&quot;
+
+(compared using ==)
+" type="RSpec::Expectations::ExpectationNotMetError">Failure/Error: expect(response.body).to eq ActiveModel::Serializer.serializer_for(project.tasks).new(project.tasks).to_json
+
+  expected: &quot;[{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Miss Paul Koepp\&quot;,\&quot;project_id\&quot;:1,\&quot;created_at\&quot;:\&quot;2018-08-16T08:56:57.144Z\&quot;...T08:56:57.152Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:57.152Z\&quot;,\&quot;created_by\&quot;:3,\&quot;updated_by\&quot;:null}]&quot;
+       got: &quot;{\&quot;pagination\&quot;:{\&quot;count\&quot;:4,\&quot;has_more_items\&quot;:false,\&quot;total_items\&quot;:4,\&quot;offset\&quot;:0,\&quot;limit\&quot;:20},\...y\&quot;:null,\&quot;created_at\&quot;:\&quot;2018-08-16T08:56:57.152Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:57.152Z\&quot;}]}&quot;
+
+  (compared using ==)
+./spec/controllers/api/v1/tasks_controller_spec.rb:22:in `block (3 levels) in &lt;top (required)&gt;&apos;
+./spec/rails_helper.rb:71:in `block (3 levels) in &lt;top (required)&gt;&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/generic/base.rb:16:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/base.rb:100:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:86:in `block (2 levels) in cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:87:in `cleaning&apos;
+./spec/rails_helper.rb:70:in `block (2 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
+<testcase classname="spec.controllers.api.v1.tasks_controller_spec" name="Api::V1::TasksController GET #index responds with 401 when unauthorized" file="./spec/controllers/api/v1/tasks_controller_spec.rb" time="0.061934"></testcase>
+<testcase classname="spec.controllers.api.v1.tasks_controller_spec" name="Api::V1::TasksController POST #create responds with 401 when unauthorized" file="./spec/controllers/api/v1/tasks_controller_spec.rb" time="0.052165"></testcase>
+<testcase classname="spec.controllers.api.v1.tasks_controller_spec" name="Api::V1::TasksController POST #create returns errors" file="./spec/controllers/api/v1/tasks_controller_spec.rb" time="0.093106"></testcase>
+<testcase classname="spec.controllers.api.v1.tasks_controller_spec" name="Api::V1::TasksController POST #create Record Created Successfully" file="./spec/controllers/api/v1/tasks_controller_spec.rb" time="0.107961"></testcase>
+<testcase classname="spec.controllers.api.v1.tasks_controller_spec" name="Api::V1::TasksController DELETE #destroy responds with 401 when unauthorized" file="./spec/controllers/api/v1/tasks_controller_spec.rb" time="0.088032"></testcase>
+<testcase classname="spec.controllers.api.v1.tasks_controller_spec" name="Api::V1::TasksController DELETE #destroy Record Deleted Successfully" file="./spec/controllers/api/v1/tasks_controller_spec.rb" time="0.087998"></testcase>
+<testcase classname="spec.controllers.api.v1.company.depatments_controller_spec" name="Api::V1::Company::DepartmentsController PUT #update responds with 401 when unauthorized" file="./spec/controllers/api/v1/company/depatments_controller_spec.rb" time="0.043073"></testcase>
+<testcase classname="spec.controllers.api.v1.company.depatments_controller_spec" name="Api::V1::Company::DepartmentsController PUT #update Record Updated Successfully" file="./spec/controllers/api/v1/company/depatments_controller_spec.rb" time="0.081292"></testcase>
+<testcase classname="spec.controllers.api.v1.company.depatments_controller_spec" name="Api::V1::Company::DepartmentsController PUT #update returns errors" file="./spec/controllers/api/v1/company/depatments_controller_spec.rb" time="0.075772"></testcase>
+<testcase classname="spec.controllers.api.v1.company.depatments_controller_spec" name="Api::V1::Company::DepartmentsController GET #show responds with 401 when unauthorized" file="./spec/controllers/api/v1/company/depatments_controller_spec.rb" time="0.077637"></testcase>
+<testcase classname="spec.controllers.api.v1.company.depatments_controller_spec" name="Api::V1::Company::DepartmentsController GET #show returns record not found" file="./spec/controllers/api/v1/company/depatments_controller_spec.rb" time="0.069626"></testcase>
+<testcase classname="spec.controllers.api.v1.company.depatments_controller_spec" name="Api::V1::Company::DepartmentsController GET #show returns department as json" file="./spec/controllers/api/v1/company/depatments_controller_spec.rb" time="0.071299"></testcase>
+<testcase classname="spec.controllers.api.v1.company.depatments_controller_spec" name="Api::V1::Company::DepartmentsController GET #index returns all departments of company as json" file="./spec/controllers/api/v1/company/depatments_controller_spec.rb" time="0.081268"></testcase>
+<testcase classname="spec.controllers.api.v1.company.depatments_controller_spec" name="Api::V1::Company::DepartmentsController GET #index responds with 401 when unauthorized" file="./spec/controllers/api/v1/company/depatments_controller_spec.rb" time="0.034762"></testcase>
+<testcase classname="spec.controllers.api.v1.company.depatments_controller_spec" name="Api::V1::Company::DepartmentsController DELETE #destroy Record Deleted Successfully" file="./spec/controllers/api/v1/company/depatments_controller_spec.rb" time="0.071918"></testcase>
+<testcase classname="spec.controllers.api.v1.company.depatments_controller_spec" name="Api::V1::Company::DepartmentsController DELETE #destroy responds with 401 when unauthorized" file="./spec/controllers/api/v1/company/depatments_controller_spec.rb" time="0.049950"></testcase>
+<testcase classname="spec.controllers.api.v1.company.depatments_controller_spec" name="Api::V1::Company::DepartmentsController POST #create Record Created Successfully" file="./spec/controllers/api/v1/company/depatments_controller_spec.rb" time="0.078025"></testcase>
+<testcase classname="spec.controllers.api.v1.company.depatments_controller_spec" name="Api::V1::Company::DepartmentsController POST #create returns errors" file="./spec/controllers/api/v1/company/depatments_controller_spec.rb" time="0.073038"></testcase>
+<testcase classname="spec.controllers.api.v1.company.depatments_controller_spec" name="Api::V1::Company::DepartmentsController POST #create responds with 401 when unauthorized" file="./spec/controllers/api/v1/company/depatments_controller_spec.rb" time="0.039290"></testcase>
+<testcase classname="spec.models.user_spec" name="User validations should validate that :email is case-sensitively unique" file="./spec/models/user_spec.rb" time="0.567850"></testcase>
+<testcase classname="spec.models.user_spec" name="User validations should validate that :name cannot be empty/falsy" file="./spec/models/user_spec.rb" time="0.012348"></testcase>
+<testcase classname="spec.models.user_spec" name="User validations should have many access_tokens" file="./spec/models/user_spec.rb" time="0.005982"></testcase>
+<testcase classname="spec.models.user_spec" name="User validations should validate that :email cannot be empty/falsy" file="./spec/models/user_spec.rb" time="0.012040"></testcase>
+<testcase classname="spec.models.user_spec" name="User validations should have many access_grants" file="./spec/models/user_spec.rb" time="0.009719"></testcase>
+<testcase classname="spec.controllers.api.v1.customers_controller_spec" name="Api::V1::CustomersController GET #index returns all customer of company as json" file="./spec/controllers/api/v1/customers_controller_spec.rb" time="0.235436"><failure message="
+expected: &quot;[{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Mrs. Shayne Toy\&quot;,\&quot;color\&quot;:\&quot;#516abd\&quot;,\&quot;company_id\&quot;:1,\&quot;created_at\&quot;:\&quot;2018...T08:56:59.203Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:59.203Z\&quot;,\&quot;created_by\&quot;:6,\&quot;updated_by\&quot;:null}]&quot;
+     got: &quot;{\&quot;pagination\&quot;:{\&quot;count\&quot;:4,\&quot;has_more_items\&quot;:false,\&quot;total_items\&quot;:4,\&quot;offset\&quot;:0,\&quot;limit\&quot;:20},\...y\&quot;:null,\&quot;created_at\&quot;:\&quot;2018-08-16T08:56:59.203Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:59.203Z\&quot;}]}&quot;
+
+(compared using ==)
+" type="RSpec::Expectations::ExpectationNotMetError">Failure/Error: expect(response.body).to eq ActiveModel::Serializer.serializer_for(company.customers).new(company.customers).to_json
+
+  expected: &quot;[{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Mrs. Shayne Toy\&quot;,\&quot;color\&quot;:\&quot;#516abd\&quot;,\&quot;company_id\&quot;:1,\&quot;created_at\&quot;:\&quot;2018...T08:56:59.203Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:59.203Z\&quot;,\&quot;created_by\&quot;:6,\&quot;updated_by\&quot;:null}]&quot;
+       got: &quot;{\&quot;pagination\&quot;:{\&quot;count\&quot;:4,\&quot;has_more_items\&quot;:false,\&quot;total_items\&quot;:4,\&quot;offset\&quot;:0,\&quot;limit\&quot;:20},\...y\&quot;:null,\&quot;created_at\&quot;:\&quot;2018-08-16T08:56:59.203Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:56:59.203Z\&quot;}]}&quot;
+
+  (compared using ==)
+./spec/controllers/api/v1/customers_controller_spec.rb:21:in `block (3 levels) in &lt;top (required)&gt;&apos;
+./spec/rails_helper.rb:71:in `block (3 levels) in &lt;top (required)&gt;&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/generic/base.rb:16:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/base.rb:100:in `cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:86:in `block (2 levels) in cleaning&apos;
+/Users/User/.rvm/gems/ruby-2.5.1/gems/database_cleaner-1.7.0/lib/database_cleaner/configuration.rb:87:in `cleaning&apos;
+./spec/rails_helper.rb:70:in `block (2 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
+<testcase classname="spec.controllers.api.v1.customers_controller_spec" name="Api::V1::CustomersController GET #index responds with 401 when unauthorized" file="./spec/controllers/api/v1/customers_controller_spec.rb" time="0.162987"></testcase>
+<testcase classname="spec.controllers.api.v1.customers_controller_spec" name="Api::V1::CustomersController PUT #update returns errors" file="./spec/controllers/api/v1/customers_controller_spec.rb" time="0.160872"></testcase>
+<testcase classname="spec.controllers.api.v1.customers_controller_spec" name="Api::V1::CustomersController PUT #update responds with 401 when unauthorized" file="./spec/controllers/api/v1/customers_controller_spec.rb" time="0.147766"></testcase>
+<testcase classname="spec.controllers.api.v1.customers_controller_spec" name="Api::V1::CustomersController PUT #update Record Updated Successfully" file="./spec/controllers/api/v1/customers_controller_spec.rb" time="0.140760"></testcase>
+<testcase classname="spec.controllers.api.v1.customers_controller_spec" name="Api::V1::CustomersController DELETE #destroy Record Deleted Successfully" file="./spec/controllers/api/v1/customers_controller_spec.rb" time="0.127147"></testcase>
+<testcase classname="spec.controllers.api.v1.customers_controller_spec" name="Api::V1::CustomersController DELETE #destroy responds with 401 when unauthorized" file="./spec/controllers/api/v1/customers_controller_spec.rb" time="0.069944"></testcase>
+<testcase classname="spec.controllers.api.v1.customers_controller_spec" name="Api::V1::CustomersController POST #create responds with 401 when unauthorized" file="./spec/controllers/api/v1/customers_controller_spec.rb" time="0.057866"></testcase>
+<testcase classname="spec.controllers.api.v1.customers_controller_spec" name="Api::V1::CustomersController POST #create Record Created Successfully" file="./spec/controllers/api/v1/customers_controller_spec.rb" time="0.125803"></testcase>
+<testcase classname="spec.controllers.api.v1.customers_controller_spec" name="Api::V1::CustomersController POST #create returns errors" file="./spec/controllers/api/v1/customers_controller_spec.rb" time="0.069216"></testcase>
+<testcase classname="spec.controllers.api.v1.customers_controller_spec" name="Api::V1::CustomersController GET #show responds with 401 when unauthorized" file="./spec/controllers/api/v1/customers_controller_spec.rb" time="0.067612"></testcase>
+<testcase classname="spec.controllers.api.v1.customers_controller_spec" name="Api::V1::CustomersController GET #show returns record not found" file="./spec/controllers/api/v1/customers_controller_spec.rb" time="0.064925"></testcase>
+<testcase classname="spec.controllers.api.v1.customers_controller_spec" name="Api::V1::CustomersController GET #show returns customer as json" file="./spec/controllers/api/v1/customers_controller_spec.rb" time="0.049299"></testcase>
+<testcase classname="spec.models.company_spec" name="Company validations should have many hour_types" file="./spec/models/company_spec.rb" time="0.004361"></testcase>
+<testcase classname="spec.models.company_spec" name="Company validations should have many customers" file="./spec/models/company_spec.rb" time="0.002708"></testcase>
+<testcase classname="spec.models.company_spec" name="Company validations should have many company_holidays" file="./spec/models/company_spec.rb" time="0.003973"></testcase>
+<testcase classname="spec.models.company_spec" name="Company validations should have many users" file="./spec/models/company_spec.rb" time="0.004971"></testcase>
+<testcase classname="spec.models.company_spec" name="Company validations should have many company_departments" file="./spec/models/company_spec.rb" time="0.007225"></testcase>
+<testcase classname="spec.models.company_spec" name="Company validations should validate that :name cannot be empty/falsy" file="./spec/models/company_spec.rb" time="0.013412"></testcase>
+<testcase classname="spec.models.company_spec" name="Company validations should validate that :organization_number is case-sensitively unique" file="./spec/models/company_spec.rb" time="0.041130"></testcase>
+<testcase classname="spec.controllers.api.v1.companies_controller_spec" name="Api::V1::CompaniesController PUT #update returns errors" file="./spec/controllers/api/v1/companies_controller_spec.rb" time="0.050982"></testcase>
+<testcase classname="spec.controllers.api.v1.companies_controller_spec" name="Api::V1::CompaniesController PUT #update responds with 401 when unauthorized" file="./spec/controllers/api/v1/companies_controller_spec.rb" time="0.025470"></testcase>
+<testcase classname="spec.controllers.api.v1.companies_controller_spec" name="Api::V1::CompaniesController PUT #update Record Updated Successfully" file="./spec/controllers/api/v1/companies_controller_spec.rb" time="0.039495"></testcase>
+<testcase classname="spec.controllers.api.v1.companies_controller_spec" name="Api::V1::CompaniesController GET #show returns company as json" file="./spec/controllers/api/v1/companies_controller_spec.rb" time="0.042618"></testcase>
+<testcase classname="spec.controllers.api.v1.companies_controller_spec" name="Api::V1::CompaniesController GET #show responds with 401 when unauthorized" file="./spec/controllers/api/v1/companies_controller_spec.rb" time="0.026522"></testcase>
+<testcase classname="spec.serializers.company_serializer_spec" name="CompanySerializer#serialized_json should eq &quot;{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Miquel Emard\&quot;,\&quot;address\&quot;:\&quot;17904 Heaney Fields\&quot;,\&quot;country\&quot;:\&quot;RW\&quot;,\&quot;organiz...T08:57:00.880Z\&quot;,\&quot;updated_at\&quot;:\&quot;2018-08-16T08:57:00.880Z\&quot;,\&quot;created_by\&quot;:10,\&quot;updated_by\&quot;:null}&quot;" file="./spec/serializers/company_serializer_spec.rb" time="0.012182"></testcase>
+<testcase classname="spec.models.project_spec" name="Project validations should have many tasks" file="./spec/models/project_spec.rb" time="0.002171"></testcase>
+<testcase classname="spec.models.project_spec" name="Project validations should belong to customer" file="./spec/models/project_spec.rb" time="0.002616"></testcase>
+<testcase classname="spec.models.project_spec" name="Project validations should validate that :name cannot be empty/falsy" file="./spec/models/project_spec.rb" time="0.005613"></testcase>
+</testsuite>
