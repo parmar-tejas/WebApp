@@ -261,3 +261,4 @@ expected: &quot;[{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Mrs. Shayne Toy\&
 <testcase classname="spec.models.project_spec" name="Project validations should belong to customer" file="./spec/models/project_spec.rb" time="0.002616"></testcase>
 <testcase classname="spec.models.project_spec" name="Project validations should validate that :name cannot be empty/falsy" file="./spec/models/project_spec.rb" time="0.005613"></testcase>
 </testsuite>
+
